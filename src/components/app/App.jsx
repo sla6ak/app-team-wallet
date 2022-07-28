@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import RegisterPage from 'views/registerPage/RegisterPage';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
 import PublicRoute from 'components/publicRoute/PublicRoute';
@@ -9,7 +9,7 @@ import StatisticPage from 'views/statisticPage/StatisticPage';
 
 function App() {
     return (
-        <BrowserRouter basename="/">
+        <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route
@@ -45,6 +45,7 @@ function App() {
                         }
                     />
                 </Route>
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </BrowserRouter>
     );
