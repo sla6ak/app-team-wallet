@@ -6,8 +6,23 @@ import HomePage from 'views/homePage/HomePage';
 import LoginPage from 'views/loginPage/LoginPage';
 import Layout from 'layouts/Layout';
 import StatisticPage from 'views/statisticPage/StatisticPage';
+import { useSelector, useDispatch } from 'react-redux';
+import { useIsActivTokenQuery } from 'redux/authAPI';
+import { useEffect } from 'react';
+import { isUserName } from 'redux/sliceUserName';
 
 function App() {
+    const token = useSelector(state => state.token);
+    const dispatch = useDispatch();
+    const { data: auth } = useIsActivTokenQuery('', { skip: !token });
+
+    useEffect(() => {
+        if (auth === undefined) {
+            return;
+        }
+        dispatch(isUserName(auth.name)); //при монтировании компонентов проверяем подлинность токена.
+    }, [auth, dispatch]);
+
     return (
         <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
             <Routes>

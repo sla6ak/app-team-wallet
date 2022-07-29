@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { registerSchema } from 'helpers/validationForm';
-import { Button, TextField, InputLabel, InputAdornment } from '@mui/material';
+import { TextField, InputLabel, InputAdornment } from '@mui/material';
 import { useRegistrationUserMutation } from 'redux/authAPI';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, AccountBox } from '@mui/icons-material';
+import { RegisterModalForma } from './RegisterPage.styled';
+import TitleWallet from 'components/TitleWallet/TitleWallet';
+import { BoxButton, ButtonSubmit, ButtonLink, InputBox, FormaCastom, ErrorLabel } from '../loginPage/LoginPage.styled';
+import BacgroundGreeting from 'components/BacgroundGreeting/BacgroundGreeting';
 
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
@@ -17,12 +21,17 @@ const RegisterPage = () => {
         initialValues: { firstName: '', password: '', email: '', dublePassword: '' },
         validationSchema: registerSchema,
         onSubmit: async values => {
+            console.log('sabm');
             setDisabled(true);
             if (values.password !== values.dublePassword) {
                 return; // нужно сообщить юзеру об ошибке так нельзя оставлять
             }
             try {
-                await createUser(values);
+                await createUser({
+                    name: values.firstName,
+                    password: values.password,
+                    email: values.email,
+                });
             } catch (error) {
                 console.log(error);
             }
@@ -30,91 +39,128 @@ const RegisterPage = () => {
         },
     });
     return (
-        <>
-            <div>Wallet</div>
+        <BacgroundGreeting page={'register'}>
+            <RegisterModalForma>
+                <TitleWallet />
+                <FormaCastom onSubmit={formik.handleSubmit}>
+                    <InputBox>
+                        <InputLabel htmlFor="email">
+                            {formik.touched.email && formik.errors.email ? (
+                                <ErrorLabel>{formik.errors.email}</ErrorLabel>
+                            ) : null}
+                        </InputLabel>
+                        <TextField
+                            fullWidth
+                            variant={'standard'}
+                            required
+                            id="email"
+                            name="email"
+                            type="email"
+                            onChange={formik.handleChange}
+                            value={formik.values.email}
+                            placeholder={'Email Address'}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <Mail sx={{ color: '#E0E0E0', ml: '7px' }} />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </InputBox>
+                    <InputBox>
+                        <InputLabel htmlFor="password">
+                            {formik.touched.password && formik.errors.password ? (
+                                <ErrorLabel>{formik.errors.password}</ErrorLabel>
+                            ) : null}
+                        </InputLabel>
 
-            <form onSubmit={formik.handleSubmit}>
-                <InputLabel htmlFor="email">Email Address</InputLabel>
-                <TextField
-                    required
-                    id="email"
-                    name="email"
-                    type="email"
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                    placeholder={'Email Address'}
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <Mail />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-                <InputLabel htmlFor="password">Password</InputLabel>
+                        <TextField
+                            fullWidth
+                            variant={'standard'}
+                            required
+                            id="password"
+                            name="password"
+                            type="password"
+                            onChange={formik.handleChange}
+                            value={formik.values.password}
+                            placeholder={'Password'}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <Lock sx={{ color: '#E0E0E0', ml: '7px' }} />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </InputBox>
+                    <InputBox>
+                        <InputLabel htmlFor="dublePassword">
+                            {formik.touched.dublePassword && formik.errors.dublePassword ? (
+                                <ErrorLabel>{formik.errors.dublePassword}</ErrorLabel>
+                            ) : null}
+                        </InputLabel>
 
-                <TextField
-                    required
-                    id="password"
-                    name="password"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.password}
-                    placeholder={'Password'}
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <Lock />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-                <InputLabel htmlFor="dublePassword">Confirm password</InputLabel>
+                        <TextField
+                            fullWidth
+                            variant={'standard'}
+                            required
+                            id="dublePassword"
+                            name="dublePassword"
+                            type="password"
+                            onChange={formik.handleChange}
+                            value={formik.values.dublePassword}
+                            placeholder={'Confirm password'}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <Lock sx={{ color: '#E0E0E0', ml: '7px' }} />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </InputBox>
 
-                <TextField
-                    required
-                    id="dublePassword"
-                    name="dublePassword"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.dublePassword}
-                    placeholder={'Confirm password'}
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <Lock />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
+                    <InputBox>
+                        <InputLabel htmlFor="firstName">
+                            {formik.touched.firstName && formik.errors.firstName ? (
+                                <ErrorLabel>{formik.errors.firstName}</ErrorLabel>
+                            ) : null}
+                        </InputLabel>
 
-                {formik.touched.firstName && formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
-                <InputLabel htmlFor="firstName">First Name</InputLabel>
-
-                <TextField
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.firstName}
-                    placeholder={'First Name'}
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <AccountBox />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-
-                <Button variant={'contained'} disabled={disabled} type="submit">
-                    Register
-                </Button>
-                <Button variant={'outlined'} onClick={() => navigate('/login', { replace: true })}>
-                    Log in
-                </Button>
-            </form>
-        </>
+                        <TextField
+                            fullWidth
+                            variant={'standard'}
+                            id="firstName"
+                            name="firstName"
+                            type="text"
+                            onChange={formik.handleChange}
+                            value={formik.values.firstName}
+                            placeholder={'First Name'}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <AccountBox sx={{ color: '#E0E0E0', ml: '7px' }} />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </InputBox>
+                    <BoxButton>
+                        <ButtonSubmit fullWidth variant={'contained'} disabled={disabled} type="submit">
+                            Register
+                        </ButtonSubmit>
+                        <ButtonLink
+                            fullWidth
+                            variant={'outlined'}
+                            onClick={() => navigate('/login', { replace: true })}
+                        >
+                            Log in
+                        </ButtonLink>
+                    </BoxButton>
+                </FormaCastom>
+            </RegisterModalForma>
+        </BacgroundGreeting>
     );
 };
 
