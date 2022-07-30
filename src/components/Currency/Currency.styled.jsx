@@ -19,16 +19,35 @@ export const Header = styled.ul`
     font-family: 'Circe';
     font-weight: 700;
     font-size: 18px;
-    line-height: 27px;
+    line-height: 1.5;
 `;
 
-export const Table = styled.ul`
+export const Table = styled.div`
     height: 124px;
-    border-radius: 0 0 30px 30px ;
+
+    border-radius: 0 0 30px 30px;
     background-color: #4A56E2;
     height-height: 93px;
     background-image: url(${CurrencyBg});
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
+
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+`;
+
+export const ListCurrency = styled.ul`
+    padding-top: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+
+    li:not(:last-child) {
+        padding-bottom: 12px;
+    }
 `;

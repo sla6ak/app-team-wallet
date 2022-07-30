@@ -2,6 +2,7 @@ import {
     Container,
     Header,
     Table,
+    ListCurrency,
 } from './Currency.styled';
 
 const Currency = () => {
@@ -13,11 +14,11 @@ const Currency = () => {
                 <li>Sale</li>
             </Header>
             <Table>
-                <ul>
+                <ListCurrency>
                     <li><span>1</span></li>
                     <li><span>2</span></li>
                     <li><span>3</span></li>
-                </ul>
+                </ListCurrency>
             </Table>
         </Container>
     )
