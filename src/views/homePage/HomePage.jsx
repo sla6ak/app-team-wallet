@@ -13,7 +13,7 @@ import {
     AddIcn,
     PlusBtn,
 } from './HomePage.styled';
-import TableMobile from '../../components/Table/TableMobile';
+// import TableMobile from '../../components/Table/TableMobile';
 import TableLarge from '../../components/Table/TableLarge';
 
 const HomePage = () => {
