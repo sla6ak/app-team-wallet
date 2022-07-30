@@ -36,6 +36,46 @@ export const GlobalStyled = () => {
                     flex-direction: column;
                     min-height: 100vh;
                 }
+                .icon-wallet {
+                    width: 30px;
+                    height: 25px;
+                    margin-right: 15px;
+                    z-index: 3;
+                    @media (min-width: 768px) {
+                        width: 40px;
+                        height: 32px;
+                    }
+                }
+                .icon-greetting {
+                    width: 240px;
+                    height: 250px;
+                    margin-right: 15px;
+                    z-index: 3;
+                    @media (min-width: 1280px) {
+                        width: 400px;
+                        height: 450px;
+                    }
+                }
+                .icon-ellipse-blue {
+                    width: 618px;
+                    height: 547px;
+                    position: fixed;
+                    left: 0;
+                    bottom: 0;
+                    z-index: 1;
+                    transform: rotate(16.86deg);
+                    transform: translate(-5%, 5%);
+                }
+                .icon-ellipse-purp {
+                    width: 618px;
+                    height: 547px;
+                    position: fixed;
+                    right: 0;
+                    top: 0;
+                    z-index: 1;
+                    transform: rotate(21.94deg);
+                    transform: translate(15%, -15%);
+                }
             `}
         />
     );
