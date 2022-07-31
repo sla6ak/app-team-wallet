@@ -45,10 +45,15 @@ const TableLarge = () => {
                     </TableHead>
                     <TableBody>
                         {data.map(data => (
-                            <TableRow key={data.date}>
-                                <TableCellValueStyled component="th" scope="row">
-                                    {data.date}
-                                </TableCellValueStyled>
+                            <TableRow
+                                key={data.date}
+                                sx={{
+                                    '&:last-child td': {
+                                        borderBottom: 0,
+                                    },
+                                }}
+                            >
+                                <TableCellValueStyled>{data.date}</TableCellValueStyled>
                                 <TableCellValueStyled align="center">{data.type}</TableCellValueStyled>
                                 <TableCellValueStyled align="center">{data.category}</TableCellValueStyled>
                                 <TableCellValueStyled align="center">{data.comment}</TableCellValueStyled>

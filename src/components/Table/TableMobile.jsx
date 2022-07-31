@@ -23,7 +23,7 @@ const TableMobile = () => {
     return (
         <TabWraper>
             {data.map(data => (
-                <TableContainer sx={TableStyled}>
+                <TableContainer key={data.date} sx={TableStyled}>
                     <Table>
                         <TableBody>
                             <TableRow>
