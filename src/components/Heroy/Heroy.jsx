@@ -15,7 +15,7 @@ const Heroy = ({ page }) => {
                         <use href={spr + '#header-register'}></use>
                     </svg>
                 )}
-                <HeroyTitle>Finanse App</HeroyTitle>
+                <HeroyTitle>Finance App</HeroyTitle>
             </HeroyConteiner>
         </HeroyBackground>
     );
