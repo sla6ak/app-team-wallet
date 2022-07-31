@@ -11,7 +11,6 @@ export const HomePageWrap = styled.div`
 `;
 
 export const HomeIcn = styled(Home)({
-    width: '25px',
     fontSize: 'xx-large',
     color: 'white',
 });
@@ -87,13 +86,16 @@ export const SumValue = styled.p`
 `;
 
 export const PlusBtn = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 44px;
     height: 44px;
     background: #24cca7;
     border-radius: 50%;
     border: none;
 
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
