@@ -7,8 +7,7 @@ export const ModalForma = styled.div`
     border-radius: 20px;
     width: 100vw;
     height: 100vh;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 20px;
     display: flex;
     position: absolute;
     z-index: 25;
@@ -77,7 +76,8 @@ export const InputBox = styled.div`
 export const FormaCastom = styled.form`
     max-width: 410px;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 30px;
+
     @media (min-width: 768px) {
         width: 410px;
     }

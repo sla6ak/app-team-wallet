@@ -4,7 +4,14 @@ export const Header = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #2a363b;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    @media (min-width: 768px) {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+    @media (min-width: 1279px) {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 `;

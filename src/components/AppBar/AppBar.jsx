@@ -1,4 +1,3 @@
-// import { Outlet } from 'react-router-dom';
 import UserMenu from '../UserMenu/UserMenu';
 import LogoWallet from '../LogoWallet/LogoWallet';
 import { Header } from './AppBar.styled';
@@ -10,7 +9,6 @@ const AppBar = () => {
                 <LogoWallet />
                 <UserMenu />
             </Header>
-            {/* <Outlet /> */}
         </>
     );
 };

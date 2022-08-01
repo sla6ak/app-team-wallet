@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalWindow, ModalTitle, ModalCloseBtn } from './ModalTransactions.styled';
 import CloseIcon from '@mui/icons-material/Close';
-// import { useFormik } from 'formik';
 import { ButtonAdd, ButtonCancel, ButtonWrapper } from './ModalTransactions.styled';
 
 // функция закрытия модалки это просто сетСтейт родителя тру или фолс и если фолс то больше не рендерим модалку в родителе : она схлопнется.

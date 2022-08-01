@@ -31,8 +31,9 @@ export const LogOutBtn = styled(Button)`
     padding-bottom: 18px;
     @media (min-width: 768px) {
         margin-left: 12px;
+        padding-top: 28px;
+        padding-bottom: 28px;
         &:after {
-            /* position: absolute; */
             content: 'exit';
             font-family: 'Circe';
             font-style: normal;
