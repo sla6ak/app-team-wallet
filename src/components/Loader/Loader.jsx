@@ -1,22 +1,10 @@
-import { MutatingDots } from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-
 import { LoaderContainer } from 'components/Loader/Loader.styled';
+import { SpinnerDotted } from 'spinners-react';
 
 function Loader() {
     return (
         <LoaderContainer>
-            <MutatingDots
-                height="100"
-                width="100"
-                color="#24CCA7"
-                secondaryColor="#4A56E2"
-                radius="12.5"
-                ariaLabel="mutating-dots-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                visible={true}
-            />
+            <SpinnerDotted size={50} thickness={100} speed={100} color="rgba(36, 204, 167, 1)" />
         </LoaderContainer>
     );
 }
