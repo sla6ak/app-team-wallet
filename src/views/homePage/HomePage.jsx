@@ -23,6 +23,9 @@ import {
 } from './HomePage.styled';
 import TableMobile from '../../components/Table/TableMobile';
 import TableLarge from '../../components/Table/TableLarge';
+import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from 'components/privateRoute/PrivateRoute';
+import Statistics from 'components/statistics/Statistics';
 
 const HomePage = () => {
     const activeBtn = isActive => {
@@ -86,6 +89,16 @@ const HomePage = () => {
                         )}
                     />
                 </TopInfoWrap>
+                <Routes>
+                    <Route
+                        path="/statistics"
+                        element={
+                            <PrivateRoute>
+                                <Statistics />
+                            </PrivateRoute>
+                        }
+                    />
+                </Routes>
                 <Media query="(min-width: 1279px)" render={() => <BorderLine></BorderLine>} />
                 <Media query="(max-width: 767px)" render={() => <TableMobile />} />
                 <Media query="(min-width: 768px)" render={() => <TableLarge />} />
