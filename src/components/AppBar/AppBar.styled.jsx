@@ -6,6 +6,7 @@ export const Header = styled.header`
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
+    background-color: white;
     @media (min-width: 768px) {
         padding-left: 32px;
         padding-right: 32px;

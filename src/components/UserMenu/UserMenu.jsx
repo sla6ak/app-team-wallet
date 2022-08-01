@@ -1,4 +1,4 @@
-import { Greeeting, LogOutBtn, Wrapper } from './UserMenu.styled';
+import { Greeeting, LogOutBtn, Wrapper, TextBtn } from './UserMenu.styled';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 const UserMenu = () => {
@@ -9,6 +9,7 @@ const UserMenu = () => {
             <Greeeting>{userName}</Greeeting>
             <LogOutBtn onClick={() => console.log('logoutUser')}>
                 <LogoutIcon />
+                <TextBtn> Exit </TextBtn>
             </LogOutBtn>
         </Wrapper>
     );

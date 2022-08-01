@@ -8,7 +8,7 @@ export const HomePageWrap = styled.div`
     display: flex;
     flex-direction: column;
     @media (min-width: 1279px) {
-        padding-top: 45px;
+        /* padding-top: 45px; */
     }
 `;
 
@@ -193,5 +193,4 @@ export const BorderLine = styled.span`
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
     display: block;
     height: 100vh;
-
 `;
