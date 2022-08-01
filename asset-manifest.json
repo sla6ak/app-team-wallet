@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/app-team-wallet/static/css/main.17654e45.css",
-    "main.js": "/app-team-wallet/static/js/main.fe85b6bc.js",
+    "main.js": "/app-team-wallet/static/js/main.de6ca06b.js",
     "static/media/sprite.svg": "/app-team-wallet/static/media/sprite.ebe1a9f8aec3eda9b92b13440f092084.svg",
     "index.html": "/app-team-wallet/index.html",
     "main.17654e45.css.map": "/app-team-wallet/static/css/main.17654e45.css.map",
-    "main.fe85b6bc.js.map": "/app-team-wallet/static/js/main.fe85b6bc.js.map"
+    "main.de6ca06b.js.map": "/app-team-wallet/static/js/main.de6ca06b.js.map"
   },
   "entrypoints": [
     "static/css/main.17654e45.css",
-    "static/js/main.fe85b6bc.js"
+    "static/js/main.de6ca06b.js"
   ]
 }
