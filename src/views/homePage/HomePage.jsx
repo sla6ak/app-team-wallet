@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import Media from 'react-media';
 import {
     HomeIcn,
@@ -24,8 +24,14 @@ import {
 import TableMobile from '../../components/Table/TableMobile';
 import TableLarge from '../../components/Table/TableLarge';
 import AppBar from '../../components/AppBar/AppBar';
+import ModalTransactions from 'components/modalTransactions/ModalTransactions';
 
 const HomePage = () => {
+    const [modal, setModal] = useState(null);
+
+    const onModalClose = () => {
+        setModal(null);
+    };
     const activeBtn = isActive => {
         if (isActive) return LinkActive;
     };
@@ -91,8 +97,9 @@ const HomePage = () => {
                 <Media query="(min-width: 1279px)" render={() => <BorderLine></BorderLine>} />
                 <Media query="(max-width: 767px)" render={() => <TableMobile />} />
                 <Media query="(min-width: 768px)" render={() => <TableLarge />} />
+                {modal && <ModalTransactions onModalClose={onModalClose} />}
             </MainWrap>
-            <PlusBtn>
+            <PlusBtn onClick={() => setModal(true)}>
                 <AddIcn />
             </PlusBtn>
         </HomePageWrap>

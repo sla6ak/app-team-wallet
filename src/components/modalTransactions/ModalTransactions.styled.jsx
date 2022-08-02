@@ -2,8 +2,17 @@ import styled from '@emotion/styled';
 import { Button } from '@mui/material';
 
 // для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
+export const ModalWrapper = styled.div`
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.25);
+`;
 
-export const ModalWindow = styled.div`
+export const Modal = styled.form`
     border: dashed 1px red;
     width: 100vw;
     height: 100vh;
@@ -25,7 +34,7 @@ export const ModalWindow = styled.div`
         transform: translate(-50%, -50%);
         background: #ffffff;
         border-radius: 20px;
-        padding: 40px 73px;
+        padding: 40px 0px;
     }
 `;
 
@@ -44,8 +53,9 @@ export const ModalTitle = styled.h3`
 `;
 
 export const ModalCloseBtn = styled.div`
+    display: none;
     @media (min-width: 768px) {
-        position: absolute;
+        position: fixed;
         top: 20px;
         right: 20px;
         width: 16px;
@@ -59,11 +69,10 @@ export const ModalCloseBtn = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
-    max-width: 300px;
+    width: 300px;
     display: flex;
     flex-direction: column;
-    /* margin-left: auto;
-    margin-right: auto; */
+    padding: 0px 10px;
 `;
 
 export const ButtonAdd = styled(Button)`
