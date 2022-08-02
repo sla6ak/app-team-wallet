@@ -5,7 +5,7 @@ import PublicRoute from 'components/publicRoute/PublicRoute';
 import HomePage from 'views/homePage/HomePage';
 import LoginPage from 'views/loginPage/LoginPage';
 import Layout from 'layouts/Layout';
-import StatisticPage from 'views/statisticPage/StatisticPage';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useIsActivTokenQuery } from 'redux/authAPI';
 import { useEffect } from 'react';
@@ -28,21 +28,17 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route
-                        index
+                        path="/"
                         element={
                             <PrivateRoute>
                                 <HomePage />
                             </PrivateRoute>
                         }
-                    />
-                    <Route
-                        path="/statistic"
-                        element={
-                            <PrivateRoute>
-                                <StatisticPage />
-                            </PrivateRoute>
-                        }
-                    />
+                    >
+                        <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
+                        <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
+                    </Route>
+
                     <Route
                         path="/register"
                         element={

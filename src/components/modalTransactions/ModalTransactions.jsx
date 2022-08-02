@@ -1,33 +1,46 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { ModalWindow, ModalTitle, ModalCloseBtn } from './ModalTransactions.styled';
+import CloseIcon from '@mui/icons-material/Close';
+import { ButtonAdd, ButtonCancel, ButtonWrapper } from './ModalTransactions.styled';
 
 // функция закрытия модалки это просто сетСтейт родителя тру или фолс и если фолс то больше не рендерим модалку в родителе : она схлопнется.
-const ModalTransactions = ({ onModalClouse }) => {
+const ModalTransactions = ({ onModalClose }) => {
     const mouseDownClouse = e => {
         if (e.target === e.currentTarget) {
-            onModalClouse();
+            onModalClose();
         }
     };
     useEffect(() => {
-        const keyDownClouse = e => {
+        const keyDownClose = e => {
             if (e.code === 'Escape') {
-                onModalClouse();
+                onModalClose();
             }
         };
 
-        window.addEventListener('keydown', keyDownClouse);
+        window.addEventListener('keydown', keyDownClose);
         return () => {
-            window.removeEventListener('keydown', keyDownClouse);
+            window.removeEventListener('keydown', keyDownClose);
         };
-    }, [onModalClouse]);
+    }, [onModalClose]);
 
     return createPortal(
-        <div>
-            grey fon
+        <ModalWindow>
             <div onClick={mouseDownClouse}>
-                <button onClick={onModalClouse}>X</button>modal
+                <ModalCloseBtn onClick={onModalClose}>
+                    <CloseIcon />
+                </ModalCloseBtn>
             </div>
-        </div>,
+            <ModalTitle>Add transaction</ModalTitle>
+            <ButtonWrapper>
+                <ButtonAdd fullWidth variant={'contained'} type="submit">
+                    ADD
+                </ButtonAdd>
+                <ButtonCancel fullWidth variant={'outlined'} onClick={onModalClose}>
+                    CANCEL
+                </ButtonCancel>
+            </ButtonWrapper>
+        </ModalWindow>,
         document.querySelector('#modal')
     );
 };
