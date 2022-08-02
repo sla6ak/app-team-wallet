@@ -5,7 +5,6 @@ import PublicRoute from 'components/publicRoute/PublicRoute';
 import HomePage from 'views/homePage/HomePage';
 import LoginPage from 'views/loginPage/LoginPage';
 import Layout from 'layouts/Layout';
-import StatisticPage from 'views/statisticPage/StatisticPage';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIsActivTokenQuery } from 'redux/authAPI';
 import { useEffect } from 'react';
@@ -27,12 +26,11 @@ function App() {
         <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<HomePage />} />
                     <Route
-                        path="/statistic"
+                        index
                         element={
                             <PrivateRoute>
-                                <StatisticPage />
+                                <HomePage />
                             </PrivateRoute>
                         }
                     />

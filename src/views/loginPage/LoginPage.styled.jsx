@@ -48,7 +48,9 @@ export const ButtonSubmit = styled(Button)`
     line-height: 27px;
     height: 50px;
     margin-bottom: 20px;
-    background-color: #24cca7;
+    background-color: ${props => {
+        return props.theme.colors.green;
+    }};
     :hover {
         background-color: #1cad8e;
     }

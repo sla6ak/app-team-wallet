@@ -6,9 +6,9 @@ import { useRegistrationUserMutation } from 'redux/authAPI';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, AccountBox } from '@mui/icons-material';
 import { RegisterModalForma } from './RegisterPage.styled';
-import TitleWallet from 'components/TitleWallet/TitleWallet';
+import TitleWallet from 'components/titleWallet/TitleWallet';
 import { BoxButton, ButtonSubmit, ButtonLink, InputBox, FormaCastom, ErrorLabel } from '../loginPage/LoginPage.styled';
-import BacgroundGreeting from 'components/BacgroundGreeting/BacgroundGreeting';
+import BacgroundGreeting from 'components/bacgroundGreeting/BacgroundGreeting';
 
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation

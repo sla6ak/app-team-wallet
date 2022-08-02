@@ -1,7 +1,7 @@
 import { MutatingDots } from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-import { LoaderContainer } from 'components/Loader/Loader.styled';
+import { LoaderContainer } from 'components/loader/Loader.styled';
 
 function Loader() {
     return (
