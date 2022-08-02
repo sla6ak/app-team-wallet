@@ -11,7 +11,9 @@ export const RegisterModalForma = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     background-color: ${({ theme }) => theme.colors.white};
+
     position: absolute;
     z-index: 25;
     top: 0;
