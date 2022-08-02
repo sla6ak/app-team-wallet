@@ -76,6 +76,8 @@ export const InputBox = styled.div`
 export const FormaCastom = styled.form`
     max-width: 410px;
     width: 100%;
+    margin-top: 30px;
+
     @media (min-width: 768px) {
         width: 410px;
     }

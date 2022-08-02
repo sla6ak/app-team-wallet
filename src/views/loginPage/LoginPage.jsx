@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { loginSchema } from 'helpers/validationForm';
 import { TextField, InputLabel, InputAdornment } from '@mui/material';
-import TitleWallet from 'components/TitleWallet/TitleWallet';
+import LogoWallet from 'components/LogoWallet/LogoWallet';
 import { ModalForma, BoxButton, ButtonSubmit, ButtonLink, InputBox, FormaCastom, ErrorLabel } from './LoginPage.styled';
 import { useLoginUserMutation } from 'redux/authAPI';
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +35,7 @@ const LoginPage = () => {
     return (
         <BacgroundGreeting page={'login'}>
             <ModalForma>
-                <TitleWallet />
+                <LogoWallet />
                 <FormaCastom onSubmit={formik.handleSubmit}>
                     <InputBox>
                         <InputLabel htmlFor="email">

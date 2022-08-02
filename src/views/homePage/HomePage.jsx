@@ -24,6 +24,7 @@ import {
 } from './HomePage.styled';
 import TableMobile from '../../components/Table/TableMobile';
 import TableLarge from '../../components/Table/TableLarge';
+import AppBar from '../../components/AppBar/AppBar';
 
 const HomePage = () => {
     const activeBtn = isActive => {
@@ -35,6 +36,7 @@ const HomePage = () => {
     return (
         <BackgroundMainPage>
             <HomePageWrap>
+            <AppBar />
                 <MainWrap>
                     <TopInfoWrap>
                         <NavBalanceWrap>
