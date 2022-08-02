@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Home, Timeline, AttachMoney, Add } from '@mui/icons-material';
 
 export const HomePageWrap = styled.div`
-    background-color: #e7eaf2;
+    z-index: 100;
     height: 100vh;
     display: flex;
     flex-direction: column;
