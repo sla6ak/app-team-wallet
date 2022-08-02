@@ -27,13 +27,17 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route
-                        index
+                        path="/"
                         element={
                             <PrivateRoute>
                                 <HomePage />
                             </PrivateRoute>
                         }
-                    />
+                    >
+                        <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
+                        <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
+                    </Route>
+
                     <Route
                         path="/register"
                         element={

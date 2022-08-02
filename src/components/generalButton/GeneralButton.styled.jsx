@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Button } from '@mui/material';
 
-export const ButtonStyle = styled(Button)(
-    ({ theme }) => `
+export const GeneralButton = styled(Button)(
+    ({ theme, bts }) => `
     border-radius: 20px;
     width: 100%;
     font-weight: 400;
@@ -10,9 +10,11 @@ export const ButtonStyle = styled(Button)(
     line-height: 27px;
     height: 50px;
     margin-bottom: 20px;
-    background-color: ${theme.colors.green};
-    :hover {
-        background-color: ${theme.colors.hoverGreen};
-    }
+    color: ${bts === 'link' ? theme.colors.accent : theme.colors.white};
+    border-color:${bts === 'link' ? theme.colors.accent : theme.colors.green};
+    background-color: ${bts === 'link' ? theme.colors.white : theme.colors.green};
+     :hover {
+        background-color: ${bts === 'link' ? theme.colors.hoverWhite : theme.colors.hoverGreen};
+    } 
 `
 );

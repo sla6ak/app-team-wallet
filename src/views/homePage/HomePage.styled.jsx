@@ -1,21 +1,20 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
-
 import { Home, Timeline, AttachMoney, Add } from '@mui/icons-material';
 
 export const HomePageWrap = styled.div`
-    background-color: #e7eaf2;
+    z-index: 100;
     height: 100vh;
     display: flex;
     flex-direction: column;
     @media (min-width: 1279px) {
-        padding-top: 45px;
+        /* padding-top: 45px; */
     }
 `;
 
 export const HomeIcn = styled(Home)`
     font-size: xx-large;
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
     @media (min-width: 768px) {
         font-size: small;
     } ;
@@ -23,7 +22,7 @@ export const HomeIcn = styled(Home)`
 
 export const TimelineIcn = styled(Timeline)`
     font-size: xx-large;
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
     @media (min-width: 768px) {
         font-size: small;
     } ;

@@ -7,15 +7,15 @@ import App from 'components/app/App';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from './redux/store';
 import '../node_modules/modern-normalize/modern-normalize.css';
-import { ThemeProvider } from '@emotion/react';
-import { customTheme } from './helpers/theme';
+import { ThemeProvider } from '@mui/material/styles';
+import { materialTheme } from './helpers/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <ThemeProvider theme={customTheme}>
+                <ThemeProvider theme={materialTheme}>
                     <GlobalStyled />
                     <App />
                 </ThemeProvider>
