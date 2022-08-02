@@ -6,7 +6,7 @@ import { useRegistrationUserMutation } from 'redux/authAPI';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, AccountBox } from '@mui/icons-material';
 import { RegisterModalForma } from './RegisterPage.styled';
-import TitleWallet from 'components/TitleWallet/TitleWallet';
+import LogoWallet from 'components/LogoWallet/LogoWallet';
 import { BoxButton, ButtonSubmit, ButtonLink, InputBox, FormaCastom, ErrorLabel } from '../loginPage/LoginPage.styled';
 import BacgroundGreeting from 'components/BacgroundGreeting/BacgroundGreeting';
 
@@ -41,7 +41,7 @@ const RegisterPage = () => {
     return (
         <BacgroundGreeting page={'register'}>
             <RegisterModalForma>
-                <TitleWallet />
+                <LogoWallet />
                 <FormaCastom onSubmit={formik.handleSubmit}>
                     <InputBox>
                         <InputLabel htmlFor="email">

@@ -18,7 +18,6 @@ export const Title = styled.h1`
 
 export const TitleConteiner = styled.div`
     display: flex;
-    margin-bottom: 50px;
     align-items: center;
     @media (min-width: 768px) {
     }

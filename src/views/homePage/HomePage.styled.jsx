@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
-
 import { Home, Timeline, AttachMoney, Add } from '@mui/icons-material';
 
 export const HomePageWrap = styled.div`
@@ -9,7 +8,7 @@ export const HomePageWrap = styled.div`
     display: flex;
     flex-direction: column;
     @media (min-width: 1279px) {
-        padding-top: 45px;
+        /* padding-top: 45px; */
     }
 `;
 
