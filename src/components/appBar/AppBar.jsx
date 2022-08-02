@@ -1,12 +1,12 @@
-import UserMenu from '../UserMenu/UserMenu';
-import LogoWallet from '../LogoWallet/LogoWallet';
+import UserMenu from '../userMenu/UserMenu';
+import TitleWallet from '../titleWallet/TitleWallet';
 import { Header } from './AppBar.styled';
 
 const AppBar = () => {
     return (
         <>
             <Header>
-                <LogoWallet />
+                <TitleWallet />
                 <UserMenu />
             </Header>
         </>

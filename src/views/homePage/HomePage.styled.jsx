@@ -14,7 +14,7 @@ export const HomePageWrap = styled.div`
 
 export const HomeIcn = styled(Home)`
     font-size: xx-large;
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
     @media (min-width: 768px) {
         font-size: small;
     } ;
@@ -22,7 +22,7 @@ export const HomeIcn = styled(Home)`
 
 export const TimelineIcn = styled(Timeline)`
     font-size: xx-large;
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
     @media (min-width: 768px) {
         font-size: small;
     } ;

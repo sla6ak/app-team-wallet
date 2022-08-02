@@ -1,4 +1,4 @@
-import { LoaderContainer } from 'components/Loader/Loader.styled';
+import { LoaderContainer } from './Loader.styled';
 import { SpinnerDotted } from 'spinners-react';
 
 function Loader() {

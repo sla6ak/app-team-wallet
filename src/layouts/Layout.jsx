@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Loader from 'components/Loader/Loader';
+import Loader from 'components/loader/Loader';
 
 import React from 'react';
 

@@ -3,7 +3,7 @@ import spr from '../../images/sprite.svg';
 import { BlurMainPage } from './BackgroundMainPage.styled';
 import Media from 'react-media';
 
-const BacgroundGreeting = ({ children }) => {
+const BackgroundMainPage = ({ children }) => {
     return (
         <BackgroundBox>
             <Media
@@ -26,4 +26,4 @@ const BacgroundGreeting = ({ children }) => {
     );
 };
 
-export default BacgroundGreeting;
+export default BackgroundMainPage;

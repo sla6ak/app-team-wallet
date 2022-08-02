@@ -1,6 +1,6 @@
 import React from 'react';
 import Media from 'react-media';
-import BackgroundMainPage from '../../components/BackgroundMainPage/BackgroundMainPage';
+import BackgroundMainPage from '../../components/backgroundMainPage/BackgroundMainPage';
 import {
     HomeIcn,
     TimelineIcn,
@@ -22,9 +22,9 @@ import {
     MainWrap,
     BorderLine,
 } from './HomePage.styled';
-import TableMobile from '../../components/Table/TableMobile';
-import TableLarge from '../../components/Table/TableLarge';
-import AppBar from '../../components/AppBar/AppBar';
+import TableMobile from '../../components/table/TableMobile';
+import TableLarge from '../../components/table/TableLarge';
+import AppBar from '../../components/appBar/AppBar';
 
 const HomePage = () => {
     const activeBtn = isActive => {
@@ -36,7 +36,7 @@ const HomePage = () => {
     return (
         <BackgroundMainPage>
             <HomePageWrap>
-            <AppBar />
+                <AppBar />
                 <MainWrap>
                     <TopInfoWrap>
                         <NavBalanceWrap>
