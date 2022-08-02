@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button } from '@mui/material';
+
 
 // для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
 
@@ -16,7 +16,9 @@ export const ModalForma = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+
+    background-color: ${({ theme }) => theme.colors.white};
+
     @media (min-width: 768px) {
         position: relative;
         padding: 40px;
@@ -40,31 +42,7 @@ export const BoxButton = styled.div`
     margin-right: auto;
 `;
 
-export const ButtonSubmit = styled(Button)`
-    border-radius: 20px;
-    width: 100%;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
-    height: 50px;
-    margin-bottom: 20px;
-    background-color: #24cca7;
-    :hover {
-        background-color: #1cad8e;
-    }
-`;
 
-export const ButtonLink = styled(Button)`
-    border-radius: 20px;
-    font-weight: 400;
-    width: 100%;
-    font-size: 18px;
-    line-height: 27px;
-    height: 50px;
-    margin-bottom: 20px;
-    color: #4a56e2;
-    border-color: #4a56e2;
-`;
 export const InputBox = styled.div`
     height: 60px;
     width: 100%;
@@ -76,7 +54,9 @@ export const InputBox = styled.div`
 export const FormaCastom = styled.form`
     max-width: 410px;
     width: 100%;
+
     margin-top: 30px;
+
 
     @media (min-width: 768px) {
         width: 410px;
@@ -84,7 +64,9 @@ export const FormaCastom = styled.form`
 `;
 
 export const ErrorLabel = styled.div`
-    color: #970000;
+
+    color: ${({ theme }) => theme.colors.error};
+
     font-size: 14px;
     margin-left: 10px;
 `;

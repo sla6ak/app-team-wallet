@@ -1,8 +1,8 @@
 import React from 'react';
-import { Title, TitleConteiner } from './LogoWallet.styled';
+import { Title, TitleConteiner } from './TitleWallet.styled';
 import spr from '../../images/sprite.svg';
 
-const LogoWallet = () => {
+const TitleWallet = () => {
     return (
         <TitleConteiner>
             <svg className="icon-wallet" style={{ zIndex: 0 }}>
@@ -13,4 +13,4 @@ const LogoWallet = () => {
     );
 };
 
-export default LogoWallet;
+export default TitleWallet;

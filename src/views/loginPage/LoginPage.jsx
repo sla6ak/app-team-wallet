@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { loginSchema } from 'helpers/validationForm';
 import { TextField, InputLabel, InputAdornment } from '@mui/material';
-import LogoWallet from 'components/LogoWallet/LogoWallet';
-import { ModalForma, BoxButton, ButtonSubmit, ButtonLink, InputBox, FormaCastom, ErrorLabel } from './LoginPage.styled';
+
+import TitleWallet from 'components/titleWallet/TitleWallet';
+import { ModalForma, BoxButton, InputBox, FormaCastom, ErrorLabel } from './LoginPage.styled';
 import { useLoginUserMutation } from 'redux/authAPI';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock } from '@mui/icons-material';
-import BacgroundGreeting from 'components/BacgroundGreeting/BacgroundGreeting';
+import BacgroundGreeting from 'components/bacgroundGreeting/BacgroundGreeting';
+import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
+
 
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
@@ -35,7 +38,7 @@ const LoginPage = () => {
     return (
         <BacgroundGreeting page={'login'}>
             <ModalForma>
-                <LogoWallet />
+                <TitleWallet />
                 <FormaCastom onSubmit={formik.handleSubmit}>
                     <InputBox>
                         <InputLabel htmlFor="email">
@@ -88,16 +91,20 @@ const LoginPage = () => {
                         />
                     </InputBox>
                     <BoxButton>
-                        <ButtonSubmit fullWidth variant={'contained'} disabled={disabled} type="submit">
-                            Login
-                        </ButtonSubmit>
-                        <ButtonLink
-                            fullWidth
+
+                        <GeneralButton variant={'contained'} bts={'submit'} disabled={disabled} type="submit">
+                            Log in
+                        </GeneralButton>
+                        <GeneralButton
+                            bts={'link'}
+
                             variant={'outlined'}
                             onClick={() => navigate('/register', { replace: true })}
                         >
                             Register
-                        </ButtonLink>
+
+                        </GeneralButton>
+
                     </BoxButton>
                 </FormaCastom>
             </ModalForma>
