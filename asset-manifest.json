@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/app-team-wallet/static/css/main.17654e45.css",
-    "main.js": "/app-team-wallet/static/js/main.6dbed087.js",
-    "static/media/sprite.svg": "/app-team-wallet/static/media/sprite.ebe1a9f8aec3eda9b92b13440f092084.svg",
-    "index.html": "/app-team-wallet/index.html",
-    "main.17654e45.css.map": "/app-team-wallet/static/css/main.17654e45.css.map",
-    "main.6dbed087.js.map": "/app-team-wallet/static/js/main.6dbed087.js.map"
+    "main.css": "/static/css/main.17654e45.css",
+    "main.js": "/static/js/main.a1aafd1c.js",
+    "static/media/sprite.svg": "/static/media/sprite.ebe1a9f8aec3eda9b92b13440f092084.svg",
+    "index.html": "/index.html",
+    "main.17654e45.css.map": "/static/css/main.17654e45.css.map",
+    "main.a1aafd1c.js.map": "/static/js/main.a1aafd1c.js.map"
   },
   "entrypoints": [
     "static/css/main.17654e45.css",
-    "static/js/main.6dbed087.js"
+    "static/js/main.a1aafd1c.js"
   ]
 }
