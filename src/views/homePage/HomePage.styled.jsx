@@ -144,6 +144,7 @@ export const PlusBtn = styled.button`
     border: none;
 
     position: fixed;
+    cursor: pointer;
     bottom: 20px;
     right: 20px;
     box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);

@@ -25,13 +25,15 @@ import {
 import TableMobile from '../../components/table/TableMobile';
 import TableLarge from '../../components/table/TableLarge';
 import AppBar from '../../components/appBar/AppBar';
+import ModalTransactions from 'components/modalTransactions/ModalTransactions';
 
 const HomePage = () => {
-    // const [modal, setModal] = useState(null);
+    const [modal, setModal] = useState(null);
 
-    // const onModalClose = () => {
-    //     setModal(null);
-    // };
+    const onModalClose = () => {
+        setModal(null);
+    };
+
     const activeBtn = isActive => {
         if (isActive) return LinkActive;
     };
@@ -102,9 +104,10 @@ const HomePage = () => {
                     <Media query="(max-width: 767px)" render={() => <TableMobile />} />
                     <Media query="(min-width: 768px)" render={() => <TableLarge />} />
                 </MainWrap>
-                <PlusBtn>
+                <PlusBtn onClick={() => setModal(true)}>
                     <AddIcn />
                 </PlusBtn>
+                {modal && <ModalTransactions onModalClose={onModalClose} />}
             </HomePageWrap>
         </BackgroundMainPage>
     );
