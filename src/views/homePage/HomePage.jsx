@@ -1,6 +1,7 @@
 import React from 'react';
 import Media from 'react-media';
 import BackgroundMainPage from '../../components/backgroundMainPage/BackgroundMainPage';
+import Currency from 'components/currency';
 import {
     HomeIcn,
     TimelineIcn,
@@ -89,7 +90,7 @@ const HomePage = () => {
                         <Media
                             query="(min-width: 768px)"
                             render={() => (
-                                <div style={{ width: '336px', height: '182px', background: '#4A56E2' }}>Currency</div>
+                                <Currency />
                             )}
                         />
                     </TopInfoWrap>
