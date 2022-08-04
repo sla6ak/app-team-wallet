@@ -1,47 +1,60 @@
 import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { ModalWindow, ModalTitle, ModalCloseBtn } from './ModalTransactions.styled';
-import CloseIcon from '@mui/icons-material/Close';
-import { ButtonAdd, ButtonCancel, ButtonWrapper } from './ModalTransactions.styled';
+import { ButtonWrapper, ModalTitle, FormaCastom } from './ModalTransactions.styled';
+import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import { useAddNewTransactionMutation } from 'redux/transactionAPI';
 
 // функция закрытия модалки это просто сетСтейт родителя тру или фолс и если фолс то больше не рендерим модалку в родителе : она схлопнется.
 const ModalTransactions = ({ onModalClose }) => {
-    const mouseDownClouse = e => {
-        if (e.target === e.currentTarget) {
-            onModalClose();
-        }
-    };
+    const [addTransaction] = useAddNewTransactionMutation();
+    const [disabled, setDisabled] = useState(false);
+
     useEffect(() => {
-        const keyDownClose = e => {
-            if (e.code === 'Escape') {
-                onModalClose();
+        // test
+        // console.log('moda compon');
+    }, []);
+
+    const formik = useFormik({
+        initialValues: {
+            password: '',
+            email: '',
+        },
+        onSubmit: async values => {
+            setDisabled(true);
+            try {
+                const respons = await addTransaction(values);
+
+                if (respons.data.error) {
+                    toast.error('Transaction error');
+                    setDisabled(false);
+                    return;
+                }
+                if (respons.data) {
+                    toast.success('Transaction ADD!');
+                }
+            } catch (error) {
+                console.log(error);
             }
-        };
+            setDisabled(false);
+        },
+    });
 
-        window.addEventListener('keydown', keyDownClose);
-        return () => {
-            window.removeEventListener('keydown', keyDownClose);
-        };
-    }, [onModalClose]);
-
-    return createPortal(
-        <ModalWindow>
-            <div onClick={mouseDownClouse}>
-                <ModalCloseBtn onClick={onModalClose}>
-                    <CloseIcon />
-                </ModalCloseBtn>
-            </div>
+    return (
+        <>
             <ModalTitle>Add transaction</ModalTitle>
-            <ButtonWrapper>
-                <ButtonAdd fullWidth variant={'contained'} type="submit">
-                    ADD
-                </ButtonAdd>
-                <ButtonCancel fullWidth variant={'outlined'} onClick={onModalClose}>
-                    CANCEL
-                </ButtonCancel>
-            </ButtonWrapper>
-        </ModalWindow>,
-        document.querySelector('#modal')
+            <FormaCastom onSubmit={formik.handleSubmit}>
+                <ButtonWrapper>
+                    <GeneralButton fullWidth variant={'contained'} bts={'submit'} disabled={disabled} type="submit">
+                        ADD
+                    </GeneralButton>
+                    <GeneralButton fullWidth variant={'outlined'} bts={'link'} onClick={onModalClose} type="button">
+                        CANCEL
+                    </GeneralButton>
+                </ButtonWrapper>
+            </FormaCastom>
+        </>
     );
 };
 

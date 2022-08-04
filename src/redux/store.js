@@ -3,6 +3,7 @@ import { authApi } from './authAPI';
 import { curentToken } from './sliceToken'; // root reduser для токена
 import { curentUser } from './sliceUserName'; // будет хранить имя актуального пользователя и предоставлять доступ к функционалу
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import { transactionApi } from './transactionAPI';
 
 // ***********************работа с локалкой*********************************
 // https://www.youtube.com/watch?v=sdlYNKjCGU0 гайд по локалке
@@ -16,6 +17,7 @@ const tokenPersistConfig = {
 
 const rootReduser = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
+    [transactionApi.reducerPath]: transactionApi.reducer,
     token: curentToken.reducer,
     userName: curentUser.reducer,
 });
@@ -29,7 +31,9 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-        }).concat(authApi.middleware),
+        })
+            .concat(authApi.middleware)
+            .concat(transactionApi.middleware),
 });
 
 export const persistor = persistStore(store); // это параметры для обертки приложения в индексе

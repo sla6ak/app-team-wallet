@@ -7,25 +7,25 @@ import {
     TableCellValueStyled,
 } from './TableLarge.styled';
 
-const TableLarge = () => {
-    const data = [
-        {
-            date: '23.05.22',
-            type: '+',
-            category: 'Other',
-            comment: 'Gift for your wife',
-            sum: 300,
-            balance: 6900,
-        },
-        {
-            date: '24.05.22',
-            type: '-',
-            category: 'Other',
-            comment: 'Gift for your wife',
-            sum: 300,
-            balance: 6900,
-        },
-    ];
+const TableLarge = ({ allTransactions }) => {
+    // const data = [
+    //     {
+    //         date: '23.05.22',
+    //         type: '+',
+    //         category: 'Other',
+    //         comment: 'Gift for your wife',
+    //         sum: 300,
+    //         balance: 6900,
+    //     },
+    //     {
+    //         date: '24.05.22',
+    //         type: '-',
+    //         category: 'Other',
+    //         comment: 'Gift for your wife',
+    //         sum: 300,
+    //         balance: 6900,
+    //     },
+    // ];
     return (
         <TableContainer>
             <Table sx={{ minWidth: 704 }} aria-label="simple table">
@@ -42,7 +42,7 @@ const TableLarge = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.map(data => (
+                    {allTransactions?.transactions.map(data => (
                         <TableRow
                             key={data.date}
                             sx={{

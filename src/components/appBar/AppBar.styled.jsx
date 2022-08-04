@@ -1,9 +1,14 @@
 import styled from '@emotion/styled';
 
 export const Header = styled.header`
+    background-color: white;
+    width: 100%;
+    z-index: 2;
+`;
+
+export const HeaderBox = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
     width: 100%;
 `;

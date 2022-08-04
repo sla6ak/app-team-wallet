@@ -10,7 +10,7 @@ export const BlurFone = styled.div`
         position: absolute;
         top: 0;
         right: 0;
-        width: 50vw;
+        width: 57vw;
         height: 100vh;
     }
 `;
