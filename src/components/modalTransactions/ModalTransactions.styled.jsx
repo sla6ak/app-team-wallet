@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { Button } from '@mui/material';
 import Switch from '@mui/material/Switch';
 // import AddIcon from '@mui/icons-material/Add';
-import png from '../../images/test-png.png';
-// import qwe from '../../images/sprite.svg';
+import btnMinus from '../../images/btn-minus.png';
+import btnPlus from '../../images/btn-plus.png';
 
 // для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
 export const ModalWrapper = styled.div`
@@ -73,8 +73,8 @@ export const ModalTitle = styled.h3`
 `;
 
 export const CustomSwitch = styled(Switch)(({ theme }) => ({
-    width: 62,
-    height: 34,
+    width: '80px',
+    height: '40px',
     padding: 7,
     '& .MuiSwitch-switchBase': {
         margin: 1,
@@ -84,7 +84,7 @@ export const CustomSwitch = styled(Switch)(({ theme }) => ({
             color: '#fff',
             transform: 'translateX(22px)',
             '& .MuiSwitch-thumb:before': {
-                backgroundImage: `url(${png})`,
+                backgroundImage: `url(${btnMinus})`,
             },
             '& + .MuiSwitch-track': {
                 opacity: 1,
@@ -96,8 +96,8 @@ export const CustomSwitch = styled(Switch)(({ theme }) => ({
     '& .MuiSwitch-thumb': {
         // backgroundColor: theme.palette.mode === 'dark' ? '#ff0000' : '#ff1100',
 
-        width: 32,
-        height: 32,
+        width: '44px',
+        height: '44px',
         '&:before': {
             content: "''",
             position: 'absolute',
@@ -107,13 +107,14 @@ export const CustomSwitch = styled(Switch)(({ theme }) => ({
             top: 0,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            // backgroundColor: 'blue',
+            backgroundImage: `url(${btnPlus})`,
         },
     },
     '& .MuiSwitch-track': {
         opacity: 1,
         backgroundColor: theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
-        borderRadius: 20 / 2,
+        borderRadius: '30px',
+        height: '44px',
         border: '1px solid #E0E0E0',
     },
 }));
