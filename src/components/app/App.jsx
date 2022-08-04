@@ -21,7 +21,7 @@ function App() {
         if (auth === undefined) {
             return;
         }
-        dispatch(isUserName(auth.name)); //при монтировании компонентов проверяем подлинность токена.
+        dispatch(isUserName(auth.user.name)); //при монтировании компонентов проверяем подлинность токена.
     }, [auth, dispatch]);
 
     return (

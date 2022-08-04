@@ -1,13 +1,18 @@
 import UserMenu from '../userMenu/UserMenu';
 import TitleWallet from '../titleWallet/TitleWallet';
-import { Header } from './AppBar.styled';
+import { Header, HeaderBox } from './AppBar.styled';
+import { Container } from 'components/container/Container';
 
 const AppBar = () => {
     return (
         <>
             <Header>
-                <TitleWallet />
-                <UserMenu />
+                <Container>
+                    <HeaderBox>
+                        <TitleWallet />
+                        <UserMenu />
+                    </HeaderBox>
+                </Container>
             </Header>
         </>
     );
