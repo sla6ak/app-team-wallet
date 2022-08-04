@@ -11,7 +11,6 @@ import { Mail, Lock } from '@mui/icons-material';
 import BacgroundGreeting from 'components/bacgroundGreeting/BacgroundGreeting';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 
-
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
 
@@ -91,20 +90,16 @@ const LoginPage = () => {
                         />
                     </InputBox>
                     <BoxButton>
-
                         <GeneralButton variant={'contained'} bts={'submit'} disabled={disabled} type="submit">
                             Log in
                         </GeneralButton>
                         <GeneralButton
                             bts={'link'}
-
                             variant={'outlined'}
                             onClick={() => navigate('/register', { replace: true })}
                         >
                             Register
-
                         </GeneralButton>
-
                     </BoxButton>
                 </FormaCastom>
             </ModalForma>
