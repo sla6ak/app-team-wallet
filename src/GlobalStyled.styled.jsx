@@ -65,6 +65,11 @@ export const GlobalStyled = () => {
                     z-index: 1;
                     transform: rotate(16.86deg);
                     transform: translate(-5%, 5%);
+
+                    @media (min-width: 768px) {
+                        transform: translate(-15%, 40%);
+                    }
+
                 }
                 .icon-ellipse-purp {
                     width: 618px;
@@ -75,6 +80,11 @@ export const GlobalStyled = () => {
                     z-index: 1;
                     transform: rotate(21.94deg);
                     transform: translate(15%, -15%);
+
+                    @media (min-width: 768px) and (max-width: 1279px) {
+                        transform: translate(35%, -35%);
+                    }
+
                 }
             `}
         />

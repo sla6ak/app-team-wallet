@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import CurrencyBg from '../../images/currency-bg.png';
+import CurrencyBg from 'images/currency-bg.png';
 
 export const Container = styled.div`
     height: 174px;
@@ -7,12 +7,21 @@ export const Container = styled.div`
     border-radius: 30px;
     background-color: #6E78E8;
     color: #FFFFFF;
+    @media (min-width: 768px) {
+        height: 182px;
+        min-width: 336px;
+    }
+    @media (min-width: 1279px) {
+        height: 347px;
+        width: 393px;
+    }
 `;
 
 export const Header = styled.ul`
     display: flex;
     align-items: center;
-    padding: 12px;
+    margin: 0;
+    padding: 11px 17px 12px 20px;
     justify-content: space-between;
     list-style: none;
 
@@ -20,6 +29,13 @@ export const Header = styled.ul`
     font-weight: 700;
     font-size: 18px;
     line-height: 1.5;
+
+    @media (min-width: 768px) {
+        padding: 11px 25px 12px 20px;
+    }
+    @media (min-width: 1279px) {
+        padding: 17px 64px 16px 44px;
+    }
 `;
 
 export const Table = styled.div`
@@ -37,12 +53,19 @@ export const Table = styled.div`
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
+
+    @media (min-width: 768px) {
+        height: 132px;
+    }
+
+    @media (min-width: 1279px) {
+        height: 287px;
+    }
 `;
 
 export const ListCurrency = styled.ul`
-    padding-top: 12px;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin: 0;
+    padding: 12px 20px 16px 20px;
     align-items: center;
     justify-content: space-between;
     list-style: none;
@@ -50,4 +73,17 @@ export const ListCurrency = styled.ul`
     li:not(:last-child) {
         padding-bottom: 12px;
     }
+
+    @media (min-width: 768px) {
+        padding: 16px 20px 20px 20px;
+    }
+
+    @media (min-width: 1279px) {
+        padding: 20px 61px 0px 58px;
+    }
+`;
+
+export const ItemCurrency = styled.li`
+    display: flex;
+    justify-content: space-between;
 `;
