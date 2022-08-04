@@ -1,15 +1,16 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import HomeTab from 'components/homeTab/HomeTab';
 import RegisterPage from 'views/registerPage/RegisterPage';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
 import PublicRoute from 'components/publicRoute/PublicRoute';
-import HomePage from 'views/homePage/HomePage';
+import DashboardPage from 'views/dashboardPage/DashboardPage';
 import LoginPage from 'views/loginPage/LoginPage';
 import Layout from 'layouts/Layout';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIsActivTokenQuery } from 'redux/authAPI';
 import { useEffect } from 'react';
 import { isUserName } from 'redux/sliceUserName';
-import Statistics from 'components/statistics/Statistics';
+// import Statistics from 'components/statistics/Statistics';
 
 function App() {
     const token = useSelector(state => state.token);
@@ -31,6 +32,7 @@ function App() {
                         path="/"
                         element={
                             <PrivateRoute>
+<<<<<<< HEAD
                                 <HomePage />
                             </PrivateRoute>
                         }
@@ -43,6 +45,14 @@ function App() {
                                 </PrivateRoute>
                             }
                         />
+=======
+                                <DashboardPage />
+                            </PrivateRoute>
+                        }
+                    >
+                        <Route path="/home" element={<HomeTab />} />
+                        <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
+>>>>>>> adbc520d467d58d0f661c777939020061c8f41aa
                         <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
                     </Route>
 

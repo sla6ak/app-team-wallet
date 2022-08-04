@@ -1,6 +1,7 @@
 import React from 'react';
 import Media from 'react-media';
 import BackgroundMainPage from '../../components/backgroundMainPage/BackgroundMainPage';
+import Currency from 'components/currency';
 import {
     HomeIcn,
     TimelineIcn,
@@ -24,10 +25,17 @@ import {
 } from './HomePage.styled';
 import TableMobile from '../../components/table/TableMobile';
 import TableLarge from '../../components/table/TableLarge';
+<<<<<<< HEAD
 import AppBar from '../../components/appBar/AppBar';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
 import Statistics from 'components/statistics/Statistics';
+=======
+import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from 'components/privateRoute/PrivateRoute';
+import Statistics from 'components/statistics/Statistics';
+import AppBar from '../../components/appBar/AppBar';
+>>>>>>> adbc520d467d58d0f661c777939020061c8f41aa
 
 const HomePage = () => {
     const activeBtn = isActive => {
@@ -96,13 +104,18 @@ const HomePage = () => {
                                 <BalanceValue>&#8372; 24 000</BalanceValue>
                             </BalanceBlock>
                         </NavBalanceWrap>
-                        <Media
-                            query="(min-width: 768px)"
-                            render={() => (
-                                <div style={{ width: '336px', height: '182px', background: '#4A56E2' }}>Currency</div>
-                            )}
-                        />
+                        <Media query="(min-width: 768px)" render={() => <Currency />} />
                     </TopInfoWrap>
+                    <Routes>
+                        <Route
+                            path="/statistics"
+                            element={
+                                <PrivateRoute>
+                                    <Statistics />
+                                </PrivateRoute>
+                            }
+                        />
+                    </Routes>
                     <Media query="(min-width: 1279px)" render={() => <BorderLine></BorderLine>} />
                     <Media query="(max-width: 767px)" render={() => <TableMobile />} />
                     <Media query="(min-width: 768px)" render={() => <TableLarge />} />
