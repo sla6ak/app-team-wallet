@@ -1,7 +1,7 @@
 import { Table, TableBody, TableContainer, TableRow } from '@mui/material';
 import { TableStyled, TabWraper, TableCellStyled, TableCellValueStyled } from './TableMobile.styled';
 
-const TableMobile = () => {
+const TableMobile = ({ allTransactions }) => {
     const data = [
         {
             date: '23.05.22',
@@ -23,7 +23,11 @@ const TableMobile = () => {
     return (
         <TabWraper>
             {data.map(data => (
-                <TableContainer key={data.date} sx={TableStyled}>
+                <TableContainer
+                    key={data.date}
+                    sx={TableStyled}
+                    style={{ borderColor: data.type === '+' ? 'green' : 'red' }}
+                >
                     <Table>
                         <TableBody>
                             <TableRow>

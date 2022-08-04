@@ -1,18 +1,19 @@
-/* eslint-disable no-unused-expressions */
-import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useEffect } from 'react';
 import {
-    ModalWrapper,
-    Modal,
-    ModalCloseBtn,
+    WrapperTransaction,
+    FormaCastom,
     ModalTitle,
     CustomSwitch,
-    InlineWrapper,
     InputWrapper,
+    InlineWrapper,
+    ButtonWrapper,
 } from './ModalTransactions.styled';
-import CloseIcon from '@mui/icons-material/Close';
-import { ButtonAdd, ButtonCancel, ButtonWrapper } from './ModalTransactions.styled';
+import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
+import { useState } from 'react';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import { useAddNewTransactionMutation } from 'redux/transactionAPI';
+import { transactionSchema } from '../../helpers/validationForm';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
@@ -20,45 +21,14 @@ import TextField from '@mui/material/TextField';
 
 // функция закрытия модалки это просто сетСтейт родителя тру или фолс и если фолс то больше не рендерим модалку в родителе : она схлопнется.
 const ModalTransactions = ({ onModalClose }) => {
+    const [addTransaction] = useAddNewTransactionMutation();
     const [disabled, setDisabled] = useState(false);
+    const [categories, setCategories] = useState(true);
 
-    const mouseDownClose = e => {
-        if (e.target === e.currentTarget) {
-            onModalClose();
-        }
-    };
     useEffect(() => {
-        const keyDownClose = e => {
-            if (e.code === 'Escape') {
-                onModalClose();
-            }
-        };
-
-        window.addEventListener('keydown', keyDownClose);
-        return () => {
-            window.removeEventListener('keydown', keyDownClose);
-        };
-    }, [onModalClose]);
-
-    const formik = useFormik({
-        initialValues: {
-            operation: '',
-            category: '',
-            sum: '',
-            date: new Date(),
-            comment: '',
-        },
-        onSubmit: async data => {
-            setDisabled(true);
-            try {
-                await console.log('transaction data log:', data);
-            } catch (error) {
-                console.log(error);
-            }
-            setDisabled(false);
-        },
-    });
-
+        // test
+        // console.log('moda compon');
+    }, []);
     const income = [
         {
             value: 'salary',
@@ -100,102 +70,120 @@ const ModalTransactions = ({ onModalClose }) => {
         },
     ];
 
-    const [categories, setCategories] = useState(income);
-    const onSwitchCategory = e => {
-        console.log(e);
-        console.log(e.nativeEvent);
-        setCategories(expence);
+    const handleSwitchChange = e => {
+        setCategories(e.target.checked);
     };
 
-    return createPortal(
-        <ModalWrapper>
-            <Modal>
-                <div onClick={mouseDownClose}>
-                    <ModalCloseBtn onClick={onModalClose}>
-                        <CloseIcon />
-                    </ModalCloseBtn>
-                </div>
+    const formik = useFormik({
+        initialValues: {
+            category: '',
+            sum: '',
+            date: '',
+            comment: '',
+        },
+        validationSchema: transactionSchema,
+        onSubmit: async values => {
+            console.log(values);
+            setDisabled(true);
+            try {
+                const respons = await addTransaction(values);
+
+                if (respons.data.error) {
+                    toast.error('Transaction error');
+                    setDisabled(false);
+                    return;
+                }
+                if (respons.data) {
+                    toast.success('Transaction ADD!');
+                }
+            } catch (error) {
+                console.log(error);
+            }
+            setDisabled(false);
+        },
+    });
+    return (
+        <>
+            <WrapperTransaction>
                 <ModalTitle>Add transaction</ModalTitle>
+                <FormaCastom onSubmit={formik.handleSubmit}>
+                    <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
+                        <Typography>Income</Typography>
+                        <CustomSwitch checked={categories} onChange={handleSwitchChange} />
+                        <Typography>Expense</Typography>
+                    </Stack>
 
-                <Stack direction="row" spacing={1} alignItems="center">
-                    <Typography>Income</Typography>
-                    <CustomSwitch onChange={onSwitchCategory} />
-                    <Typography>Expense</Typography>
-                </Stack>
-
-                <InputWrapper>
-                    <TextField
-                        fullWidth
-                        variant="standard"
-                        id="category"
-                        name="category"
-                        select
-                        placeholder="Select a category"
-                        onChange={formik.handleChange}
-                        value={formik.values.category}
-                    >
-                        {categories.map(option => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                </InputWrapper>
-
-                <InlineWrapper>
                     <InputWrapper>
                         <TextField
                             fullWidth
                             variant="standard"
-                            id="sum"
-                            name="sum"
-                            type="number"
+                            id="category"
+                            name="category"
+                            select
+                            placeholder="Select a category"
                             onChange={formik.handleChange}
-                            value={formik.values.sum}
-                            // label="Number"
-                            placeholder="0.00"
-                        />
+                            value={formik.values.category}
+                        >
+                            {(categories ? income : expence).map(option => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
                     </InputWrapper>
+
+                    <InlineWrapper>
+                        <InputWrapper>
+                            <TextField
+                                fullWidth
+                                variant="standard"
+                                id="sum"
+                                name="sum"
+                                type="number"
+                                onChange={formik.handleChange}
+                                value={formik.values.sum}
+                                // label="Number"
+                                placeholder="0.00"
+                            />
+                        </InputWrapper>
+                        <InputWrapper>
+                            <TextField
+                                fullWidth
+                                variant="standard"
+                                id="date"
+                                name="date"
+                                type="date"
+                                onChange={formik.handleChange}
+                                value={formik.values.date}
+                            />
+                        </InputWrapper>
+                    </InlineWrapper>
+
                     <InputWrapper>
                         <TextField
                             fullWidth
+                            multiline
+                            rows={2}
                             variant="standard"
-                            id="date"
-                            name="date"
-                            type="date"
+                            id="comment"
+                            name="comment"
+                            type="string"
+                            label="Comment"
                             onChange={formik.handleChange}
-                            value={formik.values.date}
+                            value={formik.values.comment}
                         />
                     </InputWrapper>
-                </InlineWrapper>
-
-                <InputWrapper>
-                    <TextField
-                        fullWidth
-                        multiline
-                        rows={2}
-                        variant="standard"
-                        id="comment"
-                        name="comment"
-                        type="string"
-                        label="Comment"
-                        onChange={formik.handleChange}
-                        value={formik.values.comment}
-                    />
-                </InputWrapper>
-
-                <ButtonWrapper>
-                    <ButtonAdd fullWidth variant={'contained'} disabled={disabled} onClick={formik.handleSubmit}>
-                        ADD
-                    </ButtonAdd>
-                    <ButtonCancel fullWidth variant={'outlined'} onClick={onModalClose}>
-                        CANCEL
-                    </ButtonCancel>
-                </ButtonWrapper>
-            </Modal>
-        </ModalWrapper>,
-
-        document.querySelector('#modal')
+                    <ButtonWrapper>
+                        <GeneralButton fullWidth variant={'contained'} bts={'submit'} disabled={disabled} type="submit">
+                            ADD
+                        </GeneralButton>
+                        <GeneralButton fullWidth variant={'outlined'} bts={'link'} onClick={onModalClose} type="button">
+                            CANCEL
+                        </GeneralButton>
+                    </ButtonWrapper>
+                </FormaCastom>
+            </WrapperTransaction>
+        </>
     );
 };
 

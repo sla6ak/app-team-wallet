@@ -1,60 +1,28 @@
 import styled from '@emotion/styled';
-import { Button } from '@mui/material';
 import Switch from '@mui/material/Switch';
-// import AddIcon from '@mui/icons-material/Add';
 import btnMinus from '../../images/btn-minus.png';
 import btnPlus from '../../images/btn-plus.png';
 
 // для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
-export const ModalWrapper = styled.div`
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.25);
-`;
-
-export const Modal = styled.form`
-    border: dashed 1px red;
+export const WrapperTransaction = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100vw;
     height: 100vh;
-    padding: 20px;
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
     @media (min-width: 768px) {
-        position: relative;
         width: 540px;
         height: 508px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #ffffff;
-        border-radius: 20px;
-        padding: 40px 73px;
     }
 `;
+export const FormaCastom = styled.form`
+    max-width: 410px;
+    width: 100%;
 
-export const ModalCloseBtn = styled.div`
-    display: none;
+    margin-top: 30px;
+
     @media (min-width: 768px) {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
+        width: 410px;
     }
 `;
 
@@ -73,8 +41,8 @@ export const ModalTitle = styled.h3`
 `;
 
 export const CustomSwitch = styled(Switch)(({ theme }) => ({
-    width: '80px',
-    height: '40px',
+    width: 62,
+    height: 34,
     padding: 7,
     '& .MuiSwitch-switchBase': {
         margin: 1,
@@ -88,16 +56,14 @@ export const CustomSwitch = styled(Switch)(({ theme }) => ({
             },
             '& + .MuiSwitch-track': {
                 opacity: 1,
-                backgroundColor: theme.palette.mode === 'dark' ? '#ff0000' : '#ffffff',
-                border: '1px solid #E0E0E0',
+                backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
             },
         },
     },
     '& .MuiSwitch-thumb': {
-        // backgroundColor: theme.palette.mode === 'dark' ? '#ff0000' : '#ff1100',
-
-        width: '44px',
-        height: '44px',
+        backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
+        width: 32,
+        height: 32,
         '&:before': {
             content: "''",
             position: 'absolute',
@@ -112,16 +78,14 @@ export const CustomSwitch = styled(Switch)(({ theme }) => ({
     },
     '& .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
-        borderRadius: '30px',
-        height: '44px',
-        border: '1px solid #E0E0E0',
+        backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+        borderRadius: 20 / 2,
     },
 }));
+
 export const InputWrapper = styled.div`
     height: 40px;
-    /* width: 100%; */
-    width: 394px;
+    width: 100%;
     @media (min-width: 768px) {
     }
 `;
@@ -136,36 +100,10 @@ export const InlineWrapper = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
-    display: flex;
-    width: 300px;
+    max-width: 300px;
+    margin-top: 42px;
     display: flex;
     flex-direction: column;
-    padding: 0px 10px;
-    margin-top: 40px;
-`;
-
-export const ButtonAdd = styled(Button)`
-    border-radius: 20px;
-    width: 100%;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
-    height: 50px;
-    margin-bottom: 20px;
-    background-color: #24cca7;
-    :hover {
-        background-color: #1cad8e;
-    }
-`;
-
-export const ButtonCancel = styled(Button)`
-    border-radius: 20px;
-    font-weight: 400;
-    width: 100%;
-    font-size: 18px;
-    line-height: 27px;
-    height: 50px;
-    margin-bottom: 20px;
-    color: #4a56e2;
-    border-color: #4a56e2;
+    margin-left: auto;
+    margin-right: auto;
 `;
