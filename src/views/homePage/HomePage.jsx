@@ -22,8 +22,8 @@ import {
     MainWrap,
     BorderLine,
 } from './HomePage.styled';
-import TableMobile from '../../components/Table/TableMobile';
-import TableLarge from '../../components/Table/TableLarge';
+import TableMobile from '../../components/table/TableMobile';
+import TableLarge from '../../components/table/TableLarge';
 import AppBar from '../../components/appBar/AppBar';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
