@@ -9,6 +9,8 @@ import { persistor } from './redux/store';
 import '../node_modules/modern-normalize/modern-normalize.css';
 import { ThemeProvider } from '@mui/material/styles';
 import { materialTheme } from './helpers/theme';
+import { ToastContainer, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +19,19 @@ root.render(
             <PersistGate loading={null} persistor={persistor}>
                 <ThemeProvider theme={materialTheme}>
                     <GlobalStyled />
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={3000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="dark"
+                        transition={Zoom}
+                    />
                     <App />
                 </ThemeProvider>
             </PersistGate>

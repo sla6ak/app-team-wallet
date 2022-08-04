@@ -10,7 +10,7 @@ const customTheme = {
         helperText: '#BDBDBD',
         iconColor: '#E0E0E0',
         fone: '#E5E5E5',
-        error: '#970000',
+        error: '#97000099',
         hoverGreen: '#1cad8e',
         hoverWhite: '#eef',
         category: {

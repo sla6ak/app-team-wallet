@@ -22,7 +22,7 @@ function App() {
         if (auth === undefined) {
             return;
         }
-        dispatch(isUserName(auth.name)); //при монтировании компонентов проверяем подлинность токена.
+        dispatch(isUserName(auth.user.name)); //при монтировании компонентов проверяем подлинность токена.
     }, [auth, dispatch]);
 
     return (
@@ -37,15 +37,15 @@ function App() {
                             </PrivateRoute>
                         }
                     >
-                        <Route path="/home" element={<HomeTab />} />
                         <Route
-                            path="/statistic"
+                            path="/home"
                             element={
                                 <PrivateRoute>
-                                    <Statistics />
+                                    <HomeTab />
                                 </PrivateRoute>
                             }
                         />
+                        <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
                         <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
                     </Route>
 

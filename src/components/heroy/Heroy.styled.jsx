@@ -21,7 +21,7 @@ export const HeroyBackground = styled.div`
     justify-content: center;
     @media (min-width: 1280px) {
         background-color: #e5e5e5;
-        width: 50%;
+        width: 43%;
         justify-content: end;
         align-items: center;
     }

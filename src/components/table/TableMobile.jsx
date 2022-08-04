@@ -1,7 +1,7 @@
 import { Table, TableBody, TableContainer, TableRow } from '@mui/material';
 import { TableStyled, TabWraper, TableCellStyled, TableCellValueStyled } from './TableMobile.styled';
 
-const TableMobile = () => {
+const TableMobile = ({ allTransactions }) => {
     const data = [
         {
             date: '23.05.22',

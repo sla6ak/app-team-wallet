@@ -5,6 +5,7 @@ export const Shell = styled.div`
     z-index: 10;
     padding-left: 20px;
     padding-right: 20px;
+    width: 100%;
 
     @media (min-width: 768px) {
         padding-left: 32px;

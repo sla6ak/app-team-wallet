@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { loginSchema } from 'helpers/validationForm';
 import { TextField, InputLabel, InputAdornment } from '@mui/material';
-
 import TitleWallet from 'components/titleWallet/TitleWallet';
 import { ModalForma, BoxButton, InputBox, FormaCastom, ErrorLabel } from './LoginPage.styled';
 import { useLoginUserMutation } from 'redux/authAPI';
@@ -10,6 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import { Mail, Lock } from '@mui/icons-material';
 import BacgroundGreeting from 'components/bacgroundGreeting/BacgroundGreeting';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { newToken } from '../../redux/sliceToken';
+import { isUserName } from 'redux/sliceUserName';
 
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
@@ -18,6 +21,7 @@ const LoginPage = () => {
     const [disabled, setDisabled] = useState(false);
     const [loginUser] = useLoginUserMutation();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const formik = useFormik({
         initialValues: {
             password: '',
@@ -27,8 +31,20 @@ const LoginPage = () => {
         onSubmit: async values => {
             setDisabled(true);
             try {
-                await loginUser(values);
+                const respons = await loginUser(values);
+
+                if (respons.data.error) {
+                    toast.error('User not created');
+                    setDisabled(false);
+                    return;
+                }
+                if (respons.data.user.name) {
+                    dispatch(newToken(respons.data.user.token));
+                    dispatch(isUserName(respons.data.user.name));
+                    toast.success(`Succesful login user ${respons.data.user.name}!`);
+                }
             } catch (error) {
+                toast.error('User not created');
                 console.log(error);
             }
             setDisabled(false);

@@ -5,8 +5,8 @@ export const Container = styled.div`
     height: 174px;
     width: 280px;
     border-radius: 30px;
-    background-color: #6E78E8;
-    color: #FFFFFF;
+    background-color: #6e78e8;
+    color: #ffffff;
     @media (min-width: 768px) {
         height: 182px;
         min-width: 336px;
@@ -42,8 +42,8 @@ export const Table = styled.div`
     height: 124px;
 
     border-radius: 0 0 30px 30px;
-    background-color: #4A56E2;
-    height-height: 93px;
+    background-color: #4a56e2;
+    height: 93px;
     background-image: url(${CurrencyBg});
     background-size: contain;
     background-repeat: no-repeat;

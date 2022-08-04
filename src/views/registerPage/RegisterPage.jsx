@@ -6,11 +6,11 @@ import { useRegistrationUserMutation } from 'redux/authAPI';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, AccountBox } from '@mui/icons-material';
 import { RegisterModalForma } from './RegisterPage.styled';
-
 import TitleWallet from 'components/titleWallet/TitleWallet';
 import { BoxButton, InputBox, FormaCastom, ErrorLabel } from '../loginPage/LoginPage.styled';
 import BacgroundGreeting from 'components/bacgroundGreeting/BacgroundGreeting';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
+import { toast } from 'react-toastify';
 
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
@@ -29,11 +29,20 @@ const RegisterPage = () => {
                 return; // нужно сообщить юзеру об ошибке так нельзя оставлять
             }
             try {
-                await createUser({
+                const respons = await createUser({
                     name: values.firstName,
                     password: values.password,
                     email: values.email,
                 });
+                if (respons.error) {
+                    toast.error('User not created');
+                    setDisabled(false);
+                    return;
+                }
+                if (respons.name) {
+                    toast.success('Check your email for ferification!');
+                    navigate('/login', { replace: true });
+                }
             } catch (error) {
                 console.log(error);
             }

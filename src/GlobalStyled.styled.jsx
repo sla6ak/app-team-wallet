@@ -69,7 +69,6 @@ export const GlobalStyled = () => {
                     @media (min-width: 768px) {
                         transform: translate(-15%, 40%);
                     }
-
                 }
                 .icon-ellipse-purp {
                     width: 618px;
@@ -84,7 +83,6 @@ export const GlobalStyled = () => {
                     @media (min-width: 768px) and (max-width: 1279px) {
                         transform: translate(35%, -35%);
                     }
-
                 }
             `}
         />
