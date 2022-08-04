@@ -41,9 +41,10 @@ const LoginPage = () => {
                 if (respons.data.user.name) {
                     dispatch(newToken(respons.data.user.token));
                     dispatch(isUserName(respons.data.user.name));
-                    toast.success('Succesful login user!');
+                    toast.success(`Succesful login user ${respons.data.user.name}!`);
                 }
             } catch (error) {
+                toast.error('User not created');
                 console.log(error);
             }
             setDisabled(false);

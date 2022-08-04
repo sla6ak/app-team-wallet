@@ -36,7 +36,14 @@ function App() {
                             </PrivateRoute>
                         }
                     >
-                        <Route path="/home" element={<HomeTab />} />
+                        <Route
+                            path="/home"
+                            element={
+                                <PrivateRoute>
+                                    <HomeTab />
+                                </PrivateRoute>
+                            }
+                        />
                         <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
                         <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
                     </Route>
