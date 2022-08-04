@@ -28,7 +28,7 @@ import AppBar from '../../components/appBar/AppBar';
 import ModalTransactions from 'components/modalTransactions/ModalTransactions';
 
 const HomePage = () => {
-    const [modal, setModal] = useState(null);
+    const [modal, setModal] = useState(true);
 
     const onModalClose = () => {
         setModal(null);
