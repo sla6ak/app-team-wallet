@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Color, Container, Form, Select, Table, Tbody, Td, Tfoot, Theader, Tr } from './Statistics.styled';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { BalanceValue } from 'views/homePage/HomePage.styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -92,7 +91,7 @@ const Statistics = () => {
                         lineHeight: '20px',
                     }}
                 >
-                    <BalanceValue>&#8372; 24 000</BalanceValue>
+                    <span>&#8372; 24 000</span>
                 </div>
             </div>
             <Form>

@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useIsActivTokenQuery } from 'redux/authAPI';
 import { useEffect } from 'react';
 import { isUserName } from 'redux/sliceUserName';
+import Statistics from 'components/statistics/Statistics';
 // import Statistics from 'components/statistics/Statistics';
 
 function App() {
@@ -37,7 +38,14 @@ function App() {
                         }
                     >
                         <Route path="/home" element={<HomeTab />} />
-                        <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
+                        <Route
+                            path="/statistic"
+                            element={
+                                <PrivateRoute>
+                                    <Statistics />
+                                </PrivateRoute>
+                            }
+                        />
                         <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
                     </Route>
 
