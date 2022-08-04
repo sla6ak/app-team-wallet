@@ -8,16 +8,14 @@ export const BackgroundBox = styled.div`
 `;
 
 export const BlurMainPage = styled.div`
-    @media (min-width: 768px) {
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(50px);
-        z-index: 1;
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100vw;
-        height: 100vh;
-    }
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(50px);
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
 `;

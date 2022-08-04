@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import HomeTab from 'components/homeTab/HomeTab';
 import RegisterPage from 'views/registerPage/RegisterPage';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
 import PublicRoute from 'components/publicRoute/PublicRoute';
-import HomePage from 'views/homePage/HomePage';
+import DashboardPage from 'views/dashboardPage/DashboardPage';
 import LoginPage from 'views/loginPage/LoginPage';
 import Layout from 'layouts/Layout';
 
@@ -31,10 +32,11 @@ function App() {
                         path="/"
                         element={
                             <PrivateRoute>
-                                <HomePage />
+                                <DashboardPage />
                             </PrivateRoute>
                         }
                     >
+                        <Route path="/home" element={<HomeTab />} />
                         <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
                         <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
                     </Route>
