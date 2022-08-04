@@ -82,16 +82,7 @@ const HomePage = () => {
                                     )}
                                 />
                             </BtnList>
-                            <Routes>
-                                <Route
-                                    path="/statistic"
-                                    element={
-                                        <PrivateRoute>
-                                            <Statistics />
-                                        </PrivateRoute>
-                                    }
-                                />
-                            </Routes>
+
                             <BalanceBlock>
                                 <BalanceTitle>Your balance</BalanceTitle>
                                 <BalanceValue>&#8372; 24 000</BalanceValue>
