@@ -7,6 +7,7 @@ import React from 'react';
 
 const Layout = () => {
     const theme = createTheme();
+
     return (
         <ThemeProvider theme={theme}>
             <Suspense fallback={<Loader />}>
