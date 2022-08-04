@@ -32,27 +32,12 @@ function App() {
                         path="/"
                         element={
                             <PrivateRoute>
-<<<<<<< HEAD
-                                <HomePage />
-                            </PrivateRoute>
-                        }
-                    >
-                        <Route
-                            path="/statistic"
-                            element={
-                                <PrivateRoute>
-                                    <Statistics />
-                                </PrivateRoute>
-                            }
-                        />
-=======
                                 <DashboardPage />
                             </PrivateRoute>
                         }
                     >
                         <Route path="/home" element={<HomeTab />} />
                         <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
->>>>>>> adbc520d467d58d0f661c777939020061c8f41aa
                         <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
                     </Route>
 
