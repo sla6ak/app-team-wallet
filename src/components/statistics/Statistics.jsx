@@ -1,19 +1,5 @@
 import React, { useState } from 'react';
-import {
-    Color,
-    Container,
-    Form,
-    List,
-    Select,
-    Table,
-    Tbody,
-    Td,
-    Tfoot,
-    Theader,
-    Tr,
-    TrHeader,
-    Vector,
-} from './Statistics.styled';
+import { Color, Container, Form, Select, Table, Tbody, Td, Tfoot, Theader, Tr } from './Statistics.styled';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { BalanceValue } from 'views/homePage/HomePage.styled';

@@ -25,17 +25,10 @@ import {
 } from './HomePage.styled';
 import TableMobile from '../../components/table/TableMobile';
 import TableLarge from '../../components/table/TableLarge';
-<<<<<<< HEAD
-import AppBar from '../../components/appBar/AppBar';
-import { Route, Routes } from 'react-router-dom';
-import PrivateRoute from 'components/privateRoute/PrivateRoute';
-import Statistics from 'components/statistics/Statistics';
-=======
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
 import Statistics from 'components/statistics/Statistics';
 import AppBar from '../../components/appBar/AppBar';
->>>>>>> adbc520d467d58d0f661c777939020061c8f41aa
 
 const HomePage = () => {
     const activeBtn = isActive => {
