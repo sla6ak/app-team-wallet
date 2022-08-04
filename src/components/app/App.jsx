@@ -45,7 +45,14 @@ function App() {
                                 </PrivateRoute>
                             }
                         />
-                        <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
+                        <Route
+                            path="/statistic"
+                            element={
+                                <PrivateRoute>
+                                    <Statistics />
+                                </PrivateRoute>
+                            }
+                        />
                         <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
                     </Route>
 

@@ -4,20 +4,55 @@ import styled from '@emotion/styled';
 // для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
 
 export const Container = styled.div`
-    display: 'flex';
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
     line-height: 45px;
 
-    background: rgba(255, 255, 255, 0.4);
+    @media (max-width: 767px) {
+        max-width: 767px;
+    }
+    @media (min-width: 768px) {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    @media (min-width: 1280px) {
+        width: 715px;
+        align-content: baseline;
+    }
+`;
+export const ContainerDiagram = styled.div`
+    margin-bottom: 32px;
+    position: relative;
+    box-sizing: content-box;
+
+    @media (max-width: 767px) {
+        max-width: 767px;
+    }
+    @media (min-width: 768px) {
+        width: 336px;
+        margin-right: 32px;
+    }
+    @media (min-width: 1280px) {
+        width: 228px;
+        height: auto;
+    }
 `;
 
 export const Form = styled.form`
-    display: 'flex';
-    justify-content: 'center';
-    align-items: 'center';
     width: 100%;
+
+    @media (min-width: 768px) {
+        width: 336px;
+    }
+
+    @media (min-width: 1280px) {
+        display: flex;
+        justify-content: space-between;
+
+        width: 395px;
+    }
 `;
 
 export const Select = styled.select`
@@ -31,6 +66,10 @@ export const Select = styled.select`
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
+
+    @media (min-width: 1280px) {
+        width: 182px;
+    }
 `;
 
 export const Table = styled.table`
@@ -38,10 +77,18 @@ export const Table = styled.table`
     justify-content: center;
     flex-direction: column;
 
-    width: 280px;
+    width: 100%;
 
     font-family: 'Circe';
     font-style: normal;
+
+    @media (min-width: 768px) {
+        width: 336px;
+    }
+
+    @media (min-width: 1280px) {
+        width: 395px;
+    }
 `;
 
 export const Theader = styled.thead`

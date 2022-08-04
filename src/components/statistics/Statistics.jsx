@@ -1,7 +1,20 @@
 import React, { useState } from 'react';
-import { Color, Container, Form, Select, Table, Tbody, Td, Tfoot, Theader, Tr } from './Statistics.styled';
+import {
+    Color,
+    Container,
+    ContainerDiagram,
+    Form,
+    Select,
+    Table,
+    Tbody,
+    Td,
+    Tfoot,
+    Theader,
+    Tr,
+} from './Statistics.styled';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { materialTheme } from 'helpers/theme';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -48,16 +61,26 @@ const Statistics = () => {
 
     const dataTable = [
         {
-            category: 'Home',
+            category: 'Other',
             sum: 1200,
-            color: '#fed057',
         },
         {
             category: 'Car',
             sum: 500,
-            color: '#FD9498',
+        },
+        {
+            category: 'Products',
+            sum: 750,
         },
     ];
+
+    const backgroundStyle = el => {
+        for (const property in materialTheme.colors.category) {
+            if (property === el.category.toLowerCase()) {
+                return materialTheme.colors.category[property];
+            }
+        }
+    };
 
     const dataDiagram = {
         labels: [],
@@ -65,7 +88,7 @@ const Statistics = () => {
             {
                 label: '# of Votes',
                 data: dataTable.map(el => el.sum),
-                backgroundColor: dataTable.map(el => el.color),
+                backgroundColor: dataTable.map(el => backgroundStyle(el)),
 
                 borderWidth: 0,
                 hoverOffset: 4,
@@ -75,86 +98,98 @@ const Statistics = () => {
     };
 
     return (
-        <Container>
-            Statistic
-            {/* <Doughnut data={data} options={options} /> */}
-            <div style={{ position: 'relative', marginBottom: '32px' }}>
-                <Doughnut data={dataDiagram} options={options} />
-                <div
-                    style={{
-                        position: 'absolute',
-                        width: '100%',
-                        top: '50%',
-                        left: 0,
-                        textAlign: 'center',
-                        marginTop: '-28px',
-                        lineHeight: '20px',
-                    }}
-                >
-                    <span>&#8372; 24 000</span>
-                </div>
-            </div>
-            <Form>
-                <Select value={currentMonth} id="Month" placeholder="Month" label="Month" onChange={handleChange}>
-                    <option disabled>Month</option>
-                    {month.map(value => {
-                        return (
-                            <option key={value} value={value}>
-                                {value}
-                            </option>
-                        );
-                    })}
-                </Select>
-
-                <Select value={currentYear} id="Year" placeholder="Year" label="Year" onChange={handleChange}>
-                    <option disabled>Year</option>
-                    {year.map(value => {
-                        return (
-                            <option key={value} value={value}>
-                                {value}
-                            </option>
-                        );
-                    })}
-                </Select>
-            </Form>
-            <Table>
-                <Theader>
-                    <tr
+        <>
+            <Container>
+                <p style={{ width: '100%' }}>Statistics</p>
+                <ContainerDiagram>
+                    <span
                         style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alightItem: 'center',
-                            width: '100%',
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            fontWeight: '700',
+                            fontSize: '18px',
+                            lineHeight: '27px',
                         }}
                     >
-                        <Td>Category</Td>
-                        <Td>Sum</Td>
-                    </tr>
-                </Theader>
-                <Tbody>
-                    {dataTable.map(el => (
-                        <Tr key={el.category}>
-                            <Td>
-                                <Color style={{ background: el.color }} /> {el.category}
-                            </Td>
-                            <Td>{el.sum}</Td>
-                        </Tr>
-                    ))}
-                </Tbody>
+                        &#8372; 24 000
+                    </span>
+                    <Doughnut data={dataDiagram} options={options}></Doughnut>
+                </ContainerDiagram>
 
-                <Tfoot>
-                    <tr>
-                        <Td>Expenses:</Td>
-                        <Td style={{ color: '#FF6596' }}>expenses sum</Td>
-                    </tr>
+                <div>
+                    <Form>
+                        <Select
+                            value={currentMonth}
+                            id="Month"
+                            placeholder="Month"
+                            label="Month"
+                            onChange={handleChange}
+                        >
+                            <option disabled>Month</option>
+                            {month.map(value => {
+                                return (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                );
+                            })}
+                        </Select>
 
-                    <tr>
-                        <Td>Income:</Td>
-                        <Td style={{ color: '#24CCA7' }}> income sum</Td>
-                    </tr>
-                </Tfoot>
-            </Table>
-        </Container>
+                        <Select value={currentYear} id="Year" placeholder="Year" label="Year" onChange={handleChange}>
+                            <option disabled>Year</option>
+                            {year.map(value => {
+                                return (
+                                    <option key={value} value={value}>
+                                        {value}
+                                    </option>
+                                );
+                            })}
+                        </Select>
+                    </Form>
+                    {currentMonth !== 'Month' && currentYear !== 'Year' && (
+                        <Table>
+                            <Theader>
+                                <tr
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alightItem: 'center',
+                                        width: '100%',
+                                    }}
+                                >
+                                    <Td>Category</Td>
+                                    <Td>Sum</Td>
+                                </tr>
+                            </Theader>
+                            <Tbody>
+                                {dataTable.map(el => (
+                                    <Tr key={el.category}>
+                                        <Td>
+                                            <Color style={{ background: backgroundStyle(el) }} /> {el.category}
+                                        </Td>
+                                        <Td>{el.sum}</Td>
+                                    </Tr>
+                                ))}
+                            </Tbody>
+
+                            <Tfoot>
+                                <tr>
+                                    <Td>Expenses:</Td>
+                                    <Td style={{ color: '#FF6596' }}>expenses sum</Td>
+                                </tr>
+
+                                <tr>
+                                    <Td>Income:</Td>
+                                    <Td style={{ color: '#24CCA7' }}> income sum</Td>
+                                </tr>
+                            </Tfoot>
+                        </Table>
+                    )}
+                </div>
+            </Container>
+        </>
     );
 };
 
