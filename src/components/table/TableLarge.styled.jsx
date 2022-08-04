@@ -1,7 +1,12 @@
 import styled from '@emotion/styled';
 import { TableCell } from '@mui/material';
 
+export const WrapStyled = {
+    height: '70vh',
+};
+
 export const TableCellHeadStyled = styled(TableCell)`
+    background-color: #ffffff;
     border: 0;
     font-family: 'Circe';
     font-weight: 700;
@@ -16,11 +21,6 @@ export const TableCellValueStyled = styled(TableCell)`
     line-height: 24px;
 `;
 
-export const TableHeadStyled = {
-    backgroundColor: '#ffffff',
-    border: 0,
-};
-
 export const TableCellStyledRight = {
     borderTopRightRadius: '30px',
     borderBottomRightRadius: '30px',
@@ -29,9 +29,3 @@ export const TableCellStyledleft = {
     borderTopLeftRadius: '30px',
     borderBottomLeftRadius: '30px',
 };
-
-// export const TableDataRow = styled(TableRow)`
-//     :last-child {
-//         border-bottom: none;
-//     }
-// `;

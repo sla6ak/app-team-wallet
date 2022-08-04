@@ -2,27 +2,9 @@ import { Table, TableBody, TableContainer, TableRow } from '@mui/material';
 import { TableStyled, TabWraper, TableCellStyled, TableCellValueStyled } from './TableMobile.styled';
 
 const TableMobile = ({ allTransactions }) => {
-    const data = [
-        {
-            date: '23.05.22',
-            type: '+',
-            category: 'Other',
-            comment: 'Gift for your wife',
-            sum: 300,
-            balance: 6900,
-        },
-        {
-            date: '24.05.22',
-            type: '-',
-            category: 'Other',
-            comment: 'Gift for your wife',
-            sum: 300,
-            balance: 6900,
-        },
-    ];
     return (
         <TabWraper>
-            {data.map(data => (
+            {allTransactions.transactions.map(data => (
                 <TableContainer
                     key={data.date}
                     sx={TableStyled}

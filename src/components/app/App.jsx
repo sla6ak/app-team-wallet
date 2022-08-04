@@ -4,6 +4,7 @@ import RegisterPage from 'views/registerPage/RegisterPage';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
 import PublicRoute from 'components/publicRoute/PublicRoute';
 import DashboardPage from 'views/dashboardPage/DashboardPage';
+import Currency from 'components/currency/Currency';
 import LoginPage from 'views/loginPage/LoginPage';
 import Layout from 'layouts/Layout';
 
@@ -28,24 +29,10 @@ function App() {
         <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route
-                        path="/"
-                        element={
-                            <PrivateRoute>
-                                <DashboardPage />
-                            </PrivateRoute>
-                        }
-                    >
-                        <Route
-                            path="/home"
-                            element={
-                                <PrivateRoute>
-                                    <HomeTab />
-                                </PrivateRoute>
-                            }
-                        />
+                    <Route path="/" element={<DashboardPage />}>
+                        <Route path="/home" element={<HomeTab />} />
                         <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
-                        <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
+                        <Route path="/currency" element={<Currency />} />
                     </Route>
 
                     <Route

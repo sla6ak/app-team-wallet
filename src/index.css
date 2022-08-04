@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'Circe';
+    font-weight: 700;
+    font-style: normal;
+    src: local('Circe'), url('./assets/fonts/circe_bold.eot');
+    src: url('./assets/fonts/circe_bold.eot?#iefix') format('embedded-opentype'),
+        url('./assets/fonts/circe_bold.woff2') format('woff2'), url('./assets/fonts/circe_bold.woff') format('woff'),
+        url('./assets/fonts/circe_bold.ttf') format('truetype'),
+        url('./assets/fonts/circe_bold.svg#circe_bold') format('svg');
+}
+@font-face {
+    font-family: 'Circe';
+    font-weight: 400;
+    font-style: normal;
+    src: local('Circe'), url('./assets/fonts/circe.eot');
+    src: url('./assets/fonts/circe.eot?#iefix') format('embedded-opentype'),
+        url('./assets/fonts/circe.woff2') format('woff2'), url('./assets/fonts/circe.woff') format('woff'),
+        url('./assets/fonts/circe.ttf') format('truetype'), url('./assets/fonts/circe.svg#circe') format('svg');
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-style: normal;
+    src: local('Poppins'), url('./assets/fonts/poppins_bold.eot');
+    src: url('./assets/fonts/poppins_bold.eot?#iefix') format('embedded-opentype'),
+        url('./assets/fonts/poppins_bold.woff2') format('woff2'), url('./assets/fonts/poppins_bold.woff') format('woff'),
+        url('./assets/fonts/poppins_bold.ttf') format('truetype'),
+        url('./assets/fonts/poppins_bold.svg#poppins_bold') format('svg');
+}
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-style: normal;
+    src: local('Poppins'), url('./assets/fonts/poppins_regular.eot');
+    src: url('./assets/fonts/poppins_regular.eot?#iefix') format('embedded-opentype'),
+        url('./assets/fonts/poppins_regular.woff2') format('woff2'),
+        url('./assets/fonts/poppins_regular.woff') format('woff'),
+        url('./assets/fonts/poppins_regular.ttf') format('truetype'),
+        url('./assets/fonts/poppins_regular.svg#poppins_regular') format('svg');
+}

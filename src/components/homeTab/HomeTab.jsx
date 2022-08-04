@@ -11,7 +11,7 @@ const HomeTab = () => {
     });
     return (
         <>
-            {allTransactions ? (
+            {!allTransactions ? (
                 <>
                     <Media
                         query="(max-width: 767px)"

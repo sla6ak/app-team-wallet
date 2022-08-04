@@ -37,7 +37,7 @@ export const BalanceTitle = styled.p`
 
 export const BalanceValue = styled.p`
     font-family: 'Poppins';
-    font-weight: 400;
+    font-weight: 700;
     font-size: 30px;
     line-height: 45px;
 `;
