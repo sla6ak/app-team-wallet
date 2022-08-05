@@ -4,6 +4,7 @@ import RegisterPage from 'views/registerPage/RegisterPage';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
 import PublicRoute from 'components/publicRoute/PublicRoute';
 import DashboardPage from 'views/dashboardPage/DashboardPage';
+import Currency from 'components/currency/Currency';
 import LoginPage from 'views/loginPage/LoginPage';
 import Layout from 'layouts/Layout';
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,7 +12,6 @@ import { useIsActivTokenQuery } from 'redux/authAPI';
 import { useEffect } from 'react';
 import { isUserName } from 'redux/sliceUserName';
 import Statistics from 'components/statistics/Statistics';
-// import Statistics from 'components/statistics/Statistics';
 
 function App() {
     const token = useSelector(state => state.token);
@@ -53,7 +53,14 @@ function App() {
                                 </PrivateRoute>
                             }
                         />
-                        <Route path="/currency" element={<PrivateRoute></PrivateRoute>} />
+                        <Route
+                            path="/currency"
+                            element={
+                                <PrivateRoute>
+                                    <Currency />
+                                </PrivateRoute>
+                            }
+                        />
                     </Route>
 
                     <Route
