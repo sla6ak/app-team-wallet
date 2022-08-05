@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 // для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
 
+
 export const ModalBack = styled.div`
     position: fixed;
     top: 0;
@@ -20,6 +21,7 @@ export const ModalBack = styled.div`
 export const ModalWindow = styled.div`
     position: relative;
 
+
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -31,7 +33,6 @@ export const ModalWindow = styled.div`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-
 
         top: 50%;
         left: 50%;
