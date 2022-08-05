@@ -5,7 +5,7 @@ import spr from '../../images/sprite.svg';
 const TitleWallet = () => {
     return (
         <TitleConteiner>
-            <svg className="icon-wallet">
+            <svg className="icon-wallet" style={{ zIndex: 0 }}>
                 <use href={spr + '#wallet'}></use>
             </svg>
             <Title>Wallet</Title>

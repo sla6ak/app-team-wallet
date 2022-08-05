@@ -62,6 +62,9 @@ export const Select = styled.select`
     border: 1px solid #000000;
     border-radius: 30px;
 
+    appearance: none;
+    background-image: url('../../images/sprite.svg#statistics') no-repeat right;
+    background-position-x: calc(100% - 8px);
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
