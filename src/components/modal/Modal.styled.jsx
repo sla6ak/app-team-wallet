@@ -4,10 +4,24 @@ import styled from '@emotion/styled';
 
 // для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
 
+
+export const ModalBack = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 99;
+    @media (min-width: 768px) {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+`;
+
 export const ModalWindow = styled.div`
     position: relative;
-    /* width: 100vw;
-    height: 100vh; */
+
+
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -19,9 +33,7 @@ export const ModalWindow = styled.div`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border: dashed 1px red;
-        /* width: 540px;
-        height: 508px; */
+
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -45,14 +57,4 @@ export const ModalCloseBtn = styled.div`
     @media (max-width: 767px) {
         display: none;
     }
-`;
-
-export const ModalBack = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 99;
 `;
