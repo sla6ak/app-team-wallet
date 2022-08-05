@@ -11,6 +11,7 @@ import { BoxButton, InputBox, FormaCastom, ErrorLabel } from '../loginPage/Login
 import BacgroundGreeting from 'components/bacgroundGreeting/BacgroundGreeting';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import { toast } from 'react-toastify';
+import PasswordIndicator from 'components/passwordStrengthMeter/passwordStrengthMeter';
 
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
@@ -131,6 +132,7 @@ const RegisterPage = () => {
                             }}
                         />
                     </InputBox>
+                    <PasswordIndicator />
 
                     <InputBox>
                         <InputLabel htmlFor="firstName">
