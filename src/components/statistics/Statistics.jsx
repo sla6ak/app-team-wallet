@@ -15,6 +15,7 @@ import {
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { materialTheme } from 'helpers/theme';
+import { useStatisticaQuery } from 'redux/transactionAPI';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -49,6 +50,7 @@ const year = [2022, 2021, 2020];
 const Statistics = () => {
     const [currentMonth, setCurrentMonth] = useState('Month');
     const [currentYear, setCurrentYear] = useState('Year');
+    const getStatistic = useStatisticaQuery();
 
     const handleChange = event => {
         if (event.target.id === 'Month') {

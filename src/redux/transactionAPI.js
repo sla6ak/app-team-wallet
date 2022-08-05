@@ -29,7 +29,7 @@ export const transactionApi = createApi({
 
         statistica: builder.query({
             query: () => ({
-                url: `/transaction/statistica`,
+                url: `/transaction/statistic`,
                 method: 'GET',
             }),
             providesTags: ['transaction'],
