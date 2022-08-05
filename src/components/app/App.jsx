@@ -29,10 +29,38 @@ function App() {
         <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route path="/" element={<DashboardPage />}>
-                        <Route path="/home" element={<HomeTab />} />
-                        <Route path="/statistic" element={<Statistics />} />
-                        <Route path="/currency" element={<Currency />} />
+                    <Route
+                        path="/"
+                        element={
+                            <PrivateRoute>
+                                <DashboardPage />
+                            </PrivateRoute>
+                        }
+                    >
+                        <Route
+                            path="/home"
+                            element={
+                                <PrivateRoute>
+                                    <HomeTab />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/statistic"
+                            element={
+                                <PrivateRoute>
+                                    <Statistics />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/currency"
+                            element={
+                                <PrivateRoute>
+                                    <Currency />
+                                </PrivateRoute>
+                            }
+                        />
                     </Route>
 
                     <Route
