@@ -1,30 +1,28 @@
 import { Line } from 'rc-progress';
 
-export const progressBarParams = length => {
-    let progressFiling = (length / 12) * 100;
-    let progressColor = '#8a0e0a';
+export const ProgressBar = progressBar => {
+    const length = progressBar.progressBarParams;
 
-    switch (length) {
-        case length <= 6:
+    const progressBarParams = length => {
+        let progressPercent = (length / 12) * 100;
+        let progressColor = '#8a0e0a';
+
+        if (length < 6) {
             progressColor = '#8a0e0a';
-            break;
-        case length <= 9:
+        }
+        if (length >= 6 && length <= 9) {
             progressColor = '#ff6800';
-            break;
-
-        case length > 9:
+        }
+        if (length > 9) {
             progressColor = '#1b5e00';
-            break;
+        }
 
-        default:
-            progressColor = '#8a0e0a';
-            break;
-    }
-    return { progressFiling, progressColor };
+        return { progressPercent, progressColor };
+    };
+    const progress = progressBarParams(length);
+    return (
+        <>
+            <Line percent={progress.progressPercent} strokeColor={progress.progressColor} />
+        </>
+    );
 };
-
-export const ProgressBar = progressBarParams => (
-    <>
-        <Line percent={progressBarParams.progressFiling} strokeColor={progressBarParams.progressColor} />
-    </>
-);

@@ -26,7 +26,6 @@ const RegisterPage = () => {
         initialValues: { firstName: '', password: '', email: '', dublePassword: '' },
         validationSchema: registerSchema,
         onSubmit: async values => {
-            console.log('sabm');
             setDisabled(true);
             if (values.password !== values.dublePassword) {
                 return; // нужно сообщить юзеру об ошибке так нельзя оставлять
@@ -52,12 +51,6 @@ const RegisterPage = () => {
             setDisabled(false);
         },
     });
-
-    const values = useFormikContext();
-    useEffect(() => {
-        const length = values.dublePassword.length;
-        progressBarParams(length);
-    }, [values]);
 
     return (
         <BacgroundGreeting page={'register'}>
@@ -140,7 +133,7 @@ const RegisterPage = () => {
                                 ),
                             }}
                         />
-                        <ProgressBar progressBarParams={values.dublePassword} />
+                        <ProgressBar progressBarParams={formik.values?.dublePassword.length} />
                     </InputBox>
 
                     <InputBox>
