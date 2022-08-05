@@ -12,7 +12,6 @@ import { useIsActivTokenQuery } from 'redux/authAPI';
 import { useEffect } from 'react';
 import { isUserName } from 'redux/sliceUserName';
 import Statistics from 'components/statistics/Statistics';
-// import Statistics from 'components/statistics/Statistics';
 
 function App() {
     const token = useSelector(state => state.token);
@@ -30,12 +29,10 @@ function App() {
         <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
             <Routes>
                 <Route path="/" element={<Layout />}>
-
                     <Route path="/" element={<DashboardPage />}>
                         <Route path="/home" element={<HomeTab />} />
-                        <Route path="/statistic" element={<PrivateRoute></PrivateRoute>} />
+                        <Route path="/statistic" element={<Statistics />} />
                         <Route path="/currency" element={<Currency />} />
-
                     </Route>
 
                     <Route

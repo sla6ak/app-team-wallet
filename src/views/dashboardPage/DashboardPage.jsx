@@ -1,17 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Media from 'react-media';
 import { Container } from '../../components/container/Container';
 import BackgroundMainPage from '../../components/backgroundMainPage/BackgroundMainPage';
 import Navigation from 'components/navigation/Navigation';
 import Currency from '../../components/currency/Currency';
-import ModalTransactions from 'components/modalTransactions/ModalTransactions';
-import Modal from 'components/modal/Modal';
 import {
     BalanceBlock,
     BalanceTitle,
     BalanceValue,
-    AddIcn,
-    PlusBtn,
     TopInfoWrap,
     NavBalanceWrap,
     MainWrap,
@@ -22,8 +18,6 @@ import AppBar from '../../components/appBar/AppBar';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 const DashboardPage = () => {
-    const [modal, setModal] = useState(false);
-
     const navigate = useNavigate();
     useEffect(() => {
         navigate('/home');
@@ -48,26 +42,6 @@ const DashboardPage = () => {
                     <Media query="(min-width: 1280px)" render={() => <BorderLine></BorderLine>} />
                     <Outlet />
                 </MainWrap>
-                <PlusBtn
-                    onClick={() => {
-                        setModal(true);
-                    }}
-                >
-                    <AddIcn />
-                </PlusBtn>
-                {modal ? (
-                    <Modal
-                        onModalClose={() => {
-                            setModal(false);
-                        }}
-                    >
-                        <ModalTransactions
-                            onModalClose={() => {
-                                setModal(false);
-                            }}
-                        />
-                    </Modal>
-                ) : null}
             </Container>
         </BackgroundMainPage>
     );
