@@ -5,16 +5,16 @@ export const ProgressBar = progressBar => {
 
     const progressBarParams = length => {
         let progressPercent = (length / 12) * 100;
-        let progressColor = '#8a0e0a';
+        let progressColor = '#ff0000';
 
-        if (length < 6) {
-            progressColor = '#8a0e0a';
+        if (length < 5 || length > 12) {
+            progressColor = '#ff0000';
         }
-        if (length >= 6 && length <= 9) {
-            progressColor = '#ff6800';
+        if (length >= 6 && length <= 8) {
+            progressColor = '#ff9147';
         }
-        if (length > 9) {
-            progressColor = '#1b5e00';
+        if (length > 8 && length <= 12) {
+            progressColor = '#24CCA7';
         }
 
         return { progressPercent, progressColor };
@@ -22,7 +22,13 @@ export const ProgressBar = progressBar => {
     const progress = progressBarParams(length);
     return (
         <>
-            <Line percent={progress.progressPercent} strokeColor={progress.progressColor} />
+            <Line
+                percent={progress.progressPercent}
+                strokeColor={progress.progressColor}
+                strokeWidth={2}
+                trailWidth={2}
+                trailColor={'#E5F1EF'}
+            />
         </>
     );
 };
