@@ -4,6 +4,7 @@ import {
     Container,
     ContainerDiagram,
     Form,
+    Label,
     Select,
     Table,
     Tbody,
@@ -16,6 +17,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { materialTheme } from 'helpers/theme';
 import { useStatisticaQuery } from 'redux/transactionAPI';
+import { ReactComponent as Arrow } from '../../images/Arrow.svg';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -113,33 +115,45 @@ const Statistics = () => {
 
                 <div>
                     <Form>
-                        <Select
-                            value={currentMonth}
-                            id="Month"
-                            placeholder="Month"
-                            label="Month"
-                            onChange={handleChange}
-                        >
-                            <option disabled>Month</option>
-                            {month.map(value => {
-                                return (
-                                    <option key={value.name} value={value.number}>
-                                        {value.name}
-                                    </option>
-                                );
-                            })}
-                        </Select>
+                        <Label>
+                            <Select
+                                value={currentMonth}
+                                id="Month"
+                                placeholder="Month"
+                                label="Month"
+                                onChange={handleChange}
+                            >
+                                <option disabled>Month</option>
+                                {month.map(value => {
+                                    return (
+                                        <option key={value.name} value={value.number}>
+                                            {value.name}
+                                        </option>
+                                    );
+                                })}
+                            </Select>
+                            <Arrow />
+                        </Label>
 
-                        <Select value={currentYear} id="Year" placeholder="Year" label="Year" onChange={handleChange}>
-                            <option disabled>Year</option>
-                            {year.map(value => {
-                                return (
-                                    <option key={value} value={value}>
-                                        {value}
-                                    </option>
-                                );
-                            })}
-                        </Select>
+                        <Label htmlFor="Year">
+                            <Select
+                                value={currentYear}
+                                id="Year"
+                                placeholder="Year"
+                                label="Year"
+                                onChange={handleChange}
+                            >
+                                <option disabled>Year</option>
+                                {year.map(value => {
+                                    return (
+                                        <option key={value} value={value}>
+                                            {value}
+                                        </option>
+                                    );
+                                })}
+                            </Select>
+                            <Arrow />
+                        </Label>
                     </Form>
 
                     {currentMonth !== 'Month' && currentYear !== 'Year' && (
