@@ -4,6 +4,7 @@ import { loginSchema } from 'helpers/validationForm';
 import { TextField, InputLabel, InputAdornment } from '@mui/material';
 import TitleWallet from 'components/titleWallet/TitleWallet';
 import { ModalForma, BoxButton, InputBox, FormaCastom, ErrorLabel } from './LoginPage.styled';
+import { useEffect } from 'react';
 import { useLoginUserMutation } from 'redux/authAPI';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Lock } from '@mui/icons-material';
@@ -13,15 +14,39 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { newToken } from '../../redux/sliceToken';
 import { isUserName } from 'redux/sliceUserName';
+import jwt_decode from 'jwt-decode';
 
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
 
 const LoginPage = () => {
+    const [ user, setUser ] = useState({});
     const [disabled, setDisabled] = useState(false);
     const [loginUser] = useLoginUserMutation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    function handleCallbackResponse(response) {
+        console.log("JWT ID token: " + response.credential);
+        let userObject = jwt_decode(response.credential);
+        console.log(userObject);
+        setUser(userObject);
+        document.getElementById("signInDiv").hidden = true;
+    };
+
+    useEffect (() => {
+        /* global google */
+        google.accounts.id.initialize({
+            client_id: "388811881504-o891is5iin09cguatu4tkct1bu5asm5k.apps.googleusercontent.com",
+            callback: handleCallbackResponse
+        });
+
+        google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            { theme: "outline", size: "large"}
+        );
+    }, []);
+
     const formik = useFormik({
         initialValues: {
             password: '',
@@ -116,8 +141,12 @@ const LoginPage = () => {
                         >
                             Register
                         </GeneralButton>
+                        <button id="signInDiv"></button>
                     </BoxButton>
                 </FormaCastom>
+                {user && (
+                    <div>{user.name}</div>
+                )}
             </ModalForma>
         </BacgroundGreeting>
     );
