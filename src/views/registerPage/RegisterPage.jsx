@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useFormik } from 'formik';
+import React, { useState, useEffect } from 'react';
+import { useFormik, useFormikContext } from 'formik';
 import { registerSchema } from 'helpers/validationForm';
 import { TextField, InputLabel, InputAdornment } from '@mui/material';
 import { useRegistrationUserMutation } from 'redux/authAPI';
@@ -12,6 +12,8 @@ import BacgroundGreeting from 'components/bacgroundGreeting/BacgroundGreeting';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import { toast } from 'react-toastify';
 
+import { progressBarParams, ProgressBar } from '../../components/progressBar/progressBar';
+
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
 
@@ -19,6 +21,7 @@ const RegisterPage = () => {
     const [disabled, setDisabled] = useState(false);
     const [createUser] = useRegistrationUserMutation();
     const navigate = useNavigate();
+
     const formik = useFormik({
         initialValues: { firstName: '', password: '', email: '', dublePassword: '' },
         validationSchema: registerSchema,
@@ -49,6 +52,13 @@ const RegisterPage = () => {
             setDisabled(false);
         },
     });
+
+    const values = useFormikContext();
+    useEffect(() => {
+        const length = values.dublePassword.length;
+        progressBarParams(length);
+    }, [values]);
+
     return (
         <BacgroundGreeting page={'register'}>
             <RegisterModalForma>
@@ -130,6 +140,7 @@ const RegisterPage = () => {
                                 ),
                             }}
                         />
+                        <ProgressBar progressBarParams={values.dublePassword} />
                     </InputBox>
 
                     <InputBox>
