@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Color,
     Container,
@@ -16,7 +16,6 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { materialTheme } from 'helpers/theme';
 import { useStatisticaQuery } from 'redux/transactionAPI';
-import { NavLink } from 'react-router-dom';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
