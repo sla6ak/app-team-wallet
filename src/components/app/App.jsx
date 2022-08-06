@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import HomeTab from 'components/homeTab/HomeTab';
 import RegisterPage from 'views/registerPage/RegisterPage';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
