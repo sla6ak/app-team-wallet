@@ -54,6 +54,15 @@ export const Form = styled.form`
         width: 395px;
     }
 `;
+export const Label = styled.label`
+    position: relative;
+
+    & > svg {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+`;
 
 export const Select = styled.select`
     width: 100%;

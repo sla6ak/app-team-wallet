@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     WrapperTransaction,
     FormaCastom,
@@ -25,10 +25,6 @@ const ModalTransactions = ({ onModalClose }) => {
     const [disabled, setDisabled] = useState(false);
     const [categories, setCategories] = useState(true);
 
-    useEffect(() => {
-        // test
-        // console.log('moda compon');
-    }, []);
     const income = [
         {
             value: 'salary',
@@ -78,7 +74,7 @@ const ModalTransactions = ({ onModalClose }) => {
         initialValues: {
             category: '',
             sum: '',
-            date: '',
+            date: new Date(),
             comment: '',
         },
         validationSchema: transactionSchema,
@@ -102,6 +98,7 @@ const ModalTransactions = ({ onModalClose }) => {
             setDisabled(false);
         },
     });
+
     return (
         <>
             <WrapperTransaction>
