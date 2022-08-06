@@ -12,6 +12,8 @@ import BacgroundGreeting from 'components/bacgroundGreeting/BacgroundGreeting';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import { toast } from 'react-toastify';
 
+import { ProgressBar } from '../../components/progressBar/progressBar';
+
 // Это базовые шаблоны конечно нужно все раскидывать по папкам и стилизировать из материал а не дивами!
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
 
@@ -19,11 +21,11 @@ const RegisterPage = () => {
     const [disabled, setDisabled] = useState(false);
     const [createUser] = useRegistrationUserMutation();
     const navigate = useNavigate();
+
     const formik = useFormik({
         initialValues: { firstName: '', password: '', email: '', dublePassword: '' },
         validationSchema: registerSchema,
         onSubmit: async values => {
-            console.log('sabm');
             setDisabled(true);
             if (values.password !== values.dublePassword) {
                 return; // нужно сообщить юзеру об ошибке так нельзя оставлять
@@ -49,6 +51,7 @@ const RegisterPage = () => {
             setDisabled(false);
         },
     });
+
     return (
         <BacgroundGreeting page={'register'}>
             <RegisterModalForma>
@@ -130,6 +133,7 @@ const RegisterPage = () => {
                                 ),
                             }}
                         />
+                        <ProgressBar progressBarParams={formik.values?.dublePassword.length} />
                     </InputBox>
 
                     <InputBox>

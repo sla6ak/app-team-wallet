@@ -1,35 +1,17 @@
 import { Table, TableHead, TableBody, TableContainer, TableRow } from '@mui/material';
 import {
-    TableHeadStyled,
     TableCellStyledleft,
     TableCellStyledRight,
     TableCellHeadStyled,
     TableCellValueStyled,
+    WrapStyled,
 } from './TableLarge.styled';
 
-const TableLarge = ({ allTransactions }) => {
-    // const data = [
-    //     {
-    //         date: '23.05.22',
-    //         type: '+',
-    //         category: 'Other',
-    //         comment: 'Gift for your wife',
-    //         sum: 300,
-    //         balance: 6900,
-    //     },
-    //     {
-    //         date: '24.05.22',
-    //         type: '-',
-    //         category: 'Other',
-    //         comment: 'Gift for your wife',
-    //         sum: 300,
-    //         balance: 6900,
-    //     },
-    // ];
+const TableLarge = ({ allTransaction }) => {
     return (
-        <TableContainer>
-            <Table sx={{ minWidth: 704 }} aria-label="simple table">
-                <TableHead sx={TableHeadStyled}>
+        <TableContainer sx={WrapStyled}>
+            <Table sx={{ minWidth: 704 }} stickyHeader aria-label="sticky table">
+                <TableHead>
                     <TableRow>
                         <TableCellHeadStyled sx={TableCellStyledleft}>Date</TableCellHeadStyled>
                         <TableCellHeadStyled align="center">Type</TableCellHeadStyled>
@@ -42,7 +24,7 @@ const TableLarge = ({ allTransactions }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {allTransactions?.transactions.map(data => (
+                    {allTransaction?.transactions.map(data => (
                         <TableRow
                             key={data.date}
                             sx={{

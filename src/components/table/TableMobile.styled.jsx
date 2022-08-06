@@ -2,7 +2,9 @@ import styled from '@emotion/styled';
 import { TableCell } from '@mui/material';
 
 export const TabWraper = styled.div`
-    height: 100%;
+    border-radius: 2%;
+    overflow: scroll;
+    height: 65vh;
 `;
 
 export const TableStyled = {

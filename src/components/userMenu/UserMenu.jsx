@@ -1,27 +1,39 @@
+import { useState } from 'react';
 import { Greeeting, LogOutBtn, Wrapper, TextBtn } from './UserMenu.styled';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
-import { newToken } from '../../redux/sliceToken';
-import { isUserName } from 'redux/sliceUserName';
+import Modal from 'components/modal/Modal';
+import ModalLogOut from 'components/modalLogOut/modalLogOut';
 
 const UserMenu = () => {
-    const dispatch = useDispatch();
+    const [modal, setModal] = useState(false);
+
     const userName = useSelector(state => state.userName);
-    const logOut = () => {
-        dispatch(newToken(''));
-        dispatch(isUserName(''));
-        toast.info('LogOut user!');
-    };
 
     return (
         <Wrapper>
             <Greeeting>{userName}</Greeeting>
-            <LogOutBtn onClick={logOut}>
+            <LogOutBtn 
+            onClick={() => {
+                setModal(true);
+        }}
+            >
                 <LogoutIcon />
                 <TextBtn> Exit </TextBtn>
             </LogOutBtn>
+            {modal ? (
+                <Modal
+                    onModalClose={() => {
+                        setModal(false);
+                    }}
+                >
+                    <ModalLogOut
+                        onModalClose={() => {
+                            setModal(false);
+                        }}
+                        />
+                </Modal>
+            ) : null}
         </Wrapper>
     );
 };
