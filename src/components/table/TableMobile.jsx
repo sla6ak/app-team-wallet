@@ -4,11 +4,11 @@ import { TableStyled, TabWraper, TableCellStyled, TableCellValueStyled } from '.
 const TableMobile = ({ allTransactions }) => {
     return (
         <TabWraper>
-            {allTransactions?.transaction.map(data => (
+            {allTransactions?.transactions.map(data => (
                 <TableContainer
                     key={data.date}
                     sx={TableStyled}
-                    style={{ borderColor: data.type === '+' ? 'green' : 'red' }}
+                    style={{ borderColor: data.type === '+' ? '#24CCA7' : '#FF6596' }}
                 >
                     <Table>
                         <TableBody>
@@ -31,7 +31,7 @@ const TableMobile = ({ allTransactions }) => {
                             <TableRow>
                                 <TableCellStyled align="left">Sum</TableCellStyled>
                                 <TableCellValueStyled
-                                    style={{ fontWeight: 700, color: data.type === '+' ? 'green' : 'red' }}
+                                    style={{ fontWeight: 700, color: data.type === '+' ? '#24CCA7' : '#FF6596' }}
                                     align="right"
                                 >
                                     {data.sum}

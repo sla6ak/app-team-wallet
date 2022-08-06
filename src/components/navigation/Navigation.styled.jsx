@@ -31,6 +31,7 @@ export const Link = styled(NavLink)`
     height: 38px;
     background-color: #6e78e8;
     border-radius: 6px;
+    transition: box-shadow ease 500ms, background-color ease 500ms;
     &:hover {
         box-shadow: 0px 3px 10px rgba(74, 86, 226, 0.5);
         background-color: #4a56e2;

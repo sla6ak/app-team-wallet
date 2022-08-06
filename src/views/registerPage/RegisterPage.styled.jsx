@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 
 // для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
 
+export const ShowPasswordBtnStyles = {
+    color: '#E0E0E0',
+};
+
 export const RegisterModalForma = styled.div`
     border-radius: 20px;
     width: 100vw;

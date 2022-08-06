@@ -41,7 +41,10 @@ const TableLarge = ({ allTransaction }) => {
                             <TableCellValueStyled align="center">{data.type}</TableCellValueStyled>
                             <TableCellValueStyled align="center">{data.category}</TableCellValueStyled>
                             <TableCellValueStyled align="center">{data.comment}</TableCellValueStyled>
-                            <TableCellValueStyled style={{ color: data.type === '+' ? 'green' : 'red' }} align="center">
+                            <TableCellValueStyled
+                                style={{ color: data.type === '+' ? '#24CCA7' : '#FF6596' }}
+                                align="center"
+                            >
                                 {data.sum}
                             </TableCellValueStyled>
                             <TableCellValueStyled align="center">{data.balance}</TableCellValueStyled>
