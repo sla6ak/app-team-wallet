@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 
-
 // для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
+export const ShowPasswordBtnStyles = {
+    color: '#E0E0E0',
+};
 
 export const ModalForma = styled.div`
     border-radius: 20px;
@@ -42,7 +44,6 @@ export const BoxButton = styled.div`
     margin-right: auto;
 `;
 
-
 export const InputBox = styled.div`
     height: 60px;
     width: 100%;
@@ -57,14 +58,12 @@ export const FormaCastom = styled.form`
 
     margin-top: 30px;
 
-
     @media (min-width: 768px) {
         width: 410px;
     }
 `;
 
 export const ErrorLabel = styled.div`
-
     color: ${({ theme }) => theme.colors.error};
 
     font-size: 14px;

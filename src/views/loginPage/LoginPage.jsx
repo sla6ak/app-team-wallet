@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { loginSchema } from 'helpers/validationForm';
-import { TextField, InputLabel, InputAdornment } from '@mui/material';
+import { TextField, InputLabel, InputAdornment, IconButton } from '@mui/material';
 import TitleWallet from 'components/titleWallet/TitleWallet';
-import { ModalForma, BoxButton, InputBox, FormaCastom, ErrorLabel } from './LoginPage.styled';
+import { ModalForma, BoxButton, InputBox, FormaCastom, ErrorLabel, ShowPasswordBtnStyles } from './LoginPage.styled';
 import { useEffect } from 'react';
 import { useLoginUserMutation } from 'redux/authAPI';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Lock } from '@mui/icons-material';
+import { Mail, Lock, Visibility, VisibilityOff } from '@mui/icons-material';
 import BacgroundGreeting from 'components/bacgroundGreeting/BacgroundGreeting';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import { toast } from 'react-toastify';
@@ -20,31 +20,31 @@ import jwt_decode from 'jwt-decode';
 // инпут лабел нарочно оставил идея отображать с их помощью ошибки если они падают в доках это есть! https://mui.com/material-ui/react-text-field/#validation
 
 const LoginPage = () => {
-    const [ user, setUser ] = useState({});
+    const [showPassword, setShowPassword] = useState(false);
+    const [user, setUser] = useState({});
     const [disabled, setDisabled] = useState(false);
     const [loginUser] = useLoginUserMutation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+
     function handleCallbackResponse(response) {
-        console.log("JWT ID token: " + response.credential);
+        console.log('JWT ID token: ' + response.credential);
         let userObject = jwt_decode(response.credential);
         console.log(userObject);
         setUser(userObject);
-        document.getElementById("signInDiv").hidden = true;
-    };
+        document.getElementById('signInDiv').hidden = true;
+    }
 
-    useEffect (() => {
+    useEffect(() => {
         /* global google */
         google.accounts.id.initialize({
-            client_id: "388811881504-o891is5iin09cguatu4tkct1bu5asm5k.apps.googleusercontent.com",
-            callback: handleCallbackResponse
+            client_id: '388811881504-o891is5iin09cguatu4tkct1bu5asm5k.apps.googleusercontent.com',
+            callback: handleCallbackResponse,
         });
 
-        google.accounts.id.renderButton(
-            document.getElementById("signInDiv"),
-            { theme: "outline", size: "large"}
-        );
+        google.accounts.id.renderButton(document.getElementById('signInDiv'), { theme: 'outline', size: 'large' });
     }, []);
 
     const formik = useFormik({
@@ -58,18 +58,17 @@ const LoginPage = () => {
             try {
                 const respons = await loginUser(values);
 
-                if (respons.data.error) {
-                    toast.error('User not created');
+                if (respons.error) {
+                    toast.error('Email or password is wrong');
                     setDisabled(false);
                     return;
                 }
                 if (respons.data.user.name) {
                     dispatch(newToken(respons.data.user.token));
                     dispatch(isUserName(respons.data.user.name));
-                    toast.success(`Succesful login user ${respons.data.user.name}!`);
+                    toast.success(`Wellcome ${respons.data.user.name}!`);
                 }
             } catch (error) {
-                toast.error('User not created');
                 console.log(error);
             }
             setDisabled(false);
@@ -117,7 +116,7 @@ const LoginPage = () => {
                             required
                             id="password"
                             name="password"
-                            type="text"
+                            type={showPassword ? 'text' : 'password'}
                             onChange={formik.handleChange}
                             value={formik.values.password}
                             placeholder={'Password'}
@@ -125,6 +124,20 @@ const LoginPage = () => {
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <Lock sx={{ color: '#E0E0E0', ml: '7px' }} />
+                                    </InputAdornment>
+                                ),
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                        >
+                                            {showPassword ? (
+                                                <Visibility />
+                                            ) : (
+                                                <VisibilityOff sx={ShowPasswordBtnStyles} />
+                                            )}
+                                        </IconButton>
                                     </InputAdornment>
                                 ),
                             }}
@@ -144,9 +157,7 @@ const LoginPage = () => {
                         <button id="signInDiv"></button>
                     </BoxButton>
                 </FormaCastom>
-                {user && (
-                    <div>{user.name}</div>
-                )}
+                {user && <div>{user.name}</div>}
             </ModalForma>
         </BacgroundGreeting>
     );
