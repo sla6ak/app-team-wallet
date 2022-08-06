@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import CloseIcon from '@mui/icons-material/Close';
-import { ModalBack, ModalWindow, ModalCloseBtn } from './Modal.styled';
+import { Overlay,
+    ModalWindow,
+    ModalCloseBtn
+} from './Modal.styled';
 
-// функция закрытия модалки это просто сетСтейт родителя тру или фолс и если фолс то больше не рендерим модалку в родителе : она схлопнется.
 const Modal = ({ onModalClose, children }) => {
     const mouseDownClouse = e => {
         if (e.target === e.currentTarget) {
             onModalClose();
         }
     };
+
     useEffect(() => {
         const keyDownClose = e => {
             if (e.code === 'Escape') {
@@ -24,14 +27,14 @@ const Modal = ({ onModalClose, children }) => {
     }, [onModalClose]);
 
     return createPortal(
-        <ModalBack onClick={mouseDownClouse}>
+        <Overlay onClick={mouseDownClouse}>
             <ModalWindow>
                 <ModalCloseBtn onClick={onModalClose}>
                     <CloseIcon />
                 </ModalCloseBtn>
                 {children}
             </ModalWindow>
-        </ModalBack>,
+        </Overlay>,
         document.querySelector('#modal')
     );
 };

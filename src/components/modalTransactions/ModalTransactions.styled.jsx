@@ -1,109 +1,129 @@
 import styled from '@emotion/styled';
-import Switch from '@mui/material/Switch';
-import btnMinus from '../../images/btn-minus.png';
-import btnPlus from '../../images/btn-plus.png';
 
-// для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
 export const WrapperTransaction = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    padding: 20px;
+
     @media (min-width: 768px) {
         width: 540px;
         height: 508px;
-    }
-`;
-export const FormaCastom = styled.form`
-    max-width: 410px;
-    width: 100%;
-
-    margin-top: 30px;
-
-    @media (min-width: 768px) {
-        width: 410px;
+        padding: 40px;
     }
 `;
 
 export const ModalTitle = styled.h3`
     font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 24px;
-    line-height: 36px;
-    text-align: center;
+    line-height: 1.5;
     color: #000000;
     @media (min-width: 768px) {
         font-size: 30px;
-        line-height: 45px;
+        line-height: 1.5;
     }
 `;
 
-export const CustomSwitch = styled(Switch)(({ theme }) => ({
-    width: 62,
-    height: 34,
-    padding: 7,
-    '& .MuiSwitch-switchBase': {
-        margin: 1,
-        padding: 0,
-        transform: 'translateX(6px)',
-        '&.Mui-checked': {
-            color: '#fff',
-            transform: 'translateX(22px)',
-            '& .MuiSwitch-thumb:before': {
-                backgroundImage: `url(${btnMinus})`,
-            },
-            '& + .MuiSwitch-track': {
-                opacity: 1,
-                backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-            },
-        },
-    },
-    '& .MuiSwitch-thumb': {
-        backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
-        width: 32,
-        height: 32,
-        '&:before': {
-            content: "''",
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            left: 0,
-            top: 0,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            backgroundImage: `url(${btnPlus})`,
-        },
-    },
-    '& .MuiSwitch-track': {
-        opacity: 1,
-        backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-        borderRadius: 20 / 2,
-    },
-}));
+export const FormaCastom = styled.form`
+    min-width: 300px;
+    margin-top: 30px;
 
-export const InputWrapper = styled.div`
-    height: 40px;
-    width: 100%;
     @media (min-width: 768px) {
+        width: 394px;
     }
 `;
 
 export const InlineWrapper = styled.div`
-    width: 100%;
-    display: contents;
     @media (min-width: 768px) {
         display: flex;
-        gap: 32px;
+    }
+`;
+
+export const CountContainer = styled.div`
+    width: 50 px;
+    @media (min-width: 768px) {
+        margin-right: 5px;
+    }
+`;
+
+export const DateContainer = styled.div`
+    width: 50 px;
+    @media (min-width: 768px) {
+        margin-left: 5px;
     }
 `;
 
 export const ButtonWrapper = styled.div`
     max-width: 300px;
-    margin-top: 42px;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
+
+    @media (min-width: 768px) {
+        margin-top: 20px;
+        padding-top: 0;
+    }
+`;
+
+export const Inputs = styled.div`
+    margin-top: 20px;
+    padding: 20px;
+    height: 250px;
+    width: 300px;
+
+    @media (min-width: 768px) {
+        margin-left: 45px;
+        margin-top: 10px;
+        padding: 0;
+        height: 180px;
+    }
+`;
+
+export const ActivePlus = styled.span`
+    position: relative;
+    font-family: 'Circe';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #24CCA7;
+    margin-right: 60px;
+`;
+
+export const NoActivePlus = styled.span`
+    font-family: 'Circe';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-right: 60px;
+`;
+
+export const ActiveMinus = styled.span`
+    position: relative;
+    font-family: 'Circe', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ff6596;
+    margin-left: 60px;
+`;
+
+export const NoActiveMinus = styled.span`
+    font-family: 'Circe', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #e0e0e0;
+    margin-left: 60px;
+`;
+
+export const Checkbox = styled.span`
+    display: flex;
+    align-items: centre;
+    justify-content: center;
 `;
