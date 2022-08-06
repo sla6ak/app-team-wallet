@@ -1,6 +1,7 @@
 import Media from 'react-media';
 import TableMobile from '../../components/table/TableMobile';
 import TableLarge from '../../components/table/TableLarge';
+import NoDataPlug from '../../components/noDataPlug/NoDataPlug';
 import { useAllTransactionsQuery } from 'redux/transactionAPI';
 import { useEffect, useState } from 'react';
 import ModalTransactions from 'components/modalTransactions/ModalTransactions';
@@ -23,13 +24,21 @@ const HomeTab = () => {
             >
                 <AddIcn />
             </PlusBtn>
-            {!allTransactions ? (
+            {allTransactions ? (
                 <>
-                    <Media
-                        query="(max-width: 767px)"
-                        render={() => <TableMobile allTransactions={allTransactions} />}
-                    />
-                    <Media query="(min-width: 768px)" render={() => <TableLarge allTransactions={allTransactions} />} />
+                    {allTransactions.trasactions && (
+                        <>
+                            <Media
+                                query="(max-width: 767px)"
+                                render={() => <TableMobile allTransactions={allTransactions} />}
+                            />
+                            <Media
+                                query="(min-width: 768px)"
+                                render={() => <TableLarge allTransactions={allTransactions} />}
+                            />
+                        </>
+                    )}
+                    <NoDataPlug />
                 </>
             ) : null}
             {modal ? (
