@@ -4,7 +4,7 @@ import { TableStyled, TabWraper, TableCellStyled, TableCellValueStyled } from '.
 const TableMobile = ({ allTransactions }) => {
     return (
         <TabWraper>
-            {allTransactions.transaction.map(data => (
+            {allTransactions?.transaction.map(data => (
                 <TableContainer
                     key={data.date}
                     sx={TableStyled}
