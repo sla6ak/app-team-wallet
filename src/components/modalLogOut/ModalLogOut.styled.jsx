@@ -1,34 +1,44 @@
 import styled from '@emotion/styled';
 
 export const LogOutContainer = styled.div`
-    width: 410px;
+    min-width: 320px;
+    padding: 20px;
+
+    @media (min-width: 768px) {
+        width: 410px;
+    }
 `;
 
 export const ModalTitle = styled.h3`
+    text-align: center;
+
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 36px;
-    line-height: 36px;
-    text-align: center;
+    font-size: 20px;
+    line-height: 1.8;
     color: #000000;
+
     @media (min-width: 768px) {
-        font-size: 24px;
-        line-height: 45px;
+        font-size: 20px;
+        line-height: 2.25;
     }
 `;
 
 export const TitleAccent = styled.p`
     font-weight: 700;
-    font-size: 32px;
-    line-height: 36px;
+    font-size: 26px;
+    line-height: 1.38;
 `;
 
 export const ButtonWrapper = styled.div`
-    width: 350px;
-    margin-top: 42px;
     display: flex;
-
+    justify-content: space-evenly;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
+`;
+
+export const Button = styled.div`
+    width: 150px;
 `;

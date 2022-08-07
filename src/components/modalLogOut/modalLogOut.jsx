@@ -6,7 +6,8 @@ import { toast } from 'react-toastify';
 import { ButtonWrapper,
     ModalTitle,
     LogOutContainer,
-    TitleAccent
+    TitleAccent,
+    Button,
 } from './ModalLogOut.styled';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 
@@ -29,16 +30,18 @@ const ModalLogOut = ({ onModalClose }) => {
                     </TitleAccent>
                     Are you sure you want to log out?
                 </ModalTitle>
-                <form onSubmit={logOut}>
-                    <ButtonWrapper>
-                        <GeneralButton fullWidth variant={'contained'} bts={'submit'} type="submit">
+                <ButtonWrapper>
+                    <Button>
+                        <GeneralButton fullWidth variant={'contained'} bts={'submit'} onClick={logOut} type="submit">
                             Yes
                         </GeneralButton>
+                    </Button>
+                    <Button>
                         <GeneralButton fullWidth variant={'outlined'} bts={'link'} onClick={onModalClose} type="button">
                             No
                         </GeneralButton>
-                    </ButtonWrapper>
-                </form>
+                    </Button>
+                </ButtonWrapper>
             </LogOutContainer>
         </>
     );
