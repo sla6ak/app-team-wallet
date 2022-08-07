@@ -46,6 +46,15 @@ export const authApi = createApi({
             invalidatesTags: ['user'],
         }),
 
+        //верификация email
+        emailVerify: builder.mutation({
+            query: verificationToken => ({
+                url: `/auth/login/${verificationToken}`,
+                method: 'PATCH',
+            }),
+            invalidatesTags: ['user'],
+        }),
+
         //запрос который удаляет актуальный токен выданый пользователю на бекенде
         unLoginUser: builder.mutation({
             query: () => ({
@@ -71,5 +80,10 @@ export const authApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useIsActivTokenQuery, useRegistrationUserMutation, useLoginUserMutation, useUnLoginUserMutation } =
-    authApi;
+export const {
+    useIsActivTokenQuery,
+    useEmailVerifyMutation,
+    useRegistrationUserMutation,
+    useLoginUserMutation,
+    useUnLoginUserMutation,
+} = authApi;
