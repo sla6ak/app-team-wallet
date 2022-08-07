@@ -26,7 +26,6 @@ const ModalTransactions = ({ onModalClose }) => {
     const [categories, setCategories] = useState(true);
 
     const [dates, setDates] = useState('');
-    console.log('dates: ', typeof dates);
 
     const income = [
         {
@@ -85,6 +84,7 @@ const ModalTransactions = ({ onModalClose }) => {
 
     const formik = useFormik({
         initialValues: {
+            type: categories ? 'expense' : 'income',
             category: '',
             sum: '',
             date: dates,
