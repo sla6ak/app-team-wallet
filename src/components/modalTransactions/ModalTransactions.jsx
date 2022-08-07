@@ -26,6 +26,7 @@ const ModalTransactions = ({ onModalClose }) => {
     const [categories, setCategories] = useState(true);
 
     const [dates, setDates] = useState('');
+    console.log('dates: ', typeof dates);
 
     const income = [
         {
@@ -135,7 +136,7 @@ const ModalTransactions = ({ onModalClose }) => {
                             onChange={formik.handleChange}
                             value={formik.values.category}
                         >
-                            {(categories ? income : expence).map(option => (
+                            {(categories ? expence : income).map(option => (
                                 <MenuItem key={option.value} value={option.value}>
                                     {option.label}
                                 </MenuItem>
