@@ -7,6 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Switcher = styled.input`
+    appearance: none;
     &::after {
         position: absolute;
         left: -40px;
@@ -23,8 +24,7 @@ export const Switcher = styled.input`
     }
 
     &:checked&::before {
-
-      }
+    }
 `;
 
 export const Label = styled.label`
