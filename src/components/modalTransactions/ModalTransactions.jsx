@@ -27,7 +27,6 @@ import Switch from 'components/switch/Switch';
 const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();
     const [disabled, setDisabled] = useState(false);
-    const [categories, setCategories] = useState(true);
     const [checked, setChecked] = useState(false);
 
     const [dates, setDates] = useState('');
@@ -46,7 +45,7 @@ const ModalTransactions = ({ onModalClose }) => {
             label: 'Other',
         },
     ];
-    const expence = [
+    const expense = [
         {
             value: 'main',
             label: 'Main',
@@ -75,7 +74,6 @@ const ModalTransactions = ({ onModalClose }) => {
 
     const handleSwitchChange = e => {
         setChecked(e.target.checked);
-        setCategories(e.target.checked);
     };
     const handleDate = e => {
         setDates(e.target.value);
@@ -90,7 +88,7 @@ const ModalTransactions = ({ onModalClose }) => {
 
     const formik = useFormik({
         initialValues: {
-            type: categories ? 'expense' : 'income',
+            type: !checked ? 'expense' : 'income',
             category: '',
             sum: '',
             date: dates,
@@ -150,9 +148,9 @@ const ModalTransactions = ({ onModalClose }) => {
                             onChange={formik.handleChange}
                             value={formik.values.category}
                         >
-                            {(categories ? expence : income).map(option => (
+                            {(!checked ? expense : income).map(option => (
                                 <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
+                                    {option.value}
                                 </MenuItem>
                             ))}
                         </TextField>
@@ -178,49 +176,26 @@ const ModalTransactions = ({ onModalClose }) => {
                                     id="date"
                                     name="date"
                                     type="date"
-                                    onChange={formik.handleChange}
-                                    value={formik.values.date}
+                                    onChange={handleDate}
+                                    value={dates}
                                 />
                             </DateContainer>
                         </InlineWrapper>
-                    </Inputs>
 
-                    <InlineWrapper>
                         <TextField
                             fullWidth
+                            margin="normal"
+                            multiline
+                            rows={1}
                             variant="standard"
-                            id="sum"
-                            name="sum"
-                            type="number"
+                            id="comment"
+                            name="comment"
+                            type="string"
+                            label="Comment"
                             onChange={formik.handleChange}
-                            value={formik.values.sum}
-                            // label="Number"
-                            placeholder="0.00"
+                            value={formik.values.comment}
                         />
-                        <TextField
-                            fullWidth
-                            variant="standard"
-                            id="date"
-                            name="date"
-                            type="date"
-                            onChange={handleDate}
-                            value={dates}
-                        />
-                    </InlineWrapper>
-
-                    <TextField
-                        fullWidth
-                        margin="normal"
-                        multiline
-                        rows={1}
-                        variant="standard"
-                        id="comment"
-                        name="comment"
-                        type="string"
-                        label="Comment"
-                        onChange={formik.handleChange}
-                        value={formik.values.comment}
-                    />
+                    </Inputs>
 
                     <ButtonWrapper>
                         <GeneralButton fullWidth variant={'contained'} bts={'submit'} disabled={disabled} type="submit">
