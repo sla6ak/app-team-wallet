@@ -25,6 +25,8 @@ const ModalTransactions = ({ onModalClose }) => {
     const [disabled, setDisabled] = useState(false);
     const [categories, setCategories] = useState(true);
 
+    const [dates, setDates] = useState('');
+
     const income = [
         {
             value: 'salary',
@@ -69,16 +71,29 @@ const ModalTransactions = ({ onModalClose }) => {
     const handleSwitchChange = e => {
         setCategories(e.target.checked);
     };
+    const handleDate = e => {
+        setDates(e.target.value);
+    };
+
+    const date = value => {
+        const date = value?.split('-');
+        if (date) {
+            return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
+        }
+    };
 
     const formik = useFormik({
         initialValues: {
+            type: categories ? 'expense' : 'income',
             category: '',
             sum: '',
-            date: new Date(),
+            date: dates,
             comment: '',
         },
+
         validationSchema: transactionSchema,
         onSubmit: async values => {
+            values.date = date(dates);
             console.log(values);
             setDisabled(true);
             try {
@@ -121,7 +136,7 @@ const ModalTransactions = ({ onModalClose }) => {
                             onChange={formik.handleChange}
                             value={formik.values.category}
                         >
-                            {(categories ? income : expence).map(option => (
+                            {(categories ? expence : income).map(option => (
                                 <MenuItem key={option.value} value={option.value}>
                                     {option.label}
                                 </MenuItem>
@@ -150,8 +165,8 @@ const ModalTransactions = ({ onModalClose }) => {
                                 id="date"
                                 name="date"
                                 type="date"
-                                onChange={formik.handleChange}
-                                value={formik.values.date}
+                                onChange={handleDate}
+                                value={dates}
                             />
                         </InputWrapper>
                     </InlineWrapper>
