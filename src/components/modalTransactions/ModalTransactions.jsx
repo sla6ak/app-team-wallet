@@ -3,10 +3,16 @@ import {
     WrapperTransaction,
     FormaCastom,
     ModalTitle,
-    CustomSwitch,
-    InputWrapper,
     InlineWrapper,
     ButtonWrapper,
+    Inputs,
+    DateContainer,
+    CountContainer,
+    Checkbox,
+    ActivePlus,
+    NoActivePlus,
+    ActiveMinus,
+    NoActiveMinus,
 } from './ModalTransactions.styled';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import { useState } from 'react';
@@ -14,16 +20,15 @@ import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import { useAddNewTransactionMutation } from 'redux/transactionAPI';
 import { transactionSchema } from '../../helpers/validationForm';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
+import Switch from 'components/switch/Switch';
 
-// функция закрытия модалки это просто сетСтейт родителя тру или фолс и если фолс то больше не рендерим модалку в родителе : она схлопнется.
 const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();
     const [disabled, setDisabled] = useState(false);
     const [categories, setCategories] = useState(true);
+    const [checked, setChecked] = useState(false);
 
     const income = [
         {
@@ -67,6 +72,7 @@ const ModalTransactions = ({ onModalClose }) => {
     ];
 
     const handleSwitchChange = e => {
+        setChecked(e.target.checked);
         setCategories(e.target.checked);
     };
 
@@ -104,13 +110,26 @@ const ModalTransactions = ({ onModalClose }) => {
             <WrapperTransaction>
                 <ModalTitle>Add transaction</ModalTitle>
                 <FormaCastom onSubmit={formik.handleSubmit}>
-                    <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
-                        <Typography>Income</Typography>
-                        <CustomSwitch checked={categories} onChange={handleSwitchChange} />
-                        <Typography>Expense</Typography>
-                    </Stack>
-
-                    <InputWrapper>
+                    <Checkbox>
+                        {checked
+                        ? <ActivePlus>Income</ActivePlus>
+                        : <NoActivePlus>Income</NoActivePlus>
+                        }
+                        <label htmlFor={'isIncome'}>
+                        <Switch
+                            id={'isIncome'}
+                            name={'isIncome'}
+                            onSwitch={handleSwitchChange}
+                            isChecked={checked}
+                            onClick={handleSwitchChange}
+                        />
+                        </label>
+                        {checked
+                        ? <NoActiveMinus>Expense</NoActiveMinus>
+                        : <ActiveMinus>Expense</ActiveMinus>
+                        }
+                    </Checkbox>
+                    <Inputs>
                         <TextField
                             fullWidth
                             variant="standard"
@@ -127,40 +146,38 @@ const ModalTransactions = ({ onModalClose }) => {
                                 </MenuItem>
                             ))}
                         </TextField>
-                    </InputWrapper>
-
-                    <InlineWrapper>
-                        <InputWrapper>
-                            <TextField
-                                fullWidth
-                                variant="standard"
-                                id="sum"
-                                name="sum"
-                                type="number"
-                                onChange={formik.handleChange}
-                                value={formik.values.sum}
-                                // label="Number"
-                                placeholder="0.00"
-                            />
-                        </InputWrapper>
-                        <InputWrapper>
-                            <TextField
-                                fullWidth
-                                variant="standard"
-                                id="date"
-                                name="date"
-                                type="date"
-                                onChange={formik.handleChange}
-                                value={formik.values.date}
-                            />
-                        </InputWrapper>
-                    </InlineWrapper>
-
-                    <InputWrapper>
+                        <InlineWrapper>
+                            <CountContainer>
+                                <TextField
+                                    fullWidth
+                                    margin="normal"
+                                    variant="standard"
+                                    id="sum"
+                                    name="sum"
+                                    type="number"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.sum}
+                                    placeholder="0.00"
+                                />
+                                </CountContainer>
+                                <DateContainer>
+                                <TextField
+                                    fullWidth
+                                    margin="normal"
+                                    variant="standard"
+                                    id="date"
+                                    name="date"
+                                    type="date"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.date}
+                                />
+                                </DateContainer>
+                        </InlineWrapper>
                         <TextField
                             fullWidth
+                            margin="normal"
                             multiline
-                            rows={2}
+                            rows={1}
                             variant="standard"
                             id="comment"
                             name="comment"
@@ -169,7 +186,7 @@ const ModalTransactions = ({ onModalClose }) => {
                             onChange={formik.handleChange}
                             value={formik.values.comment}
                         />
-                    </InputWrapper>
+                    </Inputs>
                     <ButtonWrapper>
                         <GeneralButton fullWidth variant={'contained'} bts={'submit'} disabled={disabled} type="submit">
                             ADD
