@@ -12,6 +12,7 @@ import { useIsActivTokenQuery } from 'redux/authAPI';
 import { useEffect } from 'react';
 import { isUserName } from 'redux/sliceUserName';
 import Statistics from 'components/statistics/Statistics';
+import { VerifyPage } from 'views/verifyPage/verifyPage';
 
 function App() {
     const token = useSelector(state => state.token);
@@ -62,7 +63,6 @@ function App() {
                             }
                         />
                     </Route>
-
                     <Route
                         path="/register"
                         element={
@@ -79,6 +79,14 @@ function App() {
                             </PublicRoute>
                         }
                     />
+                    <Route
+                        path="/login/:verificationToken"
+                        element={
+                            <PublicRoute>
+                                <VerifyPage />
+                            </PublicRoute>
+                        }
+                    />{' '}
                 </Route>
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
