@@ -156,7 +156,6 @@ const ModalTransactions = ({ onModalClose }) => {
                                 </MenuItem>
                             ))}
                         </TextField>
-                        {/* <<<<<<< HEAD */}
                         <InlineWrapper>
                             <CountContainer>
                                 <TextField
@@ -184,11 +183,9 @@ const ModalTransactions = ({ onModalClose }) => {
                                 />
                             </DateContainer>
                         </InlineWrapper>
-                        {/* ======= */}
                     </Inputs>
 
                     <InlineWrapper>
-                        {/* <InputWrapper> */}
                         <TextField
                             fullWidth
                             variant="standard"
@@ -200,8 +197,6 @@ const ModalTransactions = ({ onModalClose }) => {
                             // label="Number"
                             placeholder="0.00"
                         />
-                        {/* </InputWrapper> */}
-                        {/* <InputWrapper> */}
                         <TextField
                             fullWidth
                             variant="standard"
@@ -211,11 +206,8 @@ const ModalTransactions = ({ onModalClose }) => {
                             onChange={handleDate}
                             value={dates}
                         />
-                        {/* </InputWrapper> */}
                     </InlineWrapper>
 
-                    {/* <InputWrapper> */}
-                    {/* >>>>>>> 5ae189383055afb6977a3542b0f055c1459de57c */}
                     <TextField
                         fullWidth
                         margin="normal"
@@ -229,7 +221,6 @@ const ModalTransactions = ({ onModalClose }) => {
                         onChange={formik.handleChange}
                         value={formik.values.comment}
                     />
-                    {/* </InputWrapper> */}
 
                     <ButtonWrapper>
                         <GeneralButton fullWidth variant={'contained'} bts={'submit'} disabled={disabled} type="submit">
