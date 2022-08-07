@@ -102,9 +102,10 @@ const ModalTransactions = ({ onModalClose }) => {
             setDisabled(true);
             try {
                 const respons = await addTransaction(values);
+                console.log('respons: ', respons);
 
-                if (respons.data.error) {
-                    toast.error('Transaction error');
+                if (respons.error) {
+                    toast.error(respons.error.data.message);
                     setDisabled(false);
                     return;
                 }
