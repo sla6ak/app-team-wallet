@@ -26,6 +26,7 @@ export const registerSchema = object().shape({
 
 export const transactionSchema = object().shape({
     category: string().required('You must select a category...'),
+    type: string().required('type is required...'),
     sum: number().required('You need to enter an amount...'),
     date: date().default(() => new Date()),
     comment: string().min(3, 'Comment must be longer than 3 letters...'),
