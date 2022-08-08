@@ -22,7 +22,6 @@ export const VerifyPage = () => {
 
     //result(verificationToken);
 
-    let status;
     fetch(verificationToken)
         .then(res => {
             const status = res.status;
@@ -34,8 +33,6 @@ export const VerifyPage = () => {
             console.log(status, 'catch');
             toastErr();
         });
-
-    console.log(status, 'out');
 
     return (
         <div>
