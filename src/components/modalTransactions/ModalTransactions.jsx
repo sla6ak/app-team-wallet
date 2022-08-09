@@ -96,8 +96,35 @@ const ModalTransactions = ({ onModalClose }) => {
 
     const date = value => {
         const date = value?.split('-');
+
         if (date) {
-            return new Date(Number(date[0]), Number(date[1] - 1), Number(date[2]));
+            // переписывает дату если она опережает текущую не уверен что это необходимо
+            // if (date[0] > new Date().getFullYear()) {
+            //     console.log(date);
+            //     date[0] = new Date().getFullYear();
+            //     date[1] = addZero(new Date().getMonth() + 1);
+            //     date[2] = addZero(new Date().getDate());
+            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
+            // }
+            // if (date[0] >= new Date().getFullYear() && date[1] > new Date().getMonth() + 1) {
+            //     console.log(date);
+            //     date[0] = new Date().getFullYear();
+            //     date[1] = addZero(new Date().getMonth() + 1);
+            //     date[2] = addZero(new Date().getDate());
+            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
+            // }
+            // if (
+            //     date[0] >= new Date().getFullYear() &&
+            //     date[1] >= new Date().getMonth() + 1 &&
+            //     date[2] > new Date().getDate()
+            // ) {
+            //     console.log(date);
+            //     date[0] = new Date().getFullYear();
+            //     date[1] = addZero(new Date().getMonth() + 1);
+            //     date[2] = addZero(new Date().getDate());
+            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
+            // }
+            return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
         }
     };
 
