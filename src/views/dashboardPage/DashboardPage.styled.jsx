@@ -42,6 +42,7 @@ export const TopInfoWrap = styled.div`
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
+
         align-items: flex-end;
     }
     @media (min-width: 1279px) {
@@ -60,6 +61,7 @@ export const NavBalanceWrap = styled.div`
 
 export const MainWrap = styled.div`
     @media (min-width: 1279px) {
+        min-height: 100%;
         display: flex;
         justify-content: space-between;
         margin-top: 45px;
@@ -67,10 +69,12 @@ export const MainWrap = styled.div`
 `;
 
 export const BorderLine = styled.span`
-    margin-left: 69px;
+    position: absolute;
+    top: 0;
+    left: 480px;
     margin-right: 69px;
     width: 1px;
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
     display: block;
-    height: 100vh;
+    height: 100%;
 `;

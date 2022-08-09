@@ -47,21 +47,18 @@ const ModalTransactions = ({ onModalClose }) => {
     ];
     const expense = [
         {
-            value: 'main',
-            label: 'Main',
+            value: 'car',
+            label: 'Car',
         },
         {
             value: 'food',
             label: 'Food',
         },
         {
-            value: 'auto',
-            label: 'Auto',
+            value: 'selfcare',
+            label: 'Selfcare',
         },
-        {
-            value: 'development',
-            label: 'Development',
-        },
+
         {
             value: 'children',
             label: 'Children',
@@ -69,6 +66,18 @@ const ModalTransactions = ({ onModalClose }) => {
         {
             value: 'house',
             label: 'House',
+        },
+        {
+            value: 'education',
+            label: 'Education',
+        },
+        {
+            value: 'leisure',
+            label: 'Leisure',
+        },
+        {
+            value: 'other',
+            label: 'Other',
         },
     ];
 
@@ -81,8 +90,9 @@ const ModalTransactions = ({ onModalClose }) => {
 
     const date = value => {
         const date = value?.split('-');
+        console.log('date: ', date);
         if (date) {
-            return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
+            return new Date(Number(date[0]), Number(date[1] - 1), Number(date[2]));
         }
     };
 
@@ -91,14 +101,14 @@ const ModalTransactions = ({ onModalClose }) => {
             type: !checked ? 'expense' : 'income',
             category: '',
             sum: '',
-            date: dates,
+            date: new Date(),
             comment: '',
         },
 
         validationSchema: transactionSchema,
         onSubmit: async values => {
-            console.log('dat', dates);
-            values.date = date(dates);
+            values.date = String(date(dates));
+            values.type = !checked ? 'expense' : 'income';
             console.log(values);
             setDisabled(true);
             try {

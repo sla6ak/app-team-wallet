@@ -13,10 +13,10 @@ const UserMenu = () => {
     return (
         <Wrapper>
             <Greeeting>{userName}</Greeeting>
-            <LogOutBtn 
-            onClick={() => {
-                setModal(true);
-        }}
+            <LogOutBtn
+                onClick={() => {
+                    setModal(true);
+                }}
             >
                 <LogoutIcon />
                 <TextBtn> Exit </TextBtn>
@@ -31,7 +31,7 @@ const UserMenu = () => {
                         onModalClose={() => {
                             setModal(false);
                         }}
-                        />
+                    />
                 </Modal>
             ) : null}
         </Wrapper>
