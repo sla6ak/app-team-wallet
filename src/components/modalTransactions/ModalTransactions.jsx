@@ -114,7 +114,7 @@ const ModalTransactions = ({ onModalClose }) => {
         onSubmit: async values => {
             values.date = String(date(dates));
             values.type = checked ? 'expense' : 'income';
-            values.comment = 'none';
+            values.comment = values.comment !== '' ? values.comment : 'none';
             setDisabled(true);
             try {
                 const respons = await addTransaction(values);
@@ -128,8 +128,14 @@ const ModalTransactions = ({ onModalClose }) => {
                     toast.success('Transaction ADD!');
                 }
             } catch (error) {
-                console.log(error);
+                toast.error(error);
             }
+
+            values.type = checked ? 'income' : 'expense';
+            values.category = '';
+            values.sum = '';
+            values.date = String(new Date());
+            values.comment = '';
             setDisabled(false);
         },
     });
