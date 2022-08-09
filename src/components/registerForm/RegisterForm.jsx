@@ -88,7 +88,6 @@ const RegisterForm = () => {
                             <ErrorLabel>{formik.errors.password}</ErrorLabel>
                         ) : null}
                     </InputLabel>
-
                     <TextField
                         fullWidth
                         variant={'standard'}
@@ -124,7 +123,6 @@ const RegisterForm = () => {
                             <ErrorLabel>{formik.errors.dublePassword}</ErrorLabel>
                         ) : null}
                     </InputLabel>
-
                     <TextField
                         fullWidth
                         variant={'standard'}
@@ -153,16 +151,16 @@ const RegisterForm = () => {
                             ),
                         }}
                     />
-                    <ProgressBar progressBarParams={formik.values?.dublePassword.length} />
+                    {formik.values.dublePassword && (
+                        <ProgressBar progressBarParams={formik.values?.dublePassword.length} />
+                    )}
                 </InputBox>
-
                 <InputBox>
                     <InputLabel htmlFor="firstName">
                         {formik.touched.firstName && formik.errors.firstName ? (
                             <ErrorLabel>{formik.errors.firstName}</ErrorLabel>
                         ) : null}
                     </InputLabel>
-
                     <TextField
                         fullWidth
                         variant={'standard'}

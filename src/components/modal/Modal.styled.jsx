@@ -2,14 +2,14 @@ import styled from '@emotion/styled';
 
 export const Overlay = styled.div`
     position: fixed;
-    top: 0;
+    top: 60px;
     left: 0;
     width: 100vw;
-    height: 100vh;
-    background-color: #ffffff;
     z-index: 99;
 
     @media (min-width: 768px) {
+        top: 0;
+        height: 100vh;
         background-color: rgba(0, 0, 0, 0.2);
     }
 `;
@@ -20,9 +20,6 @@ export const ModalWindow = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    min-width: 320px;
-    background-color: #fff;
 
     @media (min-width: 768px) {
         position: absolute;

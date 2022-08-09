@@ -1,9 +1,5 @@
 import styled from '@emotion/styled';
 
-export const ShowPasswordBtnStyles = {
-    color: '#E0E0E0',
-};
-
 export const ModalForma = styled.div`
     position: absolute;
     z-index: 25;
@@ -14,7 +10,7 @@ export const ModalForma = styled.div`
     justify-content: center;
     align-items: center;
 
-    border-radius: 20px;
+    
     width: 100vw;
     height: 100vh;
     padding: 20px;
@@ -25,6 +21,7 @@ export const ModalForma = styled.div`
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 50px;
+        border-radius: 20px;
         padding: 40px;
         width: 533px;
         height: 468px;
@@ -35,27 +32,9 @@ export const ModalForma = styled.div`
     }
 `;
 
-export const BoxButton = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 300px;
-    margin-top: 42px;
-`;
-
-export const InputBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    height: 60px;
-    width: 100%;
-`;
-
 export const FormaCastom = styled.form`
-    max-width: 410px;
-    width: 100%;
-    margin-top: 30px;
+    max-width: 280px;
+    margin-top: 20px;
 
     @media (min-width: 768px) {
         width: 410px;
@@ -64,7 +43,31 @@ export const FormaCastom = styled.form`
 
 export const ErrorLabel = styled.div`
     color: ${({ theme }) => theme.colors.error};
-
     font-size: 14px;
     margin-left: 10px;
+`;
+
+
+export const InputBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-top: 40px;
+    width: 100%;
+`;
+
+export const ShowPasswordBtnStyles = {
+    color: '#E0E0E0',
+};
+
+export const BoxButton = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 42px;
+
+    @media (min-width: 768px) {
+        width: 300px;
+    }
 `;

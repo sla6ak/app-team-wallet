@@ -13,6 +13,7 @@ import {
     NoActivePlus,
     ActiveMinus,
     NoActiveMinus,
+    ModalCloseBtn,
 } from './ModalTransactions.styled';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import { useState } from 'react';
@@ -23,6 +24,7 @@ import { transactionSchema } from '../../helpers/validationForm';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Switch from 'components/switch/Switch';
+import CloseIcon from '@mui/icons-material/Close';
 
 const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();
@@ -171,6 +173,9 @@ const ModalTransactions = ({ onModalClose }) => {
     return (
         <>
             <WrapperTransaction>
+            <ModalCloseBtn onClick={onModalClose}>
+                    <CloseIcon />
+                </ModalCloseBtn>
                 <ModalTitle>Add transaction</ModalTitle>
                 <FormaCastom onSubmit={formik.handleSubmit}>
                     <Checkbox>
@@ -178,7 +183,6 @@ const ModalTransactions = ({ onModalClose }) => {
                         <Switch onChange={handleSwitchChange} checked={checked} />
                         {!checked ? <NoActiveMinus>Expense</NoActiveMinus> : <ActiveMinus>Expense</ActiveMinus>}
                     </Checkbox>
-
                     <Inputs>
                         <TextField
                             fullWidth
@@ -223,7 +227,6 @@ const ModalTransactions = ({ onModalClose }) => {
                                 />
                             </DateContainer>
                         </InlineWrapper>
-
                         <TextField
                             fullWidth
                             margin="normal"
@@ -238,7 +241,6 @@ const ModalTransactions = ({ onModalClose }) => {
                             value={formik.values.comment}
                         />
                     </Inputs>
-
                     <ButtonWrapper>
                         <GeneralButton fullWidth variant={'contained'} bts={'submit'} disabled={disabled} type="submit">
                             ADD

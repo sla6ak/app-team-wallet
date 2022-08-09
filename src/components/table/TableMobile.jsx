@@ -1,5 +1,11 @@
+import Media from 'react-media';
 import { Table, TableBody, TableContainer, TableRow } from '@mui/material';
-import { TableStyled, TabWraper, TableCellStyled, TableCellValueStyled } from './TableMobile.styled';
+import { TableStyled,
+    TabWraper,
+    TableCellStyled,
+    TableCellValueStyled
+} from './TableMobile.styled';
+import Balance from '../../components/balance/Balance';
 
 const TableMobile = ({ allTransactions }) => {
     function addZero(value) {
@@ -7,6 +13,7 @@ const TableMobile = ({ allTransactions }) => {
     }
     return (
         <TabWraper>
+            <Media query="(max-width: 767px)" render={() => <Balance />} />
             {allTransactions.transactions.map(data => (
                 <TableContainer
                     key={data._id}
