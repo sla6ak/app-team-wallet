@@ -8,7 +8,7 @@ const TableMobile = ({ allTransactions }) => {
                 <TableContainer
                     key={data._id}
                     sx={TableStyled}
-                    style={{ borderColor: data.type === '+' ? '#24CCA7' : '#FF6596' }}
+                    style={{ borderColor: data.type === 'income' ? '#24CCA7' : '#FF6596' }}
                 >
                     <Table>
                         <TableBody>
@@ -28,7 +28,12 @@ const TableMobile = ({ allTransactions }) => {
                             </TableRow>
                             <TableRow>
                                 <TableCellStyled align="left">Comment</TableCellStyled>
-                                <TableCellValueStyled align="right">{data.comment}</TableCellValueStyled>
+                                <TableCellValueStyled
+                                    style={{ maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                                    align="right"
+                                >
+                                    {data.comment}
+                                </TableCellValueStyled>
                             </TableRow>
                             <TableRow>
                                 <TableCellStyled align="left">Sum</TableCellStyled>

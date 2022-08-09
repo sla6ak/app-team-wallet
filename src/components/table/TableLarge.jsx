@@ -14,11 +14,11 @@ const TableLarge = ({ allTransactions }) => {
                 <TableHead>
                     <TableRow>
                         <TableCellHeadStyled sx={TableCellStyledleft}>Date</TableCellHeadStyled>
-                        <TableCellHeadStyled align="center">Type</TableCellHeadStyled>
-                        <TableCellHeadStyled align="center">Category</TableCellHeadStyled>
-                        <TableCellHeadStyled align="center">Comment</TableCellHeadStyled>
-                        <TableCellHeadStyled align="center">Sum</TableCellHeadStyled>
-                        <TableCellHeadStyled sx={TableCellStyledRight} align="center">
+                        <TableCellHeadStyled align="left">Type</TableCellHeadStyled>
+                        <TableCellHeadStyled align="left">Category</TableCellHeadStyled>
+                        <TableCellHeadStyled align="left">Comment</TableCellHeadStyled>
+                        <TableCellHeadStyled align="right">Sum</TableCellHeadStyled>
+                        <TableCellHeadStyled sx={TableCellStyledRight} align="right">
                             Balance
                         </TableCellHeadStyled>
                     </TableRow>
@@ -40,16 +40,21 @@ const TableLarge = ({ allTransactions }) => {
                             <TableCellValueStyled>
                                 {data.date.day}.{data.date.month}.{data.date.year}
                             </TableCellValueStyled>
-                            <TableCellValueStyled align="center">{data.type}</TableCellValueStyled>
-                            <TableCellValueStyled align="center">{data.category}</TableCellValueStyled>
-                            <TableCellValueStyled align="center">{data.comment}</TableCellValueStyled>
+                            <TableCellValueStyled align="left">{data.type}</TableCellValueStyled>
+                            <TableCellValueStyled align="left">{data.category}</TableCellValueStyled>
+                            <TableCellValueStyled
+                                style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                                align="left"
+                            >
+                                {data.comment}
+                            </TableCellValueStyled>
                             <TableCellValueStyled
                                 style={{ color: data.type === 'income' ? '#24CCA7' : '#FF6596' }}
-                                align="center"
+                                align="right"
                             >
                                 {data.sum}
                             </TableCellValueStyled>
-                            <TableCellValueStyled align="center">{data.balanceAfterTransaction}</TableCellValueStyled>
+                            <TableCellValueStyled align="right">{data.balanceAfterTransaction}</TableCellValueStyled>
                         </TableRow>
                     ))}
                 </TableBody>
