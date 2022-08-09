@@ -1,24 +1,75 @@
 import styled from '@emotion/styled';
 
+export const Overlay = styled.div`
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background-color: #ffffff;
+    z-index: 99;
+
+    @media (min-width: 768px) {
+        top: 0;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+`;
+
 export const WrapperTransaction = styled.div`
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background-color: #ffffff;
+    z-index: 99;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    height: 708px;
+    min-width: 320px;
+    border-radius: 20px;
 
     @media (min-width: 768px) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 0;
+        height: 100vh;
         width: 540px;
         height: 508px;
         padding: 40px;
     }
 `;
 
+
+export const ModalCloseBtn = styled.div`
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 20px;
+    right: 20px;
+
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    @media (max-width: 767px) {
+        display: none;
+    }
+`;
+
 export const ModalTitle = styled.h3`
+    margin: 0;
     font-family: 'Poppins';
     font-weight: 400;
     font-size: 24px;
     line-height: 1.5;
     color: #000000;
+    
     @media (min-width: 768px) {
         font-size: 30px;
         line-height: 1.5;
@@ -27,7 +78,7 @@ export const ModalTitle = styled.h3`
 
 export const FormaCastom = styled.form`
     min-width: 300px;
-    margin-top: 30px;
+    margin-top: 40px;
 
     @media (min-width: 768px) {
         width: 394px;
@@ -82,7 +133,7 @@ export const NoActiveMinus = styled.span`
 `;
 
 export const Inputs = styled.div`
-    margin-top: 20px;
+    margin-top: 14px;
     padding: 20px;
     height: 250px;
     width: 300px;

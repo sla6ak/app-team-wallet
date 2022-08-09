@@ -3,7 +3,7 @@ import TableMobile from '../../components/table/TableMobile';
 import TableLarge from '../../components/table/TableLarge';
 import NoDataPlug from '../../components/noDataPlug/NoDataPlug';
 import { useAllTransactionsQuery } from 'redux/transactionAPI';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ModalTransactions from 'components/modalTransactions/ModalTransactions';
 import Modal from 'components/modal/Modal';
 import { AddIcn, PlusBtn } from './HomeTabe.styled';
@@ -12,7 +12,6 @@ const HomeTab = () => {
     const [modal, setModal] = useState(false);
 
     const { data: allTransactions } = useAllTransactionsQuery();
-    useEffect(() => {});
     return (
         <div style={{ position: 'relative' }}>
             <PlusBtn
@@ -24,7 +23,7 @@ const HomeTab = () => {
             </PlusBtn>
             {allTransactions ? (
                 <>
-                    {allTransactions.length !== 0 ? (
+                    {allTransactions.transactions.length !== 0 ? (
                         <>
                             <Media
                                 query="(max-width: 767px)"

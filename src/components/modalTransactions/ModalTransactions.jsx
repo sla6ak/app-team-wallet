@@ -13,6 +13,7 @@ import {
     NoActivePlus,
     ActiveMinus,
     NoActiveMinus,
+    ModalCloseBtn,
 } from './ModalTransactions.styled';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import { useState } from 'react';
@@ -23,6 +24,7 @@ import { transactionSchema } from '../../helpers/validationForm';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Switch from 'components/switch/Switch';
+import CloseIcon from '@mui/icons-material/Close';
 
 const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();
@@ -60,8 +62,8 @@ const ModalTransactions = ({ onModalClose }) => {
             label: 'Food',
         },
         {
-            value: 'selfcare',
-            label: 'Selfcare',
+            value: 'self care',
+            label: 'Self care',
         },
 
         {
@@ -96,8 +98,35 @@ const ModalTransactions = ({ onModalClose }) => {
 
     const date = value => {
         const date = value?.split('-');
+
         if (date) {
-            return new Date(Number(date[0]), Number(date[1] - 1), Number(date[2]));
+            // переписывает дату если она опережает текущую не уверен что это необходимо
+            // if (date[0] > new Date().getFullYear()) {
+            //     console.log(date);
+            //     date[0] = new Date().getFullYear();
+            //     date[1] = addZero(new Date().getMonth() + 1);
+            //     date[2] = addZero(new Date().getDate());
+            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
+            // }
+            // if (date[0] >= new Date().getFullYear() && date[1] > new Date().getMonth() + 1) {
+            //     console.log(date);
+            //     date[0] = new Date().getFullYear();
+            //     date[1] = addZero(new Date().getMonth() + 1);
+            //     date[2] = addZero(new Date().getDate());
+            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
+            // }
+            // if (
+            //     date[0] >= new Date().getFullYear() &&
+            //     date[1] >= new Date().getMonth() + 1 &&
+            //     date[2] > new Date().getDate()
+            // ) {
+            //     console.log(date);
+            //     date[0] = new Date().getFullYear();
+            //     date[1] = addZero(new Date().getMonth() + 1);
+            //     date[2] = addZero(new Date().getDate());
+            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
+            // }
+            return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
         }
     };
 
@@ -116,6 +145,7 @@ const ModalTransactions = ({ onModalClose }) => {
             values.type = checked ? 'expense' : 'income';
             values.comment = values.comment !== '' ? values.comment : 'none';
             setDisabled(true);
+            onModalClose();
             try {
                 const respons = await addTransaction(values);
 
@@ -143,6 +173,9 @@ const ModalTransactions = ({ onModalClose }) => {
     return (
         <>
             <WrapperTransaction>
+            <ModalCloseBtn onClick={onModalClose}>
+                    <CloseIcon />
+                </ModalCloseBtn>
                 <ModalTitle>Add transaction</ModalTitle>
                 <FormaCastom onSubmit={formik.handleSubmit}>
                     <Checkbox>
@@ -150,7 +183,6 @@ const ModalTransactions = ({ onModalClose }) => {
                         <Switch onChange={handleSwitchChange} checked={checked} />
                         {!checked ? <NoActiveMinus>Expense</NoActiveMinus> : <ActiveMinus>Expense</ActiveMinus>}
                     </Checkbox>
-
                     <Inputs>
                         <TextField
                             fullWidth
@@ -164,7 +196,7 @@ const ModalTransactions = ({ onModalClose }) => {
                         >
                             {(checked ? expense : income).map(option => (
                                 <MenuItem key={option.value} value={option.value}>
-                                    {option.value}
+                                    {option.label}
                                 </MenuItem>
                             ))}
                         </TextField>
@@ -195,7 +227,6 @@ const ModalTransactions = ({ onModalClose }) => {
                                 />
                             </DateContainer>
                         </InlineWrapper>
-
                         <TextField
                             fullWidth
                             margin="normal"
@@ -210,7 +241,6 @@ const ModalTransactions = ({ onModalClose }) => {
                             value={formik.values.comment}
                         />
                     </Inputs>
-
                     <ButtonWrapper>
                         <GeneralButton fullWidth variant={'contained'} bts={'submit'} disabled={disabled} type="submit">
                             ADD

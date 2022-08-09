@@ -2,15 +2,16 @@ import React from 'react';
 import {
     Title,
     TitleContainer,
+    Svg,
 } from './TitleWallet.styled';
 import spr from '../../images/sprite.svg';
 
 const TitleWallet = () => {
     return (
         <TitleContainer>
-            <svg className="icon-wallet" style={{ zIndex: 0 }}>
+            <Svg className="icon-wallet" style={{ zIndex: 0 }}>
                 <use href={spr + '#wallet'}></use>
-            </svg>
+            </Svg>
             <Title>Wallet</Title>
         </TitleContainer>
     );
