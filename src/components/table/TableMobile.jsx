@@ -4,9 +4,9 @@ import { TableStyled, TabWraper, TableCellStyled, TableCellValueStyled } from '.
 const TableMobile = ({ allTransactions }) => {
     return (
         <TabWraper>
-            {allTransactions?.transactions.map(data => (
+            {allTransactions.transactions.map(data => (
                 <TableContainer
-                    key={data.date}
+                    key={data._id}
                     sx={TableStyled}
                     style={{ borderColor: data.type === '+' ? '#24CCA7' : '#FF6596' }}
                 >
@@ -14,7 +14,9 @@ const TableMobile = ({ allTransactions }) => {
                         <TableBody>
                             <TableRow>
                                 <TableCellStyled align="left">Date</TableCellStyled>
-                                <TableCellValueStyled align="right">{data.date}</TableCellValueStyled>
+                                <TableCellValueStyled align="right">
+                                    {data.date.day}.{data.date.month}.{data.date.year}
+                                </TableCellValueStyled>
                             </TableRow>
                             <TableRow>
                                 <TableCellStyled align="left">Type</TableCellStyled>
@@ -31,7 +33,7 @@ const TableMobile = ({ allTransactions }) => {
                             <TableRow>
                                 <TableCellStyled align="left">Sum</TableCellStyled>
                                 <TableCellValueStyled
-                                    style={{ fontWeight: 700, color: data.type === '+' ? '#24CCA7' : '#FF6596' }}
+                                    style={{ fontWeight: 700, color: data.type === 'income' ? '#24CCA7' : '#FF6596' }}
                                     align="right"
                                 >
                                     {data.sum}
@@ -39,7 +41,9 @@ const TableMobile = ({ allTransactions }) => {
                             </TableRow>
                             <TableRow>
                                 <TableCellStyled align="left">Balance</TableCellStyled>
-                                <TableCellValueStyled align="right">{data.balance}</TableCellValueStyled>
+                                <TableCellValueStyled align="right">
+                                    {data.balanceAfterTransaction}
+                                </TableCellValueStyled>
                             </TableRow>
                         </TableBody>
                     </Table>

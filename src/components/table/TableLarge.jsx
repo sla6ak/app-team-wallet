@@ -7,7 +7,7 @@ import {
     WrapStyled,
 } from './TableLarge.styled';
 
-const TableLarge = ({ allTransaction }) => {
+const TableLarge = ({ allTransactions }) => {
     return (
         <TableContainer sx={WrapStyled}>
             <Table sx={{ minWidth: 704 }} stickyHeader aria-label="sticky table">
@@ -24,9 +24,9 @@ const TableLarge = ({ allTransaction }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {allTransaction?.transactions.map(data => (
+                    {allTransactions.transactions.map(data => (
                         <TableRow
-                            key={data.date}
+                            key={data._id}
                             sx={{
                                 '&:last-child td': {
                                     borderBottom: 0,
@@ -37,17 +37,19 @@ const TableLarge = ({ allTransaction }) => {
                                 },
                             }}
                         >
-                            <TableCellValueStyled>{data.date}</TableCellValueStyled>
+                            <TableCellValueStyled>
+                                {data.date.day}.{data.date.month}.{data.date.year}
+                            </TableCellValueStyled>
                             <TableCellValueStyled align="center">{data.type}</TableCellValueStyled>
                             <TableCellValueStyled align="center">{data.category}</TableCellValueStyled>
                             <TableCellValueStyled align="center">{data.comment}</TableCellValueStyled>
                             <TableCellValueStyled
-                                style={{ color: data.type === '+' ? '#24CCA7' : '#FF6596' }}
+                                style={{ color: data.type === 'income' ? '#24CCA7' : '#FF6596' }}
                                 align="center"
                             >
                                 {data.sum}
                             </TableCellValueStyled>
-                            <TableCellValueStyled align="center">{data.balance}</TableCellValueStyled>
+                            <TableCellValueStyled align="center">{data.balanceAfterTransaction}</TableCellValueStyled>
                         </TableRow>
                     ))}
                 </TableBody>

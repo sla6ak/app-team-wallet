@@ -1,14 +1,18 @@
 import React from 'react';
-import { BalanceBlock,
-    BalanceTitle,
-    BalanceValue,
-} from './Balance.styled';
+import { useAllTransactionsQuery } from 'redux/transactionAPI';
+import { BalanceBlock, BalanceTitle, BalanceValue } from './Balance.styled';
 
 const Balance = () => {
+    const { data: allTransactions } = useAllTransactionsQuery();
+    let lastTransaction;
+    if (allTransactions) {
+        lastTransaction = allTransactions.transactions.slice(-1);
+    }
+
     return (
         <BalanceBlock>
             <BalanceTitle>Your balance</BalanceTitle>
-            <BalanceValue>&#8372; 24 000</BalanceValue>
+            {lastTransaction && <BalanceValue>&#8372; {lastTransaction[0].balanceAfterTransaction}</BalanceValue>}
         </BalanceBlock>
     );
 };

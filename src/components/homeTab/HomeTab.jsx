@@ -26,7 +26,7 @@ const HomeTab = () => {
             </PlusBtn>
             {allTransactions ? (
                 <>
-                    {allTransactions.trasactions && (
+                    {allTransactions.length !== 0 ? (
                         <>
                             <Media
                                 query="(max-width: 767px)"
@@ -37,8 +37,9 @@ const HomeTab = () => {
                                 render={() => <TableLarge allTransactions={allTransactions} />}
                             />
                         </>
+                    ) : (
+                        <NoDataPlug />
                     )}
-                    <NoDataPlug />
                 </>
             ) : null}
             {modal ? (
