@@ -62,8 +62,8 @@ const ModalTransactions = ({ onModalClose }) => {
             label: 'Food',
         },
         {
-            value: 'selfcare',
-            label: 'Selfcare',
+            value: 'self care',
+            label: 'Self care',
         },
 
         {
@@ -145,6 +145,7 @@ const ModalTransactions = ({ onModalClose }) => {
             values.type = checked ? 'expense' : 'income';
             values.comment = values.comment !== '' ? values.comment : 'none';
             setDisabled(true);
+            onModalClose();
             try {
                 const respons = await addTransaction(values);
 
@@ -195,7 +196,7 @@ const ModalTransactions = ({ onModalClose }) => {
                         >
                             {(checked ? expense : income).map(option => (
                                 <MenuItem key={option.value} value={option.value}>
-                                    {option.value}
+                                    {option.label}
                                 </MenuItem>
                             ))}
                         </TextField>

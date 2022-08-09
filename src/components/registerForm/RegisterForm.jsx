@@ -9,11 +9,7 @@ import { registerSchema } from 'helpers/validationForm';
 import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import { ProgressBar } from 'components/progressBar/progressBar';
 import TitleWallet from 'components/titleWallet/TitleWallet';
-import { BoxButton,
-    InputBox,
-    FormaCastom,
-    ErrorLabel
-} from '../loginForm/LoginForm.styled';
+import { BoxButton, InputBox, FormaCastom, ErrorLabel } from '../loginForm/LoginForm.styled';
 import { RegisterModalForma, ShowPasswordBtnStyles } from './RegisterForm.styled';
 
 const RegisterForm = () => {
@@ -40,12 +36,13 @@ const RegisterForm = () => {
                     email: values.email,
                 });
                 console.log(respons.error);
+                console.log(respons.data);
                 if (respons.error) {
                     toast.error('User not created');
                     setDisabled(false);
                     return;
                 }
-                if (respons.data.user.name) {
+                if (respons.data.name) {
                     toast.success('Check your email for verification!');
                     navigate('/login', { replace: true });
                 }
@@ -113,11 +110,7 @@ const RegisterForm = () => {
                                         aria-label="toggle password visibility"
                                         onClick={handleClickShowPassword}
                                     >
-                                        {showPassword ? (
-                                            <Visibility />
-                                        ) : (
-                                            <VisibilityOff sx={ShowPasswordBtnStyles} />
-                                        )}
+                                        {showPassword ? <Visibility /> : <VisibilityOff sx={ShowPasswordBtnStyles} />}
                                     </IconButton>
                                 </InputAdornment>
                             ),
@@ -152,11 +145,7 @@ const RegisterForm = () => {
                                         aria-label="toggle password visibility"
                                         onClick={handleClickShowPassword}
                                     >
-                                        {showPassword ? (
-                                            <Visibility />
-                                        ) : (
-                                            <VisibilityOff sx={ShowPasswordBtnStyles} />
-                                        )}
+                                        {showPassword ? <Visibility /> : <VisibilityOff sx={ShowPasswordBtnStyles} />}
                                     </IconButton>
                                 </InputAdornment>
                             ),
