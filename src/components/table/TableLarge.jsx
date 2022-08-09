@@ -8,6 +8,9 @@ import {
 } from './TableLarge.styled';
 
 const TableLarge = ({ allTransactions }) => {
+    function addZero(value) {
+        return String(value).padStart(2, '0');
+    }
     return (
         <TableContainer sx={WrapStyled}>
             <Table sx={{ minWidth: 704 }} stickyHeader aria-label="sticky table">
@@ -38,7 +41,7 @@ const TableLarge = ({ allTransactions }) => {
                             }}
                         >
                             <TableCellValueStyled>
-                                {data.date.day}.{data.date.month}.{data.date.year}
+                                {addZero(data.date.day)}.{addZero(data.date.month)}.{data.date.year}
                             </TableCellValueStyled>
                             <TableCellValueStyled align="left">{data.type}</TableCellValueStyled>
                             <TableCellValueStyled align="left">{data.category}</TableCellValueStyled>
