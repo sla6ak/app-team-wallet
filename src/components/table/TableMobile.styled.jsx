@@ -2,15 +2,14 @@ import styled from '@emotion/styled';
 import { TableCell } from '@mui/material';
 
 export const TabWraper = styled.div`
-    height: 100%;
-    margin-left: 20px;
-    margin-right: 20px;
+    border-radius: 2%;
+    overflow: scroll;
+    height: 65vh;
 `;
 
 export const TableStyled = {
     backgroundColor: '#ffffff',
     borderLeft: 5,
-    borderColor: 'green',
     borderRadius: '10px',
     marginBottom: '8px',
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import { BackgroundBox } from './BacgroundGreeting.styled';
 import Heroy from 'components/heroy/Heroy';
 import spr from '../../images/sprite.svg';
+import { BackgroundBox } from './BacgroundGreeting.styled';
 import { BlurFone } from 'components/blurFone/BlurFone.styled';
 
 const BacgroundGreeting = ({ page, children }) => {

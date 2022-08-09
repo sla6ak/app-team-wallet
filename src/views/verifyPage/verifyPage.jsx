@@ -4,7 +4,6 @@ import { toastSuccess, toastErr } from 'components/verifyEmail/toast';
 
 export const VerifyPage = () => {
     const { verificationToken } = useParams();
-
     fetch(verificationToken)
         .then(res => {
             const status = res.status;
