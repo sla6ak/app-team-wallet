@@ -3,7 +3,7 @@ import CurrencyBg from 'images/currency-bg.png';
 
 export const Container = styled.div`
     height: 174px;
-    width: 280px;
+    min-width: 280px;
     border-radius: 30px;
     background-color: #6e78e8;
     color: #ffffff;
@@ -43,7 +43,7 @@ export const Table = styled.div`
 
     border-radius: 0 0 30px 30px;
     background-color: #4a56e2;
-    height: 93px;
+    min-height: 93px;
     background-image: url(${CurrencyBg});
     background-size: contain;
     background-repeat: no-repeat;
@@ -55,11 +55,11 @@ export const Table = styled.div`
     line-height: 1.5;
 
     @media (min-width: 768px) {
-        height: 132px;
+        min-height: 132px;
     }
 
     @media (min-width: 1279px) {
-        height: 287px;
+        min-height: 287px;
     }
 `;
 

@@ -5,9 +5,6 @@ import BackgroundMainPage from '../../components/backgroundMainPage/BackgroundMa
 import Navigation from 'components/navigation/Navigation';
 import Currency from '../../components/currency/Currency';
 import {
-    BalanceBlock,
-    BalanceTitle,
-    BalanceValue,
     TopInfoWrap,
     NavBalanceWrap,
     MainWrap,
@@ -15,6 +12,7 @@ import {
 } from './DashboardPage.styled';
 
 import AppBar from '../../components/appBar/AppBar';
+import Balance from '../../components/balance/Balance';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 const DashboardPage = () => {
@@ -32,10 +30,7 @@ const DashboardPage = () => {
                     <TopInfoWrap>
                         <NavBalanceWrap>
                             <Navigation />
-                            <BalanceBlock>
-                                <BalanceTitle>Your balance</BalanceTitle>
-                                <BalanceValue>&#8372; 24 000</BalanceValue>
-                            </BalanceBlock>
+                            <Media query="(min-width: 768px)" render={() => <Balance />} />
                         </NavBalanceWrap>
                         <Media query="(min-width: 768px)" render={() => <Currency />} />
                     </TopInfoWrap>
