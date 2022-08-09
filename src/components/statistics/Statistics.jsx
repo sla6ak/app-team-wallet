@@ -81,8 +81,8 @@ const Statistics = () => {
         datasets: [
             {
                 label: '# of Votes',
-                data: data ? data[1]?.expenseStatistic?.map(el => el?.totalSumByCategory) : 0,
-                backgroundColor: data ? data[1]?.expenseStatistic?.map(el => backgroundStyle(el)) : 0,
+                data: data ? data?.statistic[1]?.expenseStatistic?.map(el => el?.totalSumByCategory) : 0,
+                backgroundColor: data ? data?.statistic[1]?.expenseStatistic?.map(el => backgroundStyle(el)) : 0,
 
                 borderWidth: 0,
                 hoverOffset: 4,
@@ -95,7 +95,6 @@ const Statistics = () => {
         <>
             <Container>
                 <p style={{ width: '100%' }}>Statistics</p>
-
                 <ContainerDiagram>
                     <span
                         style={{
@@ -108,7 +107,7 @@ const Statistics = () => {
                             lineHeight: '27px',
                         }}
                     >
-                        &#8372; {data?.map(el => el.totalExpenseSum)}
+                        &#8372; {data?.statistic.map(el => el.totalExpenseSum)}
                     </span>
                     <Doughnut data={dataDiagram} options={options}></Doughnut>
                 </ContainerDiagram>
@@ -172,7 +171,7 @@ const Statistics = () => {
                             </Theader>
                             <Tbody>
                                 {data &&
-                                    data[1]?.expenseStatistic.map(el => (
+                                    data.statistic[1]?.expenseStatistic.map(el => (
                                         <Tr key={el?.category}>
                                             <Td>
                                                 <Color style={{ background: backgroundStyle(el) }} /> {el?.category}
@@ -185,12 +184,17 @@ const Statistics = () => {
                             <Tfoot>
                                 <tr>
                                     <Td>Expenses:</Td>
-                                    <Td style={{ color: '#FF6596' }}>{data?.map(el => el.totalExpenseSum)}</Td>
+                                    <Td style={{ color: '#FF6596' }}>
+                                        {data?.statistic.map(el => el.totalExpenseSum)}
+                                    </Td>
                                 </tr>
 
                                 <tr>
                                     <Td>Income:</Td>
-                                    <Td style={{ color: '#24CCA7' }}> {data?.map(el => el.totalIncomeSum)} </Td>
+                                    <Td style={{ color: '#24CCA7' }}>
+                                        {' '}
+                                        {data?.statistic.map(el => el.totalIncomeSum)}{' '}
+                                    </Td>
                                 </tr>
                             </Tfoot>
                         </Table>
