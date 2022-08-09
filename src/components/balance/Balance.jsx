@@ -15,6 +15,7 @@ const Balance = () => {
             {lastTransaction && (
                 <BalanceValue>
                     &#8372;
+                    &nbsp;
                     {lastTransaction}
                 </BalanceValue>
             )}

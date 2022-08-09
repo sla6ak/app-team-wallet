@@ -1,14 +1,21 @@
+import Media from 'react-media';
 import { Table, TableBody, TableContainer, TableRow } from '@mui/material';
-import { TableStyled, TabWraper, TableCellStyled, TableCellValueStyled } from './TableMobile.styled';
+import { TableStyled,
+    TabWraper,
+    TableCellStyled,
+    TableCellValueStyled
+} from './TableMobile.styled';
+import Balance from '../../components/balance/Balance';
 
 const TableMobile = ({ allTransactions }) => {
     return (
         <TabWraper>
+            <Media query="(max-width: 767px)" render={() => <Balance />} />
             {allTransactions.transactions.map(data => (
                 <TableContainer
                     key={data._id}
                     sx={TableStyled}
-                    style={{ borderColor: data.type === '+' ? '#24CCA7' : '#FF6596' }}
+                    style={{ borderColor: data.type === 'income' ? '#24CCA7' : '#FF6596' }}
                 >
                     <Table>
                         <TableBody>

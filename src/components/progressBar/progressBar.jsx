@@ -1,4 +1,5 @@
 import { Line } from 'rc-progress';
+import { Wrapper } from './progressBar.styled';
 
 export const ProgressBar = progressBar => {
     const length = progressBar.progressBarParams;
@@ -22,13 +23,15 @@ export const ProgressBar = progressBar => {
     const progress = progressBarParams(length);
     return (
         <>
-            <Line
-                percent={progress.progressPercent}
-                strokeColor={progress.progressColor}
-                strokeWidth={2}
-                trailWidth={2}
-                trailColor={'#E5F1EF'}
-            />
+            <Wrapper>
+                <Line
+                    percent={progress.progressPercent}
+                    strokeColor={progress.progressColor}
+                    strokeWidth={2}
+                    trailWidth={2}
+                    trailColor={'#E5F1EF'}
+                />
+            </Wrapper>
         </>
     );
 };
