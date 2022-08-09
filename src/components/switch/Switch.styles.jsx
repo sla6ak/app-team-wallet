@@ -1,4 +1,38 @@
 import styled from '@emotion/styled';
+// import { Add } from '@mui/icons-material';
+
+const a = `&:before {
+    content: '+';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 44px;
+    height: 44px;
+    border-radius: 21px;
+    transition: 0.2s;color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #24cca7;
+    color: ${props => {
+        return props.theme.colors.accent;
+    }};
+    box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+}`;
+
+// export const AddIcn = styled(Add)(
+//     ({ theme, checked }) => `
+//     color: ${theme.colors.white};
+//     background-color: ${checked ? theme.colors.purpure : theme.colors.green};
+//     border-radius: 50%;
+//     height: 44px;
+//     width: 44px;
+//     position: absolute;
+//     top: ${checked ? '-3px' : '-3px'};
+//     left: ${checked ? '40px' : '-3px'};
+//     z-index: 3;
+// `
+// );
 
 export const InputWrapper = styled.label`
     position: relative;
@@ -8,17 +42,21 @@ export const Input = styled.input`
     position: absolute;
     left: -9999px;
     top: -9999px;
-    
+
     &:checked + span:before {
-        content: "";
+        content: '–';
         position: absolute;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         top: -3px;
         margin-left: 5px;
         width: 44px;
         height: 44px;
         border-radius: 21px;
         transition: 0.2s;
-        background: #FF6596;
+        background: #ff6596;
         box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
     }
 
@@ -28,37 +66,24 @@ export const Input = styled.input`
             transform: translateX(-100%);
         }
     }
-
 `;
 
 export const Slider = styled.span`
     display: flex;
     cursor: pointer;
+    font-size: 38px;
     width: 80px;
     height: 40px;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #e0e0e0;
     border-radius: 30px;
     background-color: #fff;
     position: relative;
-    transition: background-color: 0.2s;
-
-    &:before {
-        content: "";
-        position: absolute;
-        top: -3px;
-        left: -3px;
-        width: 44px;
-        height: 44px;
-        border-radius: 21px;
-        transition: 0.2s;
-        background: #24CCA7;
-        box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
-
-        &:before {
-            content: "-";
-        color white;
+    transition: 0.2s;
+    ${({ checkBt }) => {
+        if (!checkBt) {
+            return a;
         }
-    }
+    }}
 
     &:active:before {
         width: 28px;
