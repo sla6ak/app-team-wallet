@@ -1,18 +1,21 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import HomeTab from 'components/homeTab/HomeTab';
-import RegisterPage from 'views/registerPage/RegisterPage';
-import PrivateRoute from 'components/privateRoute/PrivateRoute';
-import PublicRoute from 'components/publicRoute/PublicRoute';
-import DashboardPage from 'views/dashboardPage/DashboardPage';
-import Currency from 'components/currency/Currency';
-import LoginPage from 'views/loginPage/LoginPage';
-import Layout from 'layouts/Layout';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIsActivTokenQuery } from 'redux/authAPI';
 import { useEffect } from 'react';
 import { isUserName } from 'redux/sliceUserName';
-import Statistics from 'components/statistics/Statistics';
 import { VerifyPage } from 'views/verifyPage/verifyPage';
+import Media from 'react-media';
+
+import HomeTab from 'components/homeTab/HomeTab';
+import Statistics from 'components/statistics/Statistics';
+import PrivateRoute from 'components/privateRoute/PrivateRoute';
+import PublicRoute from 'components/publicRoute/PublicRoute';
+import Currency from 'components/currency/Currency';
+import LoginPage from 'views/loginPage/LoginPage';
+import RegisterPage from 'views/registerPage/RegisterPage';
+import DashboardPage from 'views/dashboardPage/DashboardPage';
+import Layout from 'layouts/Layout';
+
 
 function App() {
     const token = useSelector(state => state.token);
@@ -23,7 +26,7 @@ function App() {
         if (auth === undefined) {
             return;
         }
-        dispatch(isUserName(auth.user.name)); //при монтировании компонентов проверяем подлинность токена.
+        dispatch(isUserName(auth.user.name));
     }, [auth, dispatch]);
 
     return (
@@ -58,7 +61,7 @@ function App() {
                             path="/currency"
                             element={
                                 <PrivateRoute>
-                                    <Currency />
+                                    <Media query="(max-width: 767px)" render={() => <Currency />} />
                                 </PrivateRoute>
                             }
                         />
@@ -92,6 +95,6 @@ function App() {
             </Routes>
         </BrowserRouter>
     );
-}
+};
 
 export default App;

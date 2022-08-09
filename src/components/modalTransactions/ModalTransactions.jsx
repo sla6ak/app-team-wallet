@@ -84,6 +84,7 @@ const ModalTransactions = ({ onModalClose }) => {
     const handleSwitchChange = e => {
         setChecked(e.target.checked);
     };
+
     const handleDate = e => {
         setDates(e.target.value);
     };
@@ -135,17 +136,9 @@ const ModalTransactions = ({ onModalClose }) => {
                 <ModalTitle>Add transaction</ModalTitle>
                 <FormaCastom onSubmit={formik.handleSubmit}>
                     <Checkbox>
-                        {checked ? <ActivePlus>Income</ActivePlus> : <NoActivePlus>Income</NoActivePlus>}
-                        <label htmlFor={'isIncome'}>
-                            <Switch
-                                id={'isIncome'}
-                                name={'isIncome'}
-                                onSwitch={handleSwitchChange}
-                                isChecked={checked}
-                                onClick={handleSwitchChange}
-                            />
-                        </label>
-                        {checked ? <NoActiveMinus>Expense</NoActiveMinus> : <ActiveMinus>Expense</ActiveMinus>}
+                        {!checked ? <ActivePlus> Income </ActivePlus> : <NoActivePlus> Income </NoActivePlus>}
+                        <Switch onChange={handleSwitchChange} checked={checked}/>
+                        {!checked ? <NoActiveMinus>Expense</NoActiveMinus> : <ActiveMinus>Expense</ActiveMinus>}
                     </Checkbox>
 
                     <Inputs>
