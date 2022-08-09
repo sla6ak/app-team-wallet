@@ -107,13 +107,14 @@ const ModalTransactions = ({ onModalClose }) => {
             category: '',
             sum: '',
             date: String(new Date()),
-            comment: 'none',
+            comment: '',
         },
 
         validationSchema: transactionSchema,
         onSubmit: async values => {
             values.date = String(date(dates));
             values.type = checked ? 'expense' : 'income';
+            values.comment = 'none';
             setDisabled(true);
             try {
                 const respons = await addTransaction(values);
