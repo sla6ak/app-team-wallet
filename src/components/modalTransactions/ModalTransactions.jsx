@@ -28,8 +28,11 @@ const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();
     const [disabled, setDisabled] = useState(false);
     const [checked, setChecked] = useState(false);
-
-    const [dates, setDates] = useState('');
+    function addZero(value) {
+        return String(value).padStart(2, '0');
+    }
+    const dateFormat = `${new Date().getFullYear()}-${addZero(new Date().getMonth())}-${addZero(new Date().getDate())}`;
+    const [dates, setDates] = useState(dateFormat);
 
     const income = [
         {
@@ -91,7 +94,6 @@ const ModalTransactions = ({ onModalClose }) => {
 
     const date = value => {
         const date = value?.split('-');
-        console.log('date: ', date);
         if (date) {
             return new Date(Number(date[0]), Number(date[1] - 1), Number(date[2]));
         }
@@ -99,18 +101,18 @@ const ModalTransactions = ({ onModalClose }) => {
 
     const formik = useFormik({
         initialValues: {
-            type: !checked ? 'expense' : 'income',
+            type: checked ? 'income' : 'expense',
             category: '',
             sum: '',
-            date: new Date(),
+            date: String(new Date()),
             comment: '',
         },
 
         validationSchema: transactionSchema,
         onSubmit: async values => {
             values.date = String(date(dates));
-            values.type = !checked ? 'expense' : 'income';
-            console.log(values);
+            console.log(dates);
+            values.type = checked ? 'expense' : 'income';
             setDisabled(true);
             try {
                 const respons = await addTransaction(values);
@@ -137,7 +139,7 @@ const ModalTransactions = ({ onModalClose }) => {
                 <FormaCastom onSubmit={formik.handleSubmit}>
                     <Checkbox>
                         {!checked ? <ActivePlus> Income </ActivePlus> : <NoActivePlus> Income </NoActivePlus>}
-                        <Switch onChange={handleSwitchChange} checked={checked}/>
+                        <Switch onChange={handleSwitchChange} checked={checked} />
                         {!checked ? <NoActiveMinus>Expense</NoActiveMinus> : <ActiveMinus>Expense</ActiveMinus>}
                     </Checkbox>
 
@@ -152,7 +154,7 @@ const ModalTransactions = ({ onModalClose }) => {
                             onChange={formik.handleChange}
                             value={formik.values.category}
                         >
-                            {(!checked ? expense : income).map(option => (
+                            {(checked ? expense : income).map(option => (
                                 <MenuItem key={option.value} value={option.value}>
                                     {option.value}
                                 </MenuItem>

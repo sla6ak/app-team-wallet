@@ -12,9 +12,7 @@ const HomeTab = () => {
     const [modal, setModal] = useState(false);
 
     const { data: allTransactions } = useAllTransactionsQuery();
-    useEffect(() => {
-        console.log(allTransactions);
-    });
+    useEffect(() => {});
     return (
         <div style={{ position: 'relative' }}>
             <PlusBtn

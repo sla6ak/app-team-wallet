@@ -29,5 +29,5 @@ export const transactionSchema = object().shape({
     type: string().required('type is required...'),
     sum: number().required('You need to enter an amount...'),
     date: date().default(() => new Date()),
-    comment: string().min(3, 'Comment must be longer than 3 letters...'),
+    comment: string(),
 });

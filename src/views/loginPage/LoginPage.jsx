@@ -154,7 +154,7 @@ const LoginPage = () => {
                         >
                             Register
                         </GeneralButton>
-                        <button id="signInDiv"></button>
+                        {/* <button id="signInDiv"></button> */}
                     </BoxButton>
                 </FormaCastom>
                 {user && <div>{user.name}</div>}

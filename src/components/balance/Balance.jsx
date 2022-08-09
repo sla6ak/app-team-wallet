@@ -4,15 +4,20 @@ import { BalanceBlock, BalanceTitle, BalanceValue } from './Balance.styled';
 
 const Balance = () => {
     const { data: allTransactions } = useAllTransactionsQuery();
-    let lastTransaction;
+    let lastTransaction = null;
     if (allTransactions) {
-        lastTransaction = allTransactions.transactions.slice(-1);
+        lastTransaction = allTransactions.currentBalance;
     }
 
     return (
         <BalanceBlock>
             <BalanceTitle>Your balance</BalanceTitle>
-            {lastTransaction && <BalanceValue>&#8372; {lastTransaction[0].balanceAfterTransaction}</BalanceValue>}
+            {lastTransaction && (
+                <BalanceValue>
+                    &#8372;
+                    {lastTransaction}
+                </BalanceValue>
+            )}
         </BalanceBlock>
     );
 };
