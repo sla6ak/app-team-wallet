@@ -112,7 +112,6 @@ const Statistics = () => {
                     </span>
                     <Doughnut data={dataDiagram} options={options}></Doughnut>
                 </ContainerDiagram>
-
                 <div>
                     <Form>
                         <Label>
