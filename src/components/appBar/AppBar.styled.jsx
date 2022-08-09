@@ -11,4 +11,9 @@ export const HeaderBox = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 60px;
+
+    @media (min-width: 768px) {
+        height: 80px;
+    }
 `;

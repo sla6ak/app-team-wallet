@@ -1,13 +1,16 @@
-import { Container, Switcher, Label } from './Switch.styles';
+import {
+    InputWrapper,
+    Input,
+    Slider,
+} from './Switch.styles';
 
-function Switch({ isChecked, onSwitch }) {
+const Switch = ({ checked, onChange}) => {
     return (
-        <Container>
-            <Label htmlFor="income">
-                <Switcher type="checkbox" id="income" checked={isChecked} onClick={onSwitch} readOnly />
-            </Label>
-        </Container>
+        <InputWrapper>
+            <Input type="checkbox" checked={checked} onChange={onChange} />
+            <Slider />
+        </InputWrapper>
     );
-}
+};
 
-export default Switch;
+export default  Switch;
