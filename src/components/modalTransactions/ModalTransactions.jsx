@@ -97,12 +97,12 @@ const ModalTransactions = ({ onModalClose }) => {
 
         validationSchema: transactionSchema,
         onSubmit: async values => {
+            console.log('dat', dates);
             values.date = date(dates);
             console.log(values);
             setDisabled(true);
             try {
                 const respons = await addTransaction(values);
-                console.log('respons: ', respons);
 
                 if (respons.error) {
                     toast.error(respons.error.data.message);

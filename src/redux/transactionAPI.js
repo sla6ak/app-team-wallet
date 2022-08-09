@@ -19,10 +19,10 @@ export const transactionApi = createApi({
     tagTypes: ['transaction'],
     endpoints: builder => ({
         addNewTransaction: builder.mutation({
-            query: newUser => ({
+            query: newTransaction => ({
                 url: '/transaction/add',
                 method: 'POST',
-                body: newUser,
+                body: newTransaction,
             }),
             invalidatesTags: ['transaction'],
         }),
