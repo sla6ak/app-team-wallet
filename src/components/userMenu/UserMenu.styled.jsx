@@ -29,9 +29,18 @@ export const LogOutBtn = styled.div`
     display: flex;
     text-align: center;
     justify-content: center;
+    cursor: pointer;
+<<<<<<< HEAD
+=======
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s linear;
+>>>>>>> 677d858338eb9827495a865cb5e60f0a8b367464
     @media (min-width: 768px) {
         padding-top: 28px;
         padding-bottom: 28px;
+
+        &:hover {
+            color: #787878;
+        }
     }
 `;
 

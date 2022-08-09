@@ -1,34 +1,22 @@
 import { Table, TableBody, TableContainer, TableRow } from '@mui/material';
 import { TableStyled, TabWraper, TableCellStyled, TableCellValueStyled } from './TableMobile.styled';
 
-const TableMobile = () => {
-    const data = [
-        {
-            date: '23.05.22',
-            type: '+',
-            category: 'Other',
-            comment: 'Gift for your wife',
-            sum: 300,
-            balance: 6900,
-        },
-        {
-            date: '24.05.22',
-            type: '-',
-            category: 'Other',
-            comment: 'Gift for your wife',
-            sum: 300,
-            balance: 6900,
-        },
-    ];
+const TableMobile = ({ allTransactions }) => {
     return (
         <TabWraper>
-            {data.map(data => (
-                <TableContainer key={data.date} sx={TableStyled}>
+            {allTransactions.transactions.map(data => (
+                <TableContainer
+                    key={data._id}
+                    sx={TableStyled}
+                    style={{ borderColor: data.type === '+' ? '#24CCA7' : '#FF6596' }}
+                >
                     <Table>
                         <TableBody>
                             <TableRow>
                                 <TableCellStyled align="left">Date</TableCellStyled>
-                                <TableCellValueStyled align="right">{data.date}</TableCellValueStyled>
+                                <TableCellValueStyled align="right">
+                                    {data.date.day}.{data.date.month}.{data.date.year}
+                                </TableCellValueStyled>
                             </TableRow>
                             <TableRow>
                                 <TableCellStyled align="left">Type</TableCellStyled>
@@ -45,7 +33,7 @@ const TableMobile = () => {
                             <TableRow>
                                 <TableCellStyled align="left">Sum</TableCellStyled>
                                 <TableCellValueStyled
-                                    style={{ fontWeight: 700, color: data.type === '+' ? 'green' : 'red' }}
+                                    style={{ fontWeight: 700, color: data.type === 'income' ? '#24CCA7' : '#FF6596' }}
                                     align="right"
                                 >
                                     {data.sum}
@@ -53,7 +41,9 @@ const TableMobile = () => {
                             </TableRow>
                             <TableRow>
                                 <TableCellStyled align="left">Balance</TableCellStyled>
-                                <TableCellValueStyled align="right">{data.balance}</TableCellValueStyled>
+                                <TableCellValueStyled align="right">
+                                    {data.balanceAfterTransaction}
+                                </TableCellValueStyled>
                             </TableRow>
                         </TableBody>
                     </Table>

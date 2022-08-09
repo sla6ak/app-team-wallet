@@ -1,4 +1,4 @@
-import { object, string } from 'yup';
+import { object, string, number, date } from 'yup';
 
 export const loginSchema = object().shape({
     email: string().email('Invalid email').required('Email must by required'),
@@ -22,4 +22,12 @@ export const registerSchema = object().shape({
         .max(12, 'Password must be shorts than 12 letters!')
         .required('Password must by required'),
     email: string().email('Invalid email').required('Email must by required'),
+});
+
+export const transactionSchema = object().shape({
+    category: string().required('You must select a category...'),
+    type: string().required('type is required...'),
+    sum: number().required('You need to enter an amount...'),
+    date: date().default(() => new Date()),
+    comment: string(),
 });
