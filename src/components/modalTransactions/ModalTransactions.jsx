@@ -111,7 +111,6 @@ const ModalTransactions = ({ onModalClose }) => {
         validationSchema: transactionSchema,
         onSubmit: async values => {
             values.date = String(date(dates));
-            console.log(dates);
             values.type = checked ? 'expense' : 'income';
             setDisabled(true);
             try {
