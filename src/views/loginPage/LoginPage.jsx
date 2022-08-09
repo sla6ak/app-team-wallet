@@ -6,6 +6,7 @@ const LoginPage = () => {
     return (
         <BacgroundGreeting page={'login'}>
             <LoginForm />
+
         </BacgroundGreeting>
     );
 };
