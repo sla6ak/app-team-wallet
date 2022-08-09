@@ -107,7 +107,7 @@ const ModalTransactions = ({ onModalClose }) => {
             category: '',
             sum: '',
             date: String(new Date()),
-            comment: '',
+            comment: 'none',
         },
 
         validationSchema: transactionSchema,

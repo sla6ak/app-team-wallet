@@ -35,25 +35,24 @@ export const FormaCastom = styled.form`
 `;
 
 export const Checkbox = styled.div`
-position: relative;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
 export const ActivePlus = styled.span`
-position: relative;
+    position: relative;
     font-family: 'Circe';
     font-weight: 700;
     font-size: 16px;
     line-height: 1.6;
-    color: #24CCA7;
+    color: #24cca7;
     margin-right: 20px;
-    wi
 `;
 
 export const NoActivePlus = styled.span`
-position: relative;
+    position: relative;
     font-family: 'Circe';
     font-weight: 700;
     font-size: 16px;
@@ -63,7 +62,7 @@ position: relative;
 `;
 
 export const ActiveMinus = styled.span`
-position: relative;
+    position: relative;
     font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
@@ -73,7 +72,7 @@ position: relative;
 `;
 
 export const NoActiveMinus = styled.span`
-position: relative;
+    position: relative;
     font-family: 'Circe', sans-serif;
     font-weight: 700;
     font-size: 16px;
