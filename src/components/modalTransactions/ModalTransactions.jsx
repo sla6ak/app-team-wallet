@@ -31,7 +31,9 @@ const ModalTransactions = ({ onModalClose }) => {
     function addZero(value) {
         return String(value).padStart(2, '0');
     }
-    const dateFormat = `${new Date().getFullYear()}-${addZero(new Date().getMonth())}-${addZero(new Date().getDate())}`;
+    const dateFormat = `${new Date().getFullYear()}-${addZero(new Date().getMonth() + 1)}-${addZero(
+        new Date().getDate()
+    )}`;
     const [dates, setDates] = useState(dateFormat);
 
     const income = [
