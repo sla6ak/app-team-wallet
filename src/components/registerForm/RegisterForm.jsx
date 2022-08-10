@@ -35,8 +35,6 @@ const RegisterForm = () => {
                     password: values.password,
                     email: values.email,
                 });
-                console.log(respons.error);
-                console.log(respons.data);
                 if (respons.error) {
                     toast.error('User not created');
                     setDisabled(false);

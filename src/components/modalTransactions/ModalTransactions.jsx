@@ -24,7 +24,10 @@ import {
     NoActiveMinus,
     ModalCloseBtn,
 } from './ModalTransactions.styled';
+
 import DateTimePicker from 'react-datetime-picker';
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
 
 const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();
