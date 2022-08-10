@@ -1,19 +1,18 @@
 import { useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Media from 'react-media';
 import { Container } from '../../components/container/Container';
 import BackgroundMainPage from '../../components/backgroundMainPage/BackgroundMainPage';
 import Navigation from 'components/navigation/Navigation';
 import Currency from '../../components/currency/Currency';
+import AppBar from '../../components/appBar/AppBar';
+import Balance from '../../components/balance/Balance';
 import {
     TopInfoWrap,
     NavBalanceWrap,
     MainWrap,
     BorderLine,
 } from './DashboardPage.styled';
-
-import AppBar from '../../components/appBar/AppBar';
-import Balance from '../../components/balance/Balance';
-import { Outlet, useNavigate } from 'react-router-dom';
 
 const DashboardPage = () => {
     const navigate = useNavigate();

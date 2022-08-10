@@ -1,21 +1,22 @@
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Media from 'react-media';
 import { useSelector, useDispatch } from 'react-redux';
 import { useIsActivTokenQuery } from 'redux/authAPI';
-import { useEffect } from 'react';
 import { isUserName } from 'redux/sliceUserName';
 import { VerifyPage } from 'views/verifyPage/verifyPage';
-import Media from 'react-media';
+
 
 import HomeTab from 'components/homeTab/HomeTab';
 import Statistics from 'components/statistics/Statistics';
 import PrivateRoute from 'components/privateRoute/PrivateRoute';
 import PublicRoute from 'components/publicRoute/PublicRoute';
 import Currency from 'components/currency/Currency';
-import LoginPage from 'views/loginPage/LoginPage';
-import RegisterPage from 'views/registerPage/RegisterPage';
-import DashboardPage from 'views/dashboardPage/DashboardPage';
 import Layout from 'layouts/Layout';
 
+const DashboardPage = React.lazy(() => import('views/dashboardPage/DashboardPage'));
+const LoginPage = React.lazy(() => import('views/loginPage/LoginPage'));
+const RegisterPage = React.lazy(() => import('views/registerPage/RegisterPage'));
 
 function App() {
     const token = useSelector(state => state.token);

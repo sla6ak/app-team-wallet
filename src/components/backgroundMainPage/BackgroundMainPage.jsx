@@ -1,7 +1,7 @@
+import Media from 'react-media';
 import { BackgroundBox } from './BackgroundMainPage.styled';
 import spr from '../../images/sprite.svg';
 import { BlurMainPage } from './BackgroundMainPage.styled';
-import Media from 'react-media';
 
 const BackgroundMainPage = ({ children }) => {
     return (

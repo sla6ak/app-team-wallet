@@ -1,18 +1,23 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
 import { authApi } from './authAPI';
-import { curentToken } from './sliceToken'; // root reduser для токена
-import { curentUser } from './sliceUserName'; // будет хранить имя актуального пользователя и предоставлять доступ к функционалу
-import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
+import { curentToken } from './sliceToken';
+import { curentUser } from './sliceUserName';
 import { transactionApi } from './transactionAPI';
-
-// ***********************работа с локалкой*********************************
-// https://www.youtube.com/watch?v=sdlYNKjCGU0 гайд по локалке
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import { persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER
+} from 'redux-persist';
 
 const tokenPersistConfig = {
-    key: 'root', //это ключь под которым мы сохраняем сторе
+    key: 'root',
     storage,
-    whitelist: ['token'], // этот массив ключей вытягивает уже из slice конкретно то что нужно сохранять в ключе выше
+    whitelist: ['token'],
 };
 
 const rootReduser = combineReducers({
@@ -21,8 +26,8 @@ const rootReduser = combineReducers({
     token: curentToken.reducer,
     userName: curentUser.reducer,
 });
+
 const persistedReducer = persistReducer(tokenPersistConfig, rootReduser);
-// *************************************************
 
 export const store = configureStore({
     reducer: persistedReducer,
@@ -36,4 +41,4 @@ export const store = configureStore({
             .concat(transactionApi.middleware),
 });
 
-export const persistor = persistStore(store); // это параметры для обертки приложения в индексе
+export const persistor = persistStore(store);
