@@ -28,7 +28,6 @@ export const WrapperTransaction = styled.div`
     padding: 20px;
     height: 708px;
     min-width: 320px;
-    border-radius: 20px;
 
     @media (min-width: 768px) {
         position: absolute;
@@ -40,6 +39,7 @@ export const WrapperTransaction = styled.div`
         width: 540px;
         height: 508px;
         padding: 40px;
+        border-radius: 20px;
     }
 `;
 

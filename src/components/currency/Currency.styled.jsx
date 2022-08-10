@@ -34,7 +34,7 @@ export const Header = styled.ul`
         padding: 11px 25px 12px 20px;
     }
     @media (min-width: 1279px) {
-        padding: 17px 64px 16px 44px;
+        padding: 17px 49px 16px 42px;
     }
 `;
 
@@ -79,11 +79,29 @@ export const ListCurrency = styled.ul`
     }
 
     @media (min-width: 1279px) {
-        padding: 20px 61px 0px 58px;
+        padding: 20px 50px 0px 38px;
     }
 `;
 
 export const ItemCurrency = styled.li`
     display: flex;
     justify-content: space-between;
+`;
+
+export const Title = styled.li`
+    width: 60px;
+    text-align: center;
+
+    @media (min-width: 1279px) {
+        width: 70px;
+    }
+`;
+
+export const Span = styled.span`
+    width: 60px;
+    text-align: center;
+
+    @media (min-width: 1279px) {
+        width: 70px;
+    }
 `;

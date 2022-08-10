@@ -19,7 +19,7 @@ const ModalLogOut = ({ onModalClose }) => {
     const userName = useSelector(state => state.userName);
 
     const logOut = () => {
-        toast.info(`${userName} is successful logOut`);
+        toast.info(`${userName} is successful log out`);
         dispatch(newToken(''));
         dispatch(isUserName(''));
     };
