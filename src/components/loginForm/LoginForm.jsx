@@ -47,7 +47,7 @@ const LoginForm = () => {
                 if (respons.data.user.name) {
                     dispatch(newToken(respons.data.user.token));
                     dispatch(isUserName(respons.data.user.name));
-                    toast.success(`Wellcome ${respons.data.user.name}!`);
+                    toast.success(`Welcome ${respons.data.user.name}!`);
                 }
             } catch (error) {
                 console.log(error);

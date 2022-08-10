@@ -1,7 +1,7 @@
 import UserMenu from '../userMenu/UserMenu';
 import TitleWallet from '../titleWallet/TitleWallet';
-import { Header, HeaderBox } from './AppBar.styled';
 import { Container } from 'components/container/Container';
+import { Header, HeaderBox, Link } from './AppBar.styled';
 
 const AppBar = () => {
     return (
@@ -9,8 +9,10 @@ const AppBar = () => {
             <Header>
                 <Container>
                     <HeaderBox>
-                        <TitleWallet />
-                        <UserMenu />
+                        <Link to="/home">
+                            <TitleWallet />
+                            </Link>
+                            <UserMenu />
                     </HeaderBox>
                 </Container>
             </Header>

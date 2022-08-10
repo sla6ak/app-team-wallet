@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-// import { Add } from '@mui/icons-material';
 
 const a = `&:before {
     content: '+';
@@ -19,20 +18,6 @@ const a = `&:before {
     }};
     box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
 }`;
-
-// export const AddIcn = styled(Add)(
-//     ({ theme, checked }) => `
-//     color: ${theme.colors.white};
-//     background-color: ${checked ? theme.colors.purpure : theme.colors.green};
-//     border-radius: 50%;
-//     height: 44px;
-//     width: 44px;
-//     position: absolute;
-//     top: ${checked ? '-3px' : '-3px'};
-//     left: ${checked ? '40px' : '-3px'};
-//     z-index: 3;
-// `
-// );
 
 export const InputWrapper = styled.label`
     position: relative;

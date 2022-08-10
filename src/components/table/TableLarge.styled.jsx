@@ -25,6 +25,7 @@ export const TableCellStyledRight = {
     borderTopRightRadius: '30px',
     borderBottomRightRadius: '30px',
 };
+
 export const TableCellStyledleft = {
     borderTopLeftRadius: '30px',
     borderBottomLeftRadius: '30px',

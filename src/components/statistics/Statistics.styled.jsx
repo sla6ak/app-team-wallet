@@ -1,7 +1,4 @@
-// import styled from '@emotion/styled';
-
 import styled from '@emotion/styled';
-// для стилизации компонентов из материал юа их можно сюда затянуть и от них наследоваться! это поможет стилизировать то что не стилизируется пропсами
 
 export const Container = styled.div`
     font-style: normal;
@@ -14,6 +11,7 @@ export const Container = styled.div`
     }
     @media (min-width: 768px) {
         display: flex;
+        justify-content: space-between;
         align-items: flex-start;
         flex-wrap: wrap;
     }
