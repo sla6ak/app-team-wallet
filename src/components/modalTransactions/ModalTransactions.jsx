@@ -1,4 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import { useAddNewTransactionMutation } from 'redux/transactionAPI';
+import { transactionSchema } from '../../helpers/validationForm';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+import Switch from 'components/switch/Switch';
+import CloseIcon from '@mui/icons-material/Close';
+import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import {
     WrapperTransaction,
     FormaCastom,
@@ -15,19 +24,7 @@ import {
     NoActiveMinus,
     ModalCloseBtn,
 } from './ModalTransactions.styled';
-import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
-import { useState } from 'react';
-import { useFormik } from 'formik';
-import { toast } from 'react-toastify';
-import { useAddNewTransactionMutation } from 'redux/transactionAPI';
-import { transactionSchema } from '../../helpers/validationForm';
-import MenuItem from '@mui/material/MenuItem';
-import TextField from '@mui/material/TextField';
-import Switch from 'components/switch/Switch';
-import CloseIcon from '@mui/icons-material/Close';
 import DateTimePicker from 'react-datetime-picker';
-import 'react-datetime-picker/dist/DateTimePicker.css';
-import 'react-calendar/dist/Calendar.css';
 
 const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();

@@ -5,10 +5,8 @@ export const transactionApi = createApi({
     reducerPath: 'transactionApi',
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,
-        //тут я создаю базовый хедерс для всех запросов вытягивая токен из стейта на любой глубине.
         prepareHeaders: (headers, { getState }) => {
             const token = getState().token;
-            // If we have a token set in state, let's assume that we should be passing it.
             if (token) {
                 headers.set('authorization', `Bearer ${token}`);
             }
