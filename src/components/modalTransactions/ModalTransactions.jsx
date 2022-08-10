@@ -155,7 +155,7 @@ const ModalTransactions = ({ onModalClose }) => {
                     return;
                 }
                 if (respons.data) {
-                    toast.success('Transaction ADD!');
+                    toast.success('Transaction ADDED!');
                 }
             } catch (error) {
                 toast.error(error);

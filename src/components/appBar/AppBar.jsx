@@ -1,6 +1,6 @@
 import UserMenu from '../userMenu/UserMenu';
 import TitleWallet from '../titleWallet/TitleWallet';
-import { Header, HeaderBox } from './AppBar.styled';
+import { Header, HeaderBox, Link } from './AppBar.styled';
 import { Container } from 'components/container/Container';
 
 const AppBar = () => {
@@ -9,8 +9,10 @@ const AppBar = () => {
             <Header>
                 <Container>
                     <HeaderBox>
-                        <TitleWallet />
-                        <UserMenu />
+                        <Link to="/home">
+                            <TitleWallet />
+                            </Link>
+                            <UserMenu />
                     </HeaderBox>
                 </Container>
             </Header>
