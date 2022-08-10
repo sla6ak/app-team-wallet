@@ -154,6 +154,7 @@ export const InlineWrapper = styled.div`
 
 export const CountContainer = styled.div`
     width: 50 px;
+
     @media (min-width: 768px) {
         margin-right: 5px;
     }
