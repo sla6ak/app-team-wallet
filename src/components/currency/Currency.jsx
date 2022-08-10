@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import Loader from 'components/loader/Loader';
-import { Container, Header, Table, ListCurrency, ItemCurrency } from './Currency.styled';
+import { Container,
+    Header,
+    Table,
+    ListCurrency,
+    ItemCurrency,
+    Span,
+    Title,
+} from './Currency.styled';
 
 const Status = {
     IDLE: 'idle',
@@ -33,17 +40,17 @@ const Currency = () => {
             {status === Status.RESOLVED && data && (
                 <Container>
                     <Header>
-                        <li>Currency</li>
-                        <li>Purchase</li>
-                        <li>Sale</li>
+                        <Title>Currency</Title>
+                        <Title>Purchase</Title>
+                        <Title>Sale</Title>
                     </Header>
                     <Table>
                         <ListCurrency>
                             {data.map(item => (
                                 <ItemCurrency key={item.ccy}>
-                                    <span>{item.ccy}</span>
-                                    <span>{Number(item.buy).toFixed(2)}</span>
-                                    <span>{Number(item.sale).toFixed(2)}</span>
+                                    <Span>{item.ccy}</Span>
+                                    <Span>{Number(item.buy).toFixed(2)}</Span>
+                                    <Span>{Number(item.sale).toFixed(2)}</Span>
                                 </ItemCurrency>
                             ))}
                         </ListCurrency>
