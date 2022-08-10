@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import Media from 'react-media';
 import TableMobile from '../../components/table/TableMobile';
 import TableLarge from '../../components/table/TableLarge';
 import NoDataPlug from '../../components/noDataPlug/NoDataPlug';
 import { useAllTransactionsQuery } from 'redux/transactionAPI';
-import { useState } from 'react';
 import ModalTransactions from 'components/modalTransactions/ModalTransactions';
 import Modal from 'components/modal/Modal';
 import { AddIcn, PlusBtn } from './HomeTabe.styled';

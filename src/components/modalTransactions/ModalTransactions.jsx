@@ -1,4 +1,13 @@
-import React from 'react';
+import React, { useState }  from 'react';
+import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import { useAddNewTransactionMutation } from 'redux/transactionAPI';
+import { transactionSchema } from '../../helpers/validationForm';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+import Switch from 'components/switch/Switch';
+import CloseIcon from '@mui/icons-material/Close';
+import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
 import {
     WrapperTransaction,
     FormaCastom,
@@ -15,16 +24,6 @@ import {
     NoActiveMinus,
     ModalCloseBtn,
 } from './ModalTransactions.styled';
-import { GeneralButton } from 'components/generalButton/GeneralButton.styled';
-import { useState } from 'react';
-import { useFormik } from 'formik';
-import { toast } from 'react-toastify';
-import { useAddNewTransactionMutation } from 'redux/transactionAPI';
-import { transactionSchema } from '../../helpers/validationForm';
-import MenuItem from '@mui/material/MenuItem';
-import TextField from '@mui/material/TextField';
-import Switch from 'components/switch/Switch';
-import CloseIcon from '@mui/icons-material/Close';
 
 const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();
@@ -100,32 +99,6 @@ const ModalTransactions = ({ onModalClose }) => {
         const date = value?.split('-');
 
         if (date) {
-            // переписывает дату если она опережает текущую не уверен что это необходимо
-            // if (date[0] > new Date().getFullYear()) {
-            //     console.log(date);
-            //     date[0] = new Date().getFullYear();
-            //     date[1] = addZero(new Date().getMonth() + 1);
-            //     date[2] = addZero(new Date().getDate());
-            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
-            // }
-            // if (date[0] >= new Date().getFullYear() && date[1] > new Date().getMonth() + 1) {
-            //     console.log(date);
-            //     date[0] = new Date().getFullYear();
-            //     date[1] = addZero(new Date().getMonth() + 1);
-            //     date[2] = addZero(new Date().getDate());
-            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
-            // }
-            // if (
-            //     date[0] >= new Date().getFullYear() &&
-            //     date[1] >= new Date().getMonth() + 1 &&
-            //     date[2] > new Date().getDate()
-            // ) {
-            //     console.log(date);
-            //     date[0] = new Date().getFullYear();
-            //     date[1] = addZero(new Date().getMonth() + 1);
-            //     date[2] = addZero(new Date().getDate());
-            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
-            // }
             return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
         }
     };

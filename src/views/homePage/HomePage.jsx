@@ -1,6 +1,10 @@
 import { React, useState } from 'react';
 import Media from 'react-media';
 import BackgroundMainPage from '../../components/backgroundMainPage/BackgroundMainPage';
+import TableMobile from '../../components/table/TableMobile';
+import TableLarge from '../../components/table/TableLarge';
+import AppBar from '../../components/appBar/AppBar';
+import ModalTransactions from 'components/modalTransactions/ModalTransactions';
 import {
     HomeIcn,
     TimelineIcn,
@@ -22,10 +26,6 @@ import {
     MainWrap,
     BorderLine,
 } from './HomePage.styled';
-import TableMobile from '../../components/table/TableMobile';
-import TableLarge from '../../components/table/TableLarge';
-import AppBar from '../../components/appBar/AppBar';
-import ModalTransactions from 'components/modalTransactions/ModalTransactions';
 
 const HomePage = () => {
     const [modal, setModal] = useState(true);
