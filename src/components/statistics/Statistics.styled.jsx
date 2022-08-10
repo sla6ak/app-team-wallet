@@ -14,6 +14,7 @@ export const Container = styled.div`
     }
     @media (min-width: 768px) {
         display: flex;
+        justify-content: space-between;
         align-items: flex-start;
         flex-wrap: wrap;
     }

@@ -25,18 +25,19 @@ import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Switch from 'components/switch/Switch';
 import CloseIcon from '@mui/icons-material/Close';
+import DateTimePicker from 'react-datetime-picker';
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
 
 const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();
     const [disabled, setDisabled] = useState(false);
     const [checked, setChecked] = useState(false);
-    function addZero(value) {
-        return String(value).padStart(2, '0');
-    }
-    const dateFormat = `${new Date().getFullYear()}-${addZero(new Date().getMonth() + 1)}-${addZero(
-        new Date().getDate()
-    )}`;
-    const [dates, setDates] = useState(dateFormat);
+    const [value, onChange] = useState(new Date());
+
+    // function addZero(value) {
+    //     return String(value).padStart(2, '0');
+    // }
 
     const income = [
         {
@@ -92,44 +93,6 @@ const ModalTransactions = ({ onModalClose }) => {
         setChecked(e.target.checked);
     };
 
-    const handleDate = e => {
-        setDates(e.target.value);
-    };
-
-    const date = value => {
-        const date = value?.split('-');
-
-        if (date) {
-            // переписывает дату если она опережает текущую не уверен что это необходимо
-            // if (date[0] > new Date().getFullYear()) {
-            //     console.log(date);
-            //     date[0] = new Date().getFullYear();
-            //     date[1] = addZero(new Date().getMonth() + 1);
-            //     date[2] = addZero(new Date().getDate());
-            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
-            // }
-            // if (date[0] >= new Date().getFullYear() && date[1] > new Date().getMonth() + 1) {
-            //     console.log(date);
-            //     date[0] = new Date().getFullYear();
-            //     date[1] = addZero(new Date().getMonth() + 1);
-            //     date[2] = addZero(new Date().getDate());
-            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
-            // }
-            // if (
-            //     date[0] >= new Date().getFullYear() &&
-            //     date[1] >= new Date().getMonth() + 1 &&
-            //     date[2] > new Date().getDate()
-            // ) {
-            //     console.log(date);
-            //     date[0] = new Date().getFullYear();
-            //     date[1] = addZero(new Date().getMonth() + 1);
-            //     date[2] = addZero(new Date().getDate());
-            //     return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
-            // }
-            return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
-        }
-    };
-
     const formik = useFormik({
         initialValues: {
             type: checked ? 'income' : 'expense',
@@ -141,7 +104,7 @@ const ModalTransactions = ({ onModalClose }) => {
 
         validationSchema: transactionSchema,
         onSubmit: async values => {
-            values.date = String(date(dates));
+            values.date = value;
             values.type = checked ? 'expense' : 'income';
             values.comment = values.comment !== '' ? values.comment : 'none';
             setDisabled(true);
@@ -173,7 +136,7 @@ const ModalTransactions = ({ onModalClose }) => {
     return (
         <>
             <WrapperTransaction>
-            <ModalCloseBtn onClick={onModalClose}>
+                <ModalCloseBtn onClick={onModalClose}>
                     <CloseIcon />
                 </ModalCloseBtn>
                 <ModalTitle>Add transaction</ModalTitle>
@@ -214,16 +177,14 @@ const ModalTransactions = ({ onModalClose }) => {
                                     placeholder="0.00"
                                 />
                             </CountContainer>
+
                             <DateContainer>
-                                <TextField
-                                    fullWidth
-                                    margin="normal"
-                                    variant="standard"
-                                    id="date"
-                                    name="date"
-                                    type="date"
-                                    onChange={handleDate}
-                                    value={dates}
+                                <DateTimePicker
+                                    onChange={onChange}
+                                    value={value}
+                                    maxDate={new Date()}
+                                    format="dd-MM-y"
+                                    disableClock
                                 />
                             </DateContainer>
                         </InlineWrapper>
