@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import { useAddNewTransactionMutation } from 'redux/transactionAPI';
@@ -24,7 +24,7 @@ import {
     NoActiveMinus,
     ModalCloseBtn,
 } from './ModalTransactions.styled';
-
+import DateTimePicker from 'react-datetime-picker';
 
 const ModalTransactions = ({ onModalClose }) => {
     const [addTransaction] = useAddNewTransactionMutation();
@@ -88,19 +88,6 @@ const ModalTransactions = ({ onModalClose }) => {
 
     const handleSwitchChange = e => {
         setChecked(e.target.checked);
-    };
-
-
-    const handleDate = e => {
-        setDates(e.target.value);
-    };
-
-    const date = value => {
-        const date = value?.split('-');
-
-        if (date) {
-            return new Date(Number(date[0]), Number(date[1]), Number(date[2]));
-        }
     };
 
     const formik = useFormik({
