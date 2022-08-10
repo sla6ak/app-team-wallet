@@ -43,7 +43,6 @@ export const WrapperTransaction = styled.div`
     }
 `;
 
-
 export const ModalCloseBtn = styled.div`
     position: absolute;
     display: flex;
@@ -69,7 +68,7 @@ export const ModalTitle = styled.h3`
     font-size: 24px;
     line-height: 1.5;
     color: #000000;
-    
+
     @media (min-width: 768px) {
         font-size: 30px;
         line-height: 1.5;
@@ -155,15 +154,31 @@ export const InlineWrapper = styled.div`
 
 export const CountContainer = styled.div`
     width: 50 px;
+
     @media (min-width: 768px) {
         margin-right: 5px;
     }
 `;
 
 export const DateContainer = styled.div`
-    width: 50 px;
+    margin-top: 10px;
+
+    .react-datetime-picker {
+        width: 100%;
+    }
+
+    .react-datetime-picker__wrapper {
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    }
+
     @media (min-width: 768px) {
         margin-left: 5px;
+        margin-top: 25px;
+
+        .react-datetime-picker__button {
+            display: none;
+        }
     }
 `;
 
